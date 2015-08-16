@@ -35,8 +35,20 @@
 /usr/bin/ocamlopt.opt -c -o x86.cmx x86.ml # cached
 # Target: interpreter.cmx, tags: { compile, extension:cmx, extension:ml, file:interpreter.cmx, file:interpreter.ml, implem, native, ocaml, quiet }
 /usr/bin/ocamlopt.opt -c -o interpreter.cmx interpreter.ml
-+ /usr/bin/ocamlopt.opt -c -o interpreter.cmx interpreter.ml
-File "interpreter.ml", line 650, characters 19-28:
-Error: Unbound value interpret
-Command exited with code 2.
-# Compilation unsuccessful.
+# Target: gradedtests.cmx, tags: { compile, extension:cmx, extension:ml, file:gradedtests.cmx, file:gradedtests.ml, implem, native, ocaml, quiet }
+/usr/bin/ocamlopt.opt -c -o gradedtests.cmx gradedtests.ml # cached
+# Target: providedtests.cmx, tags: { compile, extension:cmx, extension:ml, file:providedtests.cmx, file:providedtests.ml, implem, native, ocaml, quiet }
+/usr/bin/ocamlopt.opt -c -o providedtests.cmx providedtests.ml # cached
+# Target: main.cmx, tags: { compile, extension:cmx, extension:ml, file:main.cmx, file:main.ml, implem, native, ocaml, quiet }
+/usr/bin/ocamlopt.opt -c -o main.cmx main.ml # cached
+# Target: main.native, tags: { dont_link_with, extension:native, file:main.native, link, native, ocaml, program, quiet }
+/usr/bin/ocamlopt.opt assert.cmx x86.cmx interpreter.cmx gradedtests.cmx providedtests.cmx main.cmx -o main.native
+# Target: assert.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:assert.cmo, file:assert.ml, implem, ocaml, quiet }
+/usr/bin/ocamlc.opt -c -o assert.cmo assert.ml # cached
+# Target: x86.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:x86.cmo, file:x86.ml, implem, ocaml, quiet }
+/usr/bin/ocamlc.opt -c -o x86.cmo x86.ml # cached
+# Target: interpreter.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:interpreter.cmo, file:interpreter.ml, implem, ocaml, quiet }
+/usr/bin/ocamlc.opt -c -o interpreter.cmo interpreter.ml
+# Target: main.byte, tags: { byte, dont_link_with, extension:byte, file:main.byte, link, ocaml, program, quiet }
+/usr/bin/ocamlc.opt assert.cmo x86.cmo interpreter.cmo gradedtests.cmo providedtests.cmo main.cmo -o main.byte
+# Compilation successful.

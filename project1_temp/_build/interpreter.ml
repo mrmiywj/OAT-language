@@ -153,11 +153,11 @@ let set_sub_OF(d:int32) (s:int32) (r:int32) (xs:x86_state) : unit =
        (Int64.mul (Int64.of_int32 r) (Int64.neg s64)) <@@ 0L) ||
        s = Int32.min_int)
       then xs.s_OF<-true else xs.s_OF<-false
-
-let set_logic_flags (i:int32) (xs:x86_state) :unit =
-  if i = 0l then (xs.s_ZF <- true; xs.s_SF<-false; xs.s_OF <- false)
-  else if i >@0l then (xs.s_ZF <- false; xs.s_SF <- false; xs.s_OF <- false)
-  else if i <@ 0l then (xs.s_OF <- false; xs.s_ZF <- false; xs.s_ZF <- true)
+        
+let set_logic_flags(i:int32) (xs:x86_state) : unit =
+  if i=0l then (xs.s_ZF<-true;xs.s_SF<-false;xs.s_OF<-false)
+  else if i>@0l then (xs.s_ZF<-false;xs.s_SF<-false;xs.s_OF<-false)
+  else if i<@0l then (xs.s_OF<-false;xs.s_ZF<-false;xs.s_SF<-true)
 
 let set_sar_codes (d:int32) (a:int32) (xs:x86_state) : unit =
   if a = 1l then set_add_codes d xs;
@@ -681,9 +681,22 @@ let rec do_command(code:insn_block list)(i:insn) (xs:x86_state) : unit =
       end
   end
 
-let interpret (code:insn_block list) (xs:x86_state) (l:lbl) : unit =
-failwith "unimplemented"
+and interpret (code:insn_block list) (xs:x86_state) (l:lbl) : unit =
+ let block = get_block code l in
+     get_insns code block.insns xs
 
+and get_insns(code:insn_block list)(i:insn list)(xs:x86_state):unit =
+  begin match i with
+    | [] -> ()
+    | h::tl -> 
+      begin match h with
+        | Ret -> do_command code h xs
+        | Jmp x -> do_command code h xs
+        | J (cond,lbl) -> if condition_matches xs cond then
+      do_command code h xs else (do_command code h xs; get_insns code tl xs)
+        | _ -> do_command code h xs; get_insns code tl xs
+      end   
+  end
       
 let run (code:insn_block list) : int32 =
   let main = X86.mk_lbl_named "main" in
