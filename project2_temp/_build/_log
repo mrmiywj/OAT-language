@@ -28,7 +28,7 @@
 # Target: lexer.ml.depends, tags: { extension:ml, file:lexer.ml, ocaml, ocamldep, quiet }
 /usr/bin/ocamldep.opt -modules lexer.ml > lexer.ml.depends # cached
 # Target: parser.mly, tags: { extension:mly, file:parser.mly, ocaml, ocamlyacc, parser, quiet }
-/usr/bin/ocamlyacc parser.mly
+/usr/bin/ocamlyacc parser.mly # cached
 # Target: parser.mli.depends, tags: { extension:mli, file:parser.mli, ocaml, ocamldep, quiet }
 /usr/bin/ocamldep.opt -modules parser.mli > parser.mli.depends # cached
 # Target: range.mli.depends, tags: { extension:mli, file:range.mli, ocaml, ocamldep, quiet }
@@ -70,30 +70,27 @@
 # Target: cunit.cmx, tags: { compile, extension:cmx, extension:ml, file:cunit.cmx, file:cunit.ml, implem, native, ocaml, quiet }
 /usr/bin/ocamlopt.opt -c -o cunit.cmx cunit.ml # cached
 # Target: parser.ml.depends, tags: { extension:ml, file:parser.ml, ocaml, ocamldep, quiet }
-/usr/bin/ocamldep.opt -modules parser.ml > parser.ml.depends
+/usr/bin/ocamldep.opt -modules parser.ml > parser.ml.depends # cached
 # Target: range.ml.depends, tags: { extension:ml, file:range.ml, ocaml, ocamldep, quiet }
 /usr/bin/ocamldep.opt -modules range.ml > range.ml.depends # cached
 # Target: range.cmx, tags: { compile, extension:cmx, extension:ml, file:range.cmx, file:range.ml, implem, native, ocaml, quiet }
 /usr/bin/ocamlopt.opt -c -o range.cmx range.ml # cached
 # Target: parser.cmx, tags: { compile, extension:cmx, extension:ml, file:parser.cmx, file:parser.ml, implem, native, ocaml, quiet }
-/usr/bin/ocamlopt.opt -c -o parser.cmx parser.ml
+/usr/bin/ocamlopt.opt -c -o parser.cmx parser.ml # cached
+# Target: lexer.cmx, tags: { compile, extension:cmx, extension:ml, file:lexer.cmx, file:lexer.ml, implem, native, ocaml, quiet }
+/usr/bin/ocamlopt.opt -c -o lexer.cmx lexer.ml # cached
 # Target: platform.ml.depends, tags: { extension:ml, file:platform.ml, ocaml, ocamldep, quiet }
 /usr/bin/ocamldep.opt -modules platform.ml > platform.ml.depends # cached
 # Target: platform.cmx, tags: { compile, extension:cmx, extension:ml, file:platform.cmx, file:platform.ml, implem, native, ocaml, quiet }
 /usr/bin/ocamlopt.opt -c -o platform.cmx platform.ml # cached
-# Target: lexer.cmx, tags: { compile, extension:cmx, extension:ml, file:lexer.cmx, file:lexer.ml, implem, native, ocaml, quiet }
-/usr/bin/ocamlopt.opt -c -o lexer.cmx lexer.ml
 # Target: compiler.cmx, tags: { compile, extension:cmx, extension:ml, file:compiler.cmx, file:compiler.ml, implem, native, ocaml, quiet }
-/usr/bin/ocamlopt.opt -c -o compiler.cmx compiler.ml
-+ /usr/bin/ocamlopt.opt -c -o compiler.cmx compiler.ml
-File "compiler.ml", line 30, characters 6-16:
-Warning 26: unused variable block_name.
+/usr/bin/ocamlopt.opt -c -o compiler.cmx compiler.ml # cached
+# Target: gradedtests.cmx, tags: { compile, extension:cmx, extension:ml, file:gradedtests.cmx, file:gradedtests.ml, implem, native, ocaml, quiet }
+/usr/bin/ocamlopt.opt -c -o gradedtests.cmx gradedtests.ml # cached
 # Target: providedtests.cmx, tags: { compile, extension:cmx, extension:ml, file:providedtests.cmx, file:providedtests.ml, implem, native, ocaml, quiet }
 /usr/bin/ocamlopt.opt -c -o providedtests.cmx providedtests.ml # cached
-# Target: gradedtests.cmx, tags: { compile, extension:cmx, extension:ml, file:gradedtests.cmx, file:gradedtests.ml, implem, native, ocaml, quiet }
-/usr/bin/ocamlopt.opt -c -o gradedtests.cmx gradedtests.ml
 # Target: main.cmx, tags: { compile, extension:cmx, extension:ml, file:main.cmx, file:main.ml, implem, native, ocaml, quiet }
-/usr/bin/ocamlopt.opt -c -o main.cmx main.ml
+/usr/bin/ocamlopt.opt -c -o main.cmx main.ml # cached
 # Target: main.native, tags: { dont_link_with, extension:native, file:main.native, link, native, ocaml, program, quiet }
-/usr/bin/ocamlopt.opt str.cmxa unix.cmxa assert.cmx ast.cmx x86.cmx cunit.cmx range.cmx parser.cmx lexer.cmx platform.cmx compiler.cmx gradedtests.cmx providedtests.cmx main.cmx -o main.native
+/usr/bin/ocamlopt.opt str.cmxa unix.cmxa assert.cmx ast.cmx x86.cmx cunit.cmx range.cmx parser.cmx lexer.cmx platform.cmx compiler.cmx gradedtests.cmx providedtests.cmx main.cmx -o main.native # cached
 # Compilation successful.
