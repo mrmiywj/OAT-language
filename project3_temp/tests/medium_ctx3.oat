@@ -1,0 +1,33 @@
+int x1=0;
+int y=0;
+{
+  int y1=x1;
+  {
+    int x1=9;
+    y=y+x1;
+  }
+
+  y=y+x1;  
+
+  {
+    int z2=y;
+    int y1=100;
+    y = y + y1;
+    {
+      int y = z2;
+      int x1 = 100;
+      y = x1 + z2;
+    }
+    y = y + z2;
+  }
+
+  y = y + y1 + x1;
+
+  {
+    int w = y + 94;
+    y = w + 94;
+    y = x1 + y + y1;
+  } 
+}
+return y;
+

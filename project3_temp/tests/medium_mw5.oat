@@ -1,0 +1,5 @@
+int x = 19 - 18;
+int y = 1;
+while (x <= 19)
+ if (y <= 0) x = x + 1; else x = 100;
+return x; 

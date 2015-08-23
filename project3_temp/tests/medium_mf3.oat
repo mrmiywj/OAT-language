@@ -1,0 +1,4 @@
+int z = 0;
+int y = z * z + 98;
+for (; z < 100;) if (y < 100) z = z + 1; else z = 1000;
+return z;

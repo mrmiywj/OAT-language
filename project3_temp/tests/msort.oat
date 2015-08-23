@@ -1,0 +1,95 @@
+int ARRAY_SIZE=7;
+int arr=0;
+int temp=0;
+int i=0;
+int j=0;
+int k=0;
+int n=ARRAY_SIZE;
+int size=0;
+int l1=0;
+int h1=0;
+int l2=0;
+int h2=0;
+int mask = 15;
+int correct = 1;
+int lastone = -1;
+
+arr = (arr & ~mask) + 1;
+arr = (arr & ~(mask<<4)) + (6<<4);
+arr = (arr & ~(mask<<8)) + (9<<8);
+arr = (arr & ~(mask<<12)) + (7<<12);
+arr = (arr & ~(mask<<16)) + (0<<16);
+arr = (arr & ~(mask<<20)) + (4<<20);
+arr = (arr & ~(mask<<24)) + (5<<24);
+
+size = 1;
+for(; size < n; size=size*2; )
+{
+ l1=0;
+ k=0;
+ while( l1+size < n)
+ {
+  h1=l1+size-1;
+  l2=h1+1;
+  h2=l2+size-1;
+  if( h2>=n )
+    h2=n-1;
+  i=l1;
+  j=l2;
+  while(i<=h1 & j<=h2 )
+  {
+   int ai = (arr & (mask << 4*i)) >> 4*i;
+   int aj = (arr & (mask << 4*j)) >> 4*j;
+   if( ai <= aj ) {
+     temp = (temp & ~(mask<<4*k)) + (ai<<4*k);
+     k=k+1;
+     i=i+1;
+   } else {
+     temp = (temp & ~(mask<<4*k)) + (aj<<4*k);
+     k=k+1;
+     j=j+1;
+   }
+  }
+  while(i<=h1) {
+   int ai = (arr & (mask << 4*i)) >> 4*i;
+   temp = (temp & ~(mask<<4*k)) + (ai<<4*k);
+   k=k+1;
+   i=i+1;
+  }
+  while(j<=h2) {
+   int aj = (arr & (mask << 4*j)) >> 4*j;
+   temp = (temp & ~(mask<<4*k)) + (aj<<4*k);
+   k=k+1;
+   j=j+1;
+  }
+  l1=h2+1;
+ }
+
+ i=l1;
+ for(; k<n; i=i+1;)
+ {
+  int ai = (arr & (mask << 4*i)) >> 4*i;
+  temp = (temp & ~(mask<<4*k)) + (ai<<4*k);
+  k=k+1;
+ }
+
+ i=0;
+ for(;i<n;i=i+1;) {
+  int tempi = (temp & (mask << 4*i)) >> 4*i;
+  arr = (arr & ~(mask<<4*i)) + (tempi<<4*i);
+ }
+
+}
+
+for(int x = 0; x < ARRAY_SIZE; x=x+1;)
+{
+  int a = (arr & (mask << 4*x)) >> 4*x;
+  if (correct)
+    if (a >= lastone)
+      lastone = a;
+    else
+      correct = 0;
+    
+}
+
+return correct;

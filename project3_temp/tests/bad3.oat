@@ -1,0 +1,3 @@
+int x = 0;
+if (0 == 0) then x;
+return x; 

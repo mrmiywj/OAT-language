@@ -1,0 +1,5 @@
+int x = 0;
+int y = 5;
+if (x == 0)
+  while (x < 10) if (y == 5) x = x + 1; else x = x + 3;
+return x;

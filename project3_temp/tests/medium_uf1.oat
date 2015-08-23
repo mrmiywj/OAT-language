@@ -1,0 +1,3 @@
+int x = 1 > 0;
+for (int abcd = x; x == abcd; x = abcd - 1;) if (x == abcd) abcd = 42;
+return x;

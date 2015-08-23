@@ -1,0 +1,7 @@
+int i = 0;
+int j = 0;
+for (int x=0, int y=0; i == j;)
+  if (i == 0)
+    for (int z=0, int u=0; j <= i;)
+      if (j == 0) j = 1;
+return j;

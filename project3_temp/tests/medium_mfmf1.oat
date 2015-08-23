@@ -1,0 +1,12 @@
+int x=31;
+int y=0;
+
+for (;x<=40;) 
+  if (x <= 20)
+    for (;x<=20;)
+      if (x > 0) x = x + 1; else x = x + 2;
+  else 
+    for (;x<=40;)
+      if (x > 0) x = x + 3; else x = x + 4;
+
+return x;

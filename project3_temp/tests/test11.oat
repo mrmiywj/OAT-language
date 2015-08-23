@@ -1,0 +1,7 @@
+int x = 6;
+int acc = 1;
+while (x > 0) {
+  acc = acc * x;
+  x = x - 1;
+}
+return acc;

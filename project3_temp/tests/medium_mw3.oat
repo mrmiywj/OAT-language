@@ -1,0 +1,3 @@
+int z = 0; int x = z;
+while (z >= 1024 * x) {if (x == z) z = -1;}
+return z; 

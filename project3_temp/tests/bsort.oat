@@ -1,0 +1,42 @@
+int ARRAY_SIZE=7;
+int x = 0;
+int y = 0;
+int holder = 0; 
+int iarray = 0;
+int mask = 15;
+int correct = 1;
+int lastone = -1;
+
+iarray = (iarray & ~mask) + 1; 
+iarray = (iarray & ~(mask << 4)) + (6 << 4); 
+iarray = (iarray & ~(mask << 8)) + (9 << 8); 
+iarray = (iarray & ~(mask << 12)) + (7 << 12); 
+iarray = (iarray & ~(mask << 16)) + (0 << 16); 
+iarray = (iarray & ~(mask << 20)) + (4 << 20); 
+iarray = (iarray & ~(mask << 24)) + (5 << 24); 
+
+for(int x = 0; x < ARRAY_SIZE; x=x+1;)
+  for(int y = 0; y < ARRAY_SIZE - 1; y=y+1;)
+  {
+    int a = (iarray & (mask << 4*y)) >> 4*y;
+    int b = (iarray & (mask << 4*(y+1))) >> 4*(y+1);
+    if(a > b) {
+      int holder = b;
+      iarray = (iarray & ~(mask << 4*(y+1))) + (a << 4*(y+1));
+      iarray = (iarray & ~(mask << 4*y)) + (holder << 4*y);
+     }
+  }
+
+for(int x = 0; x < ARRAY_SIZE; x=x+1;)
+{
+  int a = (iarray & (mask << 4*x)) >> 4*x;
+  if (correct)
+    if (a >= lastone)
+      lastone = a;
+    else
+      correct = 0;
+    
+}
+
+return correct;
+ 

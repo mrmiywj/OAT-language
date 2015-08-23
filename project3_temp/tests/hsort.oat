@@ -1,0 +1,115 @@
+int arr = 0;
+int ARRAY_SIZE = 7;
+int mask = 15;
+int correct = 1;
+int lastone = -1;
+
+arr = (arr & ~mask) + 1;
+arr = (arr & ~(mask<<4)) + (6<<4);
+arr = (arr & ~(mask<<8)) + (9<<8);
+arr = (arr & ~(mask<<12)) + (7<<12);
+arr = (arr & ~(mask<<16)) + (0<<16);
+arr = (arr & ~(mask<<20)) + (4<<20);
+arr = (arr & ~(mask<<24)) + (5<<24);
+
+{
+  int numbers = arr;
+  int array_size = ARRAY_SIZE;
+  int i = 0;
+  int temp = 0;
+  int mask = 15;
+
+  i = array_size >> 1;
+  for (; i >= 0; i = i-1;) {
+    int root = i;
+    int bottom = array_size - 1 ;
+    int done = 0;
+    int maxChild = 0;
+    int temp = 0;
+    int n1 = 0;
+    int n2 = 0; 
+
+    done = 0;
+    while ((root*2 <= bottom) & (!done))
+    {
+      if (root*2 == bottom)
+        maxChild = root * 2;
+      else if (((numbers & (mask << (4 * root * 2))) >> (4 * root * 2)) 
+                > 
+	       ((numbers & (mask << (4*(root * 2 + 1)))) >> (4 * (root * 2 +1))))
+        maxChild = root * 2;
+      else
+        maxChild = root * 2 + 1;
+ 
+      n1 = (numbers & (mask << 4*root)) >> 4*root; 
+      n2 = (numbers & (mask << 4*maxChild)) >> 4*maxChild;
+      if (n1<n2) 
+      {
+        temp = n1;
+        numbers = (numbers & ~(mask << 4 * root)) + (n2 << 4*root);
+	numbers = (numbers & ~(mask << 4 * maxChild)) + (temp << 4*maxChild);
+        root = maxChild;
+      }
+      else
+        done = 1;
+    }
+  }
+ 
+  i = array_size-1;
+  for (; i >= 1; i = i -1;)
+  {
+    int root = 0;
+    int bottom = i - 1 ;
+    int done = 0;
+    int maxChild = 0;
+    int temp = 0;
+    int n1 = 0;
+    int n2 = 0;
+    temp = numbers & mask;
+    numbers = (numbers & ~mask) + ((numbers & (mask << 4*i)) >> 4*i);
+    numbers = (numbers & ~(mask<<4*i)) + (temp << 4*i);
+ 
+    done = 0;
+    while ((root*2 <= bottom) & (!done))
+    {
+      if (root*2 == bottom)
+        maxChild = root * 2;
+      else if (((numbers & (mask << (4 * root * 2))) >> (4 * root * 2)) 
+                > 
+	       ((numbers & (mask << (4*(root * 2 + 1)))) >> (4 * (root * 2 +1))))
+        maxChild = root * 2;
+      else
+        maxChild = root * 2 + 1;
+ 
+      n1 = (numbers & (mask << 4*root)) >> 4*root; 
+      n2 = (numbers & (mask << 4*maxChild)) >> 4*maxChild;
+      if (n1<n2) 
+      {
+        temp = n1;
+        numbers = (numbers & ~(mask << 4 * root)) + (n2 << 4*root);
+        numbers = (numbers & ~(mask << 4 * maxChild)) + (temp << 4*maxChild);
+        root = maxChild;
+      }
+      else
+        done = 1;
+    }
+  }
+
+  arr = numbers;
+}
+
+for(int x = 0; x < ARRAY_SIZE; x=x+1;)
+{
+  int a = (arr & (mask << 4*x)) >> 4*x;
+  if (correct)
+    if (a >= lastone)
+      lastone = a;
+    else
+      correct = 0;
+    
+}
+
+return correct;
+
+ 
+ 

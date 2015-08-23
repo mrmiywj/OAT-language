@@ -1,0 +1,2530 @@
+compiling:
+
+return 4;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int x = 3;
+return x;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int x = 3;
+int y = 4;
+return x + y;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int x = 3;
+if (x == 0) x = x + 1;
+return x;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int x = 3;
+if (x == 3) x = x + 1;
+return x;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int x = 3;
+if (x == 0) {
+  x = x + 1;
+}
+return x;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int x = 1;
+{
+  int x = 2;
+}
+return x;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int x = 1;
+int y = 0;
+{
+  int x = 4;
+  y = y + x;
+} y = y + x;
+return y;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int x = 0;
+int y = 1;
+if (x == 0) if (y == 1) x = 1; else x = 2;
+return x;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int x = 0;
+int y = 1;
+if (x == 1) if (y == 1) x = 1; else x = 2;
+return x;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int x = 3 + 4;
+int y = 17 * 5;
+int z = 0;
+if (x == y) z = 3; else z = 4;
+return z;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int x = 0;
+int y = 1;
+if (x == 0) if (y == 0) x = 1; else x = 2;
+return x;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int x = 0;
+int y = 1;
+if (x == 0) if (y == 1) x = 1;
+return x;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int x = 0;
+int y = 1;
+if (x == 0) if (y == 0) x = 1;
+return x;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int x = 0;
+int y = 1;
+if (x == 1) if (y == 1) x = 1;
+return x;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int x = 0;
+int y = 1;
+if (x == 1) x = 2; else if (y == 1) x = 1;
+return x;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int x = 0;
+int y = 1;
+if (x == 0) x = 2; else if (y == 1) x = 1;
+return x;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int x = 0;
+int y = 1;
+if (x == 1) x = 2; else if (y == 0) x = 1;
+return x;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int x = 0;
+int y = 1;
+if (x == 1) if (y == 1) x = 1; else x = 2; else if (y == 1) x = 3; else 
+x = 4;
+return x;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int x = 0;
+int y = 1;
+if (x == 0) if (y == 1) x = 1; else x = 2; else if (y == 1) x = 3; else 
+x = 4;
+return x;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int x = 0;
+int y = 1;
+if (x == 0) if (y == 0) x = 1; else x = 2; else if (y == 1) x = 3; else 
+x = 4;
+return x;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int x = 0;
+int y = 1;
+if (x == 1) if (y == 1) x = 1; else x = 2; else if (y == 0) x = 3; else 
+x = 4;
+return x;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int x = 3;
+if (x <= 3) {
+  x = x + 1;
+  if (x > 1) x = x + 1;
+}
+return x;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int x = 3;
+if (x < 100) {
+  int x = x + 1;
+  if (x > 1) x = x + 1; else x = x - 1;
+}
+return x;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int x = 3;
+if (x < 3) {
+  x = x + 1;
+  if (x > 1) x = x + 1;
+} else {
+  x = x + 3;
+  if (x > 1) x = x + 1;
+}
+return x;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int x = 3;
+if (x < 3) x = x + 1; else {
+  x = x - 1;
+  if (x > 1) {
+    int x = x + 1;
+  }
+}
+return x;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int x = 3;
+if (x < 3) {
+  x = x + 1;
+  if (x > 1) x = x + 1;
+} else x = x * x;
+return x;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int x = 3;
+if (x < 2) {
+  x = x + 1;
+  if (x > 1) x = x + 1;
+} else {
+  int x = x + 3;
+  if (x > 1) x = x | 1;
+}
+return x;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int x = 6;
+int acc = 1;
+while (x > 0) {
+  acc = acc * x;
+  x = x - 1;
+}
+return acc;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int x = 1;
+while (x < 10) x = x + 1;
+return x;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int z = 0;
+int x = z;
+while (z >= 1024 * x) {
+  if (x == z) z = -1;
+}
+return z;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int x = 19 - 18;
+int y = 0;
+while (x <= 19) if (y <= 0) x = x + 1; else x = 100;
+return x;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int x = 19 - 18;
+int y = 1;
+while (x <= 19) if (y <= 0) x = x + 1; else x = 100;
+return x;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int x = 0;
+for (int i = 0; i < 100; i = i + 1;) x = x + 1;
+return x;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int x = 0;
+for (int x = 1; 0; ) {
+  
+}
+return x;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int z = 0;
+int y = z * z + 98;
+for (;
+z < 100;
+) if (y < 100) z = z + 1; else z = 1000;
+return z;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int z = 0;
+int y = z * z + 98 << 40;
+for (;
+z < 100;
+) if (y < 100) z = z + 1; else z = 1000;
+return z;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int x = 1;
+while (x < 10) if (x < 2) x = 100 | 1;
+return x;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int x = 1 > 0;
+for (int abcd = x;
+x == abcd;
+x = abcd - 1;) if (x == abcd) abcd = 42;
+return x;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int x = 1 > 0;
+for (int abcd = x;
+x == abcd;
+{
+  if (x == abcd) abcd = 42;
+  x = abcd - 1;
+}) {
+  
+}
+return x;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int x = 0;
+int y = 5;
+if (x == 0) while (x < 10) if (y == 5) x = x + 1; else x = x + 3;
+return x;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int x = 0;
+int y = 5 >> 100;
+if (x == 0) while (x < 10) if (y == 5) x = x + 1; else x = x + 3;
+return x;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int x = 0 + 1;
+int z = x + 1;
+int y = 0;
+if (x > 0) for (int i = 0;
+i < 100;
+i = i + 1;) if (z == x + 1) y = y - 1; else y = y + 1;
+return y;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int x = 0 + 1;
+int z = x + 1;
+int y = 0;
+if (x > 0) for (int i = 0;
+i < 100;
+i = i + 1;) if (z == x - 1) y = y - 1; else y = y + 1;
+return y;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int i = 0;
+int j = 0;
+while (i == j) if (i == 0) while (j <= i) if (j == 0) j = 1;
+return j;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int i = 0;
+int j = 0;
+for (int x = 0,
+int y = 0;
+i == j;
+) if (i == 0) for (int z = 0,
+int u = 0;
+j <= i;
+) if (j == 0) j = 1;
+return j;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int x = 10;
+int y = 0;
+while (x <= 40) if (x <= 20) while (x <= 20) if (x > 0) x = x + 1; else 
+x = x + 2; else while (x <= 40) if (x > 0) x = x + 3; else x = x + 4;
+return x;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int x = 31;
+int y = 0;
+while (x <= 40) if (x <= 20) while (x <= 20) if (x > 0) x = x + 1; else 
+x = x + 2; else while (x <= 40) if (x > 0) x = x + 3; else x = x + 4;
+return x;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int x = 31;
+int y = 0;
+for (;
+x <= 40;
+) if (x <= 20) for (;
+x <= 20;
+) if (x > 0) x = x + 1; else x = x + 2; else for (;
+x <= 40;
+) if (x > 0) x = x + 3; else x = x + 4;
+return x;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int x = 1;
+int y = 0;
+for (;
+x <= 40;
+) if (x <= 20) for (;
+x <= 20;
+) if (x > 0) x = x + 1; else x = x + 2; else for (;
+x <= 40;
+) if (x > 0) x = x + 3; else x = x + 4;
+return x;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int x = 0;
+int y = 0;
+if (x * x * x * x * x * x * x * x * x * x != 0) x = 1;
+y = 1;
+return x + y;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int x = 0;
+int y = 0;
+if (x * x * x * x * x * x * x * x * x * x == 0 * 0 * 0 * 0 * 0 * 0) x = 1;
+y = 1;
+return x + y;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int x = 0;
+int y = 0;
+while (x < 10) x = x + 1; y = y + 1;
+return y;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int x = 0;
+int y = 0;
+for (;
+x < 10;
+{
+  y = y + 1;
+}) x = x + 1;
+y = y + 1;
+return y;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int x = 0;
+for (int i = 0;
+i < 100;
+i = i + 1;) {
+  x = x + 1;
+}
+x = x + 1;
+return x;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int x = 0;
+while (x < 100) {
+  x = x + 1;
+} x = x + 1;
+return x;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int x = 0;
+if (x < 100) {
+  x = x + 1;
+} x = x + 1;
+return x;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int a = 0;
+int i = 0;
+while (i < 100) {
+  i = i + 1;
+  i = i + a;
+}
+for (int j = 0;
+j < i;
+j = j + 50;) {
+  i = i + 1;
+  a = a + 1000;
+}
+if (a > 0) {
+  int i = 100;
+  i = i + 1;
+  i = i + 1;
+} else {
+  i = a + i;
+  a = 100;
+}
+i = i + 1;
+return i + a;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int a = 0;
+int i = 0;
+i = i + 1;
+if (a > 0) {
+  int i = 100;
+  i = i + 1;
+  i = i + 1;
+} else {
+  i = a + i;
+  a = 100;
+}
+while (i < 100) {
+  i = i + 1;
+  i = i + a;
+}
+for (int j = 0;
+j < i;
+j = j + 50;) {
+  i = i + 1;
+  a = a + 1000;
+}
+return i + a * 3 >> 2 << 4;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int x1 = 0;
+int y1 = x1;
+{
+  int x2 = -1;
+  int y2 = y1;
+  {
+    int x3 = 2;
+    int y3 = y2;
+    {
+      int x4 = 3;
+      int y4 = y3;
+      {
+        int x2 = 1;
+        y1 = x1 + x2 + x3 + x4 + y4;
+      }
+    }
+  }
+}
+return y1;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int x1 = 0;
+int y1 = x1;
+for (;
+y1 < 10;
+{
+  int x2 = -1;
+  int y2 = y1;
+  {
+    int x3 = 2;
+    int y3 = y2;
+    {
+      int x4 = 3;
+      int y4 = y3;
+      {
+        int x2 = 1;
+        y1 = x1 * x2 * x3 + x4 << y4;
+      }
+    }
+  }
+}) {
+  
+}
+return y1;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int x1 = 0;
+int y = 0;
+{
+  int y1 = x1;
+  {
+    int x1 = 9;
+    y = y + x1;
+  }
+  y = y + x1;
+  {
+    int z2 = y;
+    int y1 = 100;
+    y = y + y1;
+    {
+      int y = z2;
+      int x1 = 100;
+      y = x1 + z2;
+    }
+    y = y + z2;
+  }
+  y = y + y1 + x1;
+  {
+    int w = y + 94;
+    y = w + 94;
+    y = x1 + y + y1;
+  }
+}
+return y;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+{
+  {
+    {
+      {
+        {
+          {
+            {
+              {
+                {
+                  {
+                    {
+                      {
+                        {
+                          {
+                            {
+                              {
+                                {
+                                  {
+                                    
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+return 0;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int x = 1;
+int y = x;
+{
+  int x = 2;
+  int y = x;
+  {
+    int x = 4;
+    int y = x;
+    {
+      int x = 6;
+      int y = x;
+      {
+        int x = 8;
+        int y = x;
+        {
+          int x = 3;
+          int y = x;
+          {
+            int x = 5;
+            int y = x;
+            {
+              int x = 7;
+              int y = x;
+              {
+                int x = 9;
+                int y = x;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+return y;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int i = 0;
+while (i < 100) {
+  int j = 0;
+  i = i + 10;
+  for (;
+  j < 100;
+  ) {
+    int k = j;
+    while (k > -900) {
+      k = k - 100;
+      if (k & 1) {
+        int x = 100;
+        for (int y = 0;
+        y < x;
+        y = y + 5;) {
+          
+        }
+      } else {
+        int w = 100;
+        while (w > -100) {
+          w = w - 1;
+          w = w - 1;
+          w = w - 1;
+        }
+      }
+    }
+    j = j + 18 * 1;
+  }
+}
+return i;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int i = 0;
+for (;
+i < 100;
+) {
+  int j = 0;
+  i = i + 10;
+  while (j < 100) {
+    int k = j;
+    for (;
+    k > -900;
+    ) {
+      k = k - 100;
+      if (k & 1) {
+        int x = 100;
+        int y = 0;
+        while (y < x) {
+          y = y + 5;
+        }
+      } else {
+        int w = 100;
+        for (;
+        w > -100;
+        ) {
+          w = w - 1;
+          w = w - 1;
+          w = w - 1;
+        }
+      }
+    }
+    j = j + 18 * 1;
+  }
+}
+return i;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int i = 0;
+while (i < 100) {
+  int j = 0;
+  i = i + 10;
+  for (;
+  j < 100;
+  {
+    int k = j;
+    while (k > -900) {
+      k = k - 100;
+      if (k & 1) {
+        int x = 100;
+        for (int y = 0;
+        y < x;
+        y = y + 5;) {
+          
+        }
+      } else {
+        int w = 100;
+        while (w > -100) {
+          w = w - 1;
+          w = w - 1;
+          w = w - 1;
+        }
+      }
+    }
+    j = j + 18 * 1;
+  }) {
+    
+  }
+}
+return i;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int x = 1;
+if (x == 1) if (x == 1) if (x == 1) if (x == 1) if (x == 1) if (x == 1) if (
+x == 1) if (x == 1) if (x == 1) if (x == 1) if (x == 1) if (x == 1) if (
+x == 1) if (x == 1) if (x == 1) {
+  
+}
+return x;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int ARRAY_SIZE = 7;
+int x = 0;
+int y = 0;
+int holder = 0;
+int iarray = 0;
+int mask = 15;
+int correct = 1;
+int lastone = -1;
+iarray = (iarray & ~mask) + 1;
+iarray = (iarray & ~(mask << 4)) + (6 << 4);
+iarray = (iarray & ~(mask << 8)) + (9 << 8);
+iarray = (iarray & ~(mask << 12)) + (7 << 12);
+iarray = (iarray & ~(mask << 16)) + (0 << 16);
+iarray = (iarray & ~(mask << 20)) + (4 << 20);
+iarray = (iarray & ~(mask << 24)) + (5 << 24);
+for (int x = 0;
+x < ARRAY_SIZE;
+x = x + 1;) for (int y = 0;
+y < ARRAY_SIZE - 1;
+y = y + 1;) {
+  int a = (iarray & mask << 4 * y) >> 4 * y;
+  int b = (iarray & mask << 4 * (y + 1)) >> 4 * (y + 1);
+  if (a > b) {
+    int holder = b;
+    iarray = (iarray & ~(mask << 4 * (y + 1))) + (a << 4 * (y + 1));
+    iarray = (iarray & ~(mask << 4 * y)) + (holder << 4 * y);
+  }
+}
+for (int x = 0;
+x < ARRAY_SIZE;
+x = x + 1;) {
+  int a = (iarray & mask << 4 * x) >> 4 * x;
+  if (correct) if (a >= lastone) lastone = a; else correct = 0;
+}
+return correct;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int ARRAY_SIZE = 7;
+int arr = 0;
+int temp = 0;
+int i = 0;
+int j = 0;
+int k = 0;
+int n = ARRAY_SIZE;
+int size = 0;
+int l1 = 0;
+int h1 = 0;
+int l2 = 0;
+int h2 = 0;
+int mask = 15;
+int correct = 1;
+int lastone = -1;
+arr = (arr & ~mask) + 1;
+arr = (arr & ~(mask << 4)) + (6 << 4);
+arr = (arr & ~(mask << 8)) + (9 << 8);
+arr = (arr & ~(mask << 12)) + (7 << 12);
+arr = (arr & ~(mask << 16)) + (0 << 16);
+arr = (arr & ~(mask << 20)) + (4 << 20);
+arr = (arr & ~(mask << 24)) + (5 << 24);
+size = 1;
+for (;
+size < n;
+size = size * 2;) {
+  l1 = 0;
+  k = 0;
+  while (l1 + size < n) {
+    h1 = l1 + size - 1;
+    l2 = h1 + 1;
+    h2 = l2 + size - 1;
+    if (h2 >= n) h2 = n - 1;
+    i = l1;
+    j = l2;
+    while (i <= h1 & j <= h2) {
+      int ai = (arr & mask << 4 * i) >> 4 * i;
+      int aj = (arr & mask << 4 * j) >> 4 * j;
+      if (ai <= aj) {
+        temp = (temp & ~(mask << 4 * k)) + (ai << 4 * k);
+        k = k + 1;
+        i = i + 1;
+      } else {
+        temp = (temp & ~(mask << 4 * k)) + (aj << 4 * k);
+        k = k + 1;
+        j = j + 1;
+      }
+    }
+    while (i <= h1) {
+      int ai = (arr & mask << 4 * i) >> 4 * i;
+      temp = (temp & ~(mask << 4 * k)) + (ai << 4 * k);
+      k = k + 1;
+      i = i + 1;
+    }
+    while (j <= h2) {
+      int aj = (arr & mask << 4 * j) >> 4 * j;
+      temp = (temp & ~(mask << 4 * k)) + (aj << 4 * k);
+      k = k + 1;
+      j = j + 1;
+    }
+    l1 = h2 + 1;
+  }
+  i = l1;
+  for (;
+  k < n;
+  i = i + 1;) {
+    int ai = (arr & mask << 4 * i) >> 4 * i;
+    temp = (temp & ~(mask << 4 * k)) + (ai << 4 * k);
+    k = k + 1;
+  }
+  i = 0;
+  for (;
+  i < n;
+  i = i + 1;) {
+    int tempi = (temp & mask << 4 * i) >> 4 * i;
+    arr = (arr & ~(mask << 4 * i)) + (tempi << 4 * i);
+  }
+}
+for (int x = 0;
+x < ARRAY_SIZE;
+x = x + 1;) {
+  int a = (arr & mask << 4 * x) >> 4 * x;
+  if (correct) if (a >= lastone) lastone = a; else correct = 0;
+}
+return correct;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+compiling:
+int arr = 0;
+int ARRAY_SIZE = 7;
+int mask = 15;
+int correct = 1;
+int lastone = -1;
+arr = (arr & ~mask) + 1;
+arr = (arr & ~(mask << 4)) + (6 << 4);
+arr = (arr & ~(mask << 8)) + (9 << 8);
+arr = (arr & ~(mask << 12)) + (7 << 12);
+arr = (arr & ~(mask << 16)) + (0 << 16);
+arr = (arr & ~(mask << 20)) + (4 << 20);
+arr = (arr & ~(mask << 24)) + (5 << 24);
+{
+  int numbers = arr;
+  int array_size = ARRAY_SIZE;
+  int i = 0;
+  int temp = 0;
+  int mask = 15;
+  i = array_size >> 1;
+  for (;
+  i >= 0;
+  i = i - 1;) {
+    int root = i;
+    int bottom = array_size - 1;
+    int done = 0;
+    int maxChild = 0;
+    int temp = 0;
+    int n1 = 0;
+    int n2 = 0;
+    done = 0;
+    while (root * 2 <= bottom & !done) {
+      if (root * 2 == bottom) maxChild = root * 2; else if ((numbers &
+                                                             mask <<
+                                                             4 * root * 2)
+                                                            >> 4 * root * 2 >
+                                                            (numbers &
+                                                             mask <<
+                                                             4 *
+                                                             (root * 2 + 1))
+                                                            >>
+                                                            4 *
+                                                            (root * 2 + 1)) 
+      maxChild = root * 2; else maxChild = root * 2 + 1;
+      n1 = (numbers & mask << 4 * root) >> 4 * root;
+      n2 = (numbers & mask << 4 * maxChild) >> 4 * maxChild;
+      if (n1 < n2) {
+        temp = n1;
+        numbers = (numbers & ~(mask << 4 * root)) + (n2 << 4 * root);
+        numbers =
+        (numbers & ~(mask << 4 * maxChild)) + (temp << 4 * maxChild);
+        root = maxChild;
+      } else done = 1;
+    }
+  }
+  i = array_size - 1;
+  for (;
+  i >= 1;
+  i = i - 1;) {
+    int root = 0;
+    int bottom = i - 1;
+    int done = 0;
+    int maxChild = 0;
+    int temp = 0;
+    int n1 = 0;
+    int n2 = 0;
+    temp = numbers & mask;
+    numbers = (numbers & ~mask) + ((numbers & mask << 4 * i) >> 4 * i);
+    numbers = (numbers & ~(mask << 4 * i)) + (temp << 4 * i);
+    done = 0;
+    while (root * 2 <= bottom & !done) {
+      if (root * 2 == bottom) maxChild = root * 2; else if ((numbers &
+                                                             mask <<
+                                                             4 * root * 2)
+                                                            >> 4 * root * 2 >
+                                                            (numbers &
+                                                             mask <<
+                                                             4 *
+                                                             (root * 2 + 1))
+                                                            >>
+                                                            4 *
+                                                            (root * 2 + 1)) 
+      maxChild = root * 2; else maxChild = root * 2 + 1;
+      n1 = (numbers & mask << 4 * root) >> 4 * root;
+      n2 = (numbers & mask << 4 * maxChild) >> 4 * maxChild;
+      if (n1 < n2) {
+        temp = n1;
+        numbers = (numbers & ~(mask << 4 * root)) + (n2 << 4 * root);
+        numbers =
+        (numbers & ~(mask << 4 * maxChild)) + (temp << 4 * maxChild);
+        root = maxChild;
+      } else done = 1;
+    }
+  }
+  arr = numbers;
+}
+for (int x = 0;
+x < ARRAY_SIZE;
+x = x + 1;) {
+  int a = (arr & mask << 4 * x) >> 4 * x;
+  if (correct) if (a >= lastone) lastone = a; else correct = 0;
+}
+return correct;
+* TMP FILES:
+*  c_obj/tmp55d46745.s
+*  c_obj/tmp55d46745.o
+*  c_bin/tmp55d46745
+
+Easy Parse Tests (20/20 points):
+  OK
+Medium Parse Tests (10/10 points):
+  OK
+Parse Error Tests (10/10 points):
+  OK
+Scope tests (0/5 points)
+  scope1: failed - File "scope1.oat" should not compile: variable x is not in scope.
+  scope2: failed - File "scope2.oat" should not compile: variable x is not in scope.
+  scope3: failed - File "scope3.oat" should not compile: variable x is not in scope.
+  scope4: failed - File "scope4.oat" should not compile: variable x is not in scope.
+Easy tests (0/15 points)
+  test1: failed - unimplemented
+  test2: failed - unimplemented
+  test3: failed - unimplemented
+  test4: failed - unimplemented
+  test5: failed - unimplemented
+  test6: failed - unimplemented
+  test7: failed - unimplemented
+  test8: failed - unimplemented
+  test9: failed - unimplemented
+  test10: failed - unimplemented
+  test12: failed - unimplemented
+  easy_um1: failed - unimplemented
+  easy_uu1: failed - unimplemented
+  easy_uu2: failed - unimplemented
+  easy_uu3: failed - unimplemented
+  easy_mu1: failed - unimplemented
+  easy_mu2: failed - unimplemented
+  easy_mu3: failed - unimplemented
+  easy_mm1: failed - unimplemented
+  easy_mm2: failed - unimplemented
+  easy_mm3: failed - unimplemented
+  easy_mm4: failed - unimplemented
+  easy_ub1: failed - unimplemented
+  easy_ub2: failed - unimplemented
+  easy_mb1: failed - unimplemented
+  easy_mb2: failed - unimplemented
+  easy_mb3: failed - unimplemented
+  easy_mb4: failed - unimplemented
+Medium tests (0/10 points)
+  test11: failed - unimplemented
+  medium_mw1: failed - unimplemented
+  medium_mw3: failed - unimplemented
+  medium_mw4: failed - unimplemented
+  medium_mw5: failed - unimplemented
+  medium_mf1: failed - unimplemented
+  medium_mf2: failed - unimplemented
+  medium_mf3: failed - unimplemented
+  medium_mf4: failed - unimplemented
+  medium_uw1: failed - unimplemented
+  medium_uf1: failed - unimplemented
+  medium_uf2: failed - unimplemented
+  medium_uimw1: failed - unimplemented
+  medium_uimw2: failed - unimplemented
+  medium_uimf1: failed - unimplemented
+  medium_uimf2: failed - unimplemented
+  medium_uwmw1: failed - unimplemented
+  medium_ufmf1: failed - unimplemented
+  medium_mwmw1: failed - unimplemented
+  medium_mwmw2: failed - unimplemented
+  medium_mfmf1: failed - unimplemented
+  medium_mfmf2: failed - unimplemented
+  medium_seq1: failed - unimplemented
+  medium_seq2: failed - unimplemented
+  medium_seq3: failed - unimplemented
+  medium_seq4: failed - unimplemented
+  medium_seq5: failed - unimplemented
+  medium_seq6: failed - unimplemented
+  medium_seq7: failed - unimplemented
+  medium_seq8: failed - unimplemented
+  medium_seq9: failed - unimplemented
+  medium_ctx1: failed - unimplemented
+  medium_ctx2: failed - unimplemented
+  medium_ctx3: failed - unimplemented
+  medium_ctx4: failed - unimplemented
+  medium_ctx5: failed - unimplemented
+  medium_nest1: failed - unimplemented
+  medium_nest2: failed - unimplemented
+  medium_nest3: failed - unimplemented
+  medium_nest4: failed - unimplemented
+Hard tests (0/10 points)
+  bsort: failed - unimplemented
+  msort: failed - unimplemented
+  hsort: failed - unimplemented
+Stress tests (hidden) (??/10 points):
+  Hidden
+StyleManual (??/10 points):
+  Hidden
+---------------------------------------------------
+Passed: 49/124
+Failed: 75/124
+Score: 40/80 (given)
+       ??/20 (hidden)
+compiling:
+
+return 4;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int x = 3;
+return x;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int x = 3;
+int y = 4;
+return x + y;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int x = 3;
+if (x == 0) x = x + 1;
+return x;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int x = 3;
+if (x == 3) x = x + 1;
+return x;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int x = 3;
+if (x == 0) {
+  x = x + 1;
+}
+return x;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int x = 1;
+{
+  int x = 2;
+}
+return x;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int x = 1;
+int y = 0;
+{
+  int x = 4;
+  y = y + x;
+} y = y + x;
+return y;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int x = 0;
+int y = 1;
+if (x == 0) if (y == 1) x = 1; else x = 2;
+return x;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int x = 0;
+int y = 1;
+if (x == 1) if (y == 1) x = 1; else x = 2;
+return x;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int x = 3 + 4;
+int y = 17 * 5;
+int z = 0;
+if (x == y) z = 3; else z = 4;
+return z;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int x = 0;
+int y = 1;
+if (x == 0) if (y == 0) x = 1; else x = 2;
+return x;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int x = 0;
+int y = 1;
+if (x == 0) if (y == 1) x = 1;
+return x;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int x = 0;
+int y = 1;
+if (x == 0) if (y == 0) x = 1;
+return x;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int x = 0;
+int y = 1;
+if (x == 1) if (y == 1) x = 1;
+return x;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int x = 0;
+int y = 1;
+if (x == 1) x = 2; else if (y == 1) x = 1;
+return x;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int x = 0;
+int y = 1;
+if (x == 0) x = 2; else if (y == 1) x = 1;
+return x;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int x = 0;
+int y = 1;
+if (x == 1) x = 2; else if (y == 0) x = 1;
+return x;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int x = 0;
+int y = 1;
+if (x == 1) if (y == 1) x = 1; else x = 2; else if (y == 1) x = 3; else 
+x = 4;
+return x;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int x = 0;
+int y = 1;
+if (x == 0) if (y == 1) x = 1; else x = 2; else if (y == 1) x = 3; else 
+x = 4;
+return x;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int x = 0;
+int y = 1;
+if (x == 0) if (y == 0) x = 1; else x = 2; else if (y == 1) x = 3; else 
+x = 4;
+return x;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int x = 0;
+int y = 1;
+if (x == 1) if (y == 1) x = 1; else x = 2; else if (y == 0) x = 3; else 
+x = 4;
+return x;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int x = 3;
+if (x <= 3) {
+  x = x + 1;
+  if (x > 1) x = x + 1;
+}
+return x;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int x = 3;
+if (x < 100) {
+  int x = x + 1;
+  if (x > 1) x = x + 1; else x = x - 1;
+}
+return x;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int x = 3;
+if (x < 3) {
+  x = x + 1;
+  if (x > 1) x = x + 1;
+} else {
+  x = x + 3;
+  if (x > 1) x = x + 1;
+}
+return x;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int x = 3;
+if (x < 3) x = x + 1; else {
+  x = x - 1;
+  if (x > 1) {
+    int x = x + 1;
+  }
+}
+return x;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int x = 3;
+if (x < 3) {
+  x = x + 1;
+  if (x > 1) x = x + 1;
+} else x = x * x;
+return x;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int x = 3;
+if (x < 2) {
+  x = x + 1;
+  if (x > 1) x = x + 1;
+} else {
+  int x = x + 3;
+  if (x > 1) x = x | 1;
+}
+return x;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int x = 6;
+int acc = 1;
+while (x > 0) {
+  acc = acc * x;
+  x = x - 1;
+}
+return acc;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int x = 1;
+while (x < 10) x = x + 1;
+return x;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int z = 0;
+int x = z;
+while (z >= 1024 * x) {
+  if (x == z) z = -1;
+}
+return z;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int x = 19 - 18;
+int y = 0;
+while (x <= 19) if (y <= 0) x = x + 1; else x = 100;
+return x;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int x = 19 - 18;
+int y = 1;
+while (x <= 19) if (y <= 0) x = x + 1; else x = 100;
+return x;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int x = 0;
+for (int i = 0; i < 100; i = i + 1;) x = x + 1;
+return x;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int x = 0;
+for (int x = 1; 0; ) {
+  
+}
+return x;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int z = 0;
+int y = z * z + 98;
+for (;
+z < 100;
+) if (y < 100) z = z + 1; else z = 1000;
+return z;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int z = 0;
+int y = z * z + 98 << 40;
+for (;
+z < 100;
+) if (y < 100) z = z + 1; else z = 1000;
+return z;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int x = 1;
+while (x < 10) if (x < 2) x = 100 | 1;
+return x;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int x = 1 > 0;
+for (int abcd = x;
+x == abcd;
+x = abcd - 1;) if (x == abcd) abcd = 42;
+return x;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int x = 1 > 0;
+for (int abcd = x;
+x == abcd;
+{
+  if (x == abcd) abcd = 42;
+  x = abcd - 1;
+}) {
+  
+}
+return x;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int x = 0;
+int y = 5;
+if (x == 0) while (x < 10) if (y == 5) x = x + 1; else x = x + 3;
+return x;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int x = 0;
+int y = 5 >> 100;
+if (x == 0) while (x < 10) if (y == 5) x = x + 1; else x = x + 3;
+return x;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int x = 0 + 1;
+int z = x + 1;
+int y = 0;
+if (x > 0) for (int i = 0;
+i < 100;
+i = i + 1;) if (z == x + 1) y = y - 1; else y = y + 1;
+return y;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int x = 0 + 1;
+int z = x + 1;
+int y = 0;
+if (x > 0) for (int i = 0;
+i < 100;
+i = i + 1;) if (z == x - 1) y = y - 1; else y = y + 1;
+return y;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int i = 0;
+int j = 0;
+while (i == j) if (i == 0) while (j <= i) if (j == 0) j = 1;
+return j;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int i = 0;
+int j = 0;
+for (int x = 0,
+int y = 0;
+i == j;
+) if (i == 0) for (int z = 0,
+int u = 0;
+j <= i;
+) if (j == 0) j = 1;
+return j;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int x = 10;
+int y = 0;
+while (x <= 40) if (x <= 20) while (x <= 20) if (x > 0) x = x + 1; else 
+x = x + 2; else while (x <= 40) if (x > 0) x = x + 3; else x = x + 4;
+return x;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int x = 31;
+int y = 0;
+while (x <= 40) if (x <= 20) while (x <= 20) if (x > 0) x = x + 1; else 
+x = x + 2; else while (x <= 40) if (x > 0) x = x + 3; else x = x + 4;
+return x;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int x = 31;
+int y = 0;
+for (;
+x <= 40;
+) if (x <= 20) for (;
+x <= 20;
+) if (x > 0) x = x + 1; else x = x + 2; else for (;
+x <= 40;
+) if (x > 0) x = x + 3; else x = x + 4;
+return x;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int x = 1;
+int y = 0;
+for (;
+x <= 40;
+) if (x <= 20) for (;
+x <= 20;
+) if (x > 0) x = x + 1; else x = x + 2; else for (;
+x <= 40;
+) if (x > 0) x = x + 3; else x = x + 4;
+return x;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int x = 0;
+int y = 0;
+if (x * x * x * x * x * x * x * x * x * x != 0) x = 1;
+y = 1;
+return x + y;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int x = 0;
+int y = 0;
+if (x * x * x * x * x * x * x * x * x * x == 0 * 0 * 0 * 0 * 0 * 0) x = 1;
+y = 1;
+return x + y;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int x = 0;
+int y = 0;
+while (x < 10) x = x + 1; y = y + 1;
+return y;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int x = 0;
+int y = 0;
+for (;
+x < 10;
+{
+  y = y + 1;
+}) x = x + 1;
+y = y + 1;
+return y;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int x = 0;
+for (int i = 0;
+i < 100;
+i = i + 1;) {
+  x = x + 1;
+}
+x = x + 1;
+return x;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int x = 0;
+while (x < 100) {
+  x = x + 1;
+} x = x + 1;
+return x;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int x = 0;
+if (x < 100) {
+  x = x + 1;
+} x = x + 1;
+return x;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int a = 0;
+int i = 0;
+while (i < 100) {
+  i = i + 1;
+  i = i + a;
+}
+for (int j = 0;
+j < i;
+j = j + 50;) {
+  i = i + 1;
+  a = a + 1000;
+}
+if (a > 0) {
+  int i = 100;
+  i = i + 1;
+  i = i + 1;
+} else {
+  i = a + i;
+  a = 100;
+}
+i = i + 1;
+return i + a;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int a = 0;
+int i = 0;
+i = i + 1;
+if (a > 0) {
+  int i = 100;
+  i = i + 1;
+  i = i + 1;
+} else {
+  i = a + i;
+  a = 100;
+}
+while (i < 100) {
+  i = i + 1;
+  i = i + a;
+}
+for (int j = 0;
+j < i;
+j = j + 50;) {
+  i = i + 1;
+  a = a + 1000;
+}
+return i + a * 3 >> 2 << 4;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int x1 = 0;
+int y1 = x1;
+{
+  int x2 = -1;
+  int y2 = y1;
+  {
+    int x3 = 2;
+    int y3 = y2;
+    {
+      int x4 = 3;
+      int y4 = y3;
+      {
+        int x2 = 1;
+        y1 = x1 + x2 + x3 + x4 + y4;
+      }
+    }
+  }
+}
+return y1;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int x1 = 0;
+int y1 = x1;
+for (;
+y1 < 10;
+{
+  int x2 = -1;
+  int y2 = y1;
+  {
+    int x3 = 2;
+    int y3 = y2;
+    {
+      int x4 = 3;
+      int y4 = y3;
+      {
+        int x2 = 1;
+        y1 = x1 * x2 * x3 + x4 << y4;
+      }
+    }
+  }
+}) {
+  
+}
+return y1;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int x1 = 0;
+int y = 0;
+{
+  int y1 = x1;
+  {
+    int x1 = 9;
+    y = y + x1;
+  }
+  y = y + x1;
+  {
+    int z2 = y;
+    int y1 = 100;
+    y = y + y1;
+    {
+      int y = z2;
+      int x1 = 100;
+      y = x1 + z2;
+    }
+    y = y + z2;
+  }
+  y = y + y1 + x1;
+  {
+    int w = y + 94;
+    y = w + 94;
+    y = x1 + y + y1;
+  }
+}
+return y;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+{
+  {
+    {
+      {
+        {
+          {
+            {
+              {
+                {
+                  {
+                    {
+                      {
+                        {
+                          {
+                            {
+                              {
+                                {
+                                  {
+                                    
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+return 0;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int x = 1;
+int y = x;
+{
+  int x = 2;
+  int y = x;
+  {
+    int x = 4;
+    int y = x;
+    {
+      int x = 6;
+      int y = x;
+      {
+        int x = 8;
+        int y = x;
+        {
+          int x = 3;
+          int y = x;
+          {
+            int x = 5;
+            int y = x;
+            {
+              int x = 7;
+              int y = x;
+              {
+                int x = 9;
+                int y = x;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+return y;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int i = 0;
+while (i < 100) {
+  int j = 0;
+  i = i + 10;
+  for (;
+  j < 100;
+  ) {
+    int k = j;
+    while (k > -900) {
+      k = k - 100;
+      if (k & 1) {
+        int x = 100;
+        for (int y = 0;
+        y < x;
+        y = y + 5;) {
+          
+        }
+      } else {
+        int w = 100;
+        while (w > -100) {
+          w = w - 1;
+          w = w - 1;
+          w = w - 1;
+        }
+      }
+    }
+    j = j + 18 * 1;
+  }
+}
+return i;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int i = 0;
+for (;
+i < 100;
+) {
+  int j = 0;
+  i = i + 10;
+  while (j < 100) {
+    int k = j;
+    for (;
+    k > -900;
+    ) {
+      k = k - 100;
+      if (k & 1) {
+        int x = 100;
+        int y = 0;
+        while (y < x) {
+          y = y + 5;
+        }
+      } else {
+        int w = 100;
+        for (;
+        w > -100;
+        ) {
+          w = w - 1;
+          w = w - 1;
+          w = w - 1;
+        }
+      }
+    }
+    j = j + 18 * 1;
+  }
+}
+return i;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int i = 0;
+while (i < 100) {
+  int j = 0;
+  i = i + 10;
+  for (;
+  j < 100;
+  {
+    int k = j;
+    while (k > -900) {
+      k = k - 100;
+      if (k & 1) {
+        int x = 100;
+        for (int y = 0;
+        y < x;
+        y = y + 5;) {
+          
+        }
+      } else {
+        int w = 100;
+        while (w > -100) {
+          w = w - 1;
+          w = w - 1;
+          w = w - 1;
+        }
+      }
+    }
+    j = j + 18 * 1;
+  }) {
+    
+  }
+}
+return i;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int x = 1;
+if (x == 1) if (x == 1) if (x == 1) if (x == 1) if (x == 1) if (x == 1) if (
+x == 1) if (x == 1) if (x == 1) if (x == 1) if (x == 1) if (x == 1) if (
+x == 1) if (x == 1) if (x == 1) {
+  
+}
+return x;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int ARRAY_SIZE = 7;
+int x = 0;
+int y = 0;
+int holder = 0;
+int iarray = 0;
+int mask = 15;
+int correct = 1;
+int lastone = -1;
+iarray = (iarray & ~mask) + 1;
+iarray = (iarray & ~(mask << 4)) + (6 << 4);
+iarray = (iarray & ~(mask << 8)) + (9 << 8);
+iarray = (iarray & ~(mask << 12)) + (7 << 12);
+iarray = (iarray & ~(mask << 16)) + (0 << 16);
+iarray = (iarray & ~(mask << 20)) + (4 << 20);
+iarray = (iarray & ~(mask << 24)) + (5 << 24);
+for (int x = 0;
+x < ARRAY_SIZE;
+x = x + 1;) for (int y = 0;
+y < ARRAY_SIZE - 1;
+y = y + 1;) {
+  int a = (iarray & mask << 4 * y) >> 4 * y;
+  int b = (iarray & mask << 4 * (y + 1)) >> 4 * (y + 1);
+  if (a > b) {
+    int holder = b;
+    iarray = (iarray & ~(mask << 4 * (y + 1))) + (a << 4 * (y + 1));
+    iarray = (iarray & ~(mask << 4 * y)) + (holder << 4 * y);
+  }
+}
+for (int x = 0;
+x < ARRAY_SIZE;
+x = x + 1;) {
+  int a = (iarray & mask << 4 * x) >> 4 * x;
+  if (correct) if (a >= lastone) lastone = a; else correct = 0;
+}
+return correct;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int ARRAY_SIZE = 7;
+int arr = 0;
+int temp = 0;
+int i = 0;
+int j = 0;
+int k = 0;
+int n = ARRAY_SIZE;
+int size = 0;
+int l1 = 0;
+int h1 = 0;
+int l2 = 0;
+int h2 = 0;
+int mask = 15;
+int correct = 1;
+int lastone = -1;
+arr = (arr & ~mask) + 1;
+arr = (arr & ~(mask << 4)) + (6 << 4);
+arr = (arr & ~(mask << 8)) + (9 << 8);
+arr = (arr & ~(mask << 12)) + (7 << 12);
+arr = (arr & ~(mask << 16)) + (0 << 16);
+arr = (arr & ~(mask << 20)) + (4 << 20);
+arr = (arr & ~(mask << 24)) + (5 << 24);
+size = 1;
+for (;
+size < n;
+size = size * 2;) {
+  l1 = 0;
+  k = 0;
+  while (l1 + size < n) {
+    h1 = l1 + size - 1;
+    l2 = h1 + 1;
+    h2 = l2 + size - 1;
+    if (h2 >= n) h2 = n - 1;
+    i = l1;
+    j = l2;
+    while (i <= h1 & j <= h2) {
+      int ai = (arr & mask << 4 * i) >> 4 * i;
+      int aj = (arr & mask << 4 * j) >> 4 * j;
+      if (ai <= aj) {
+        temp = (temp & ~(mask << 4 * k)) + (ai << 4 * k);
+        k = k + 1;
+        i = i + 1;
+      } else {
+        temp = (temp & ~(mask << 4 * k)) + (aj << 4 * k);
+        k = k + 1;
+        j = j + 1;
+      }
+    }
+    while (i <= h1) {
+      int ai = (arr & mask << 4 * i) >> 4 * i;
+      temp = (temp & ~(mask << 4 * k)) + (ai << 4 * k);
+      k = k + 1;
+      i = i + 1;
+    }
+    while (j <= h2) {
+      int aj = (arr & mask << 4 * j) >> 4 * j;
+      temp = (temp & ~(mask << 4 * k)) + (aj << 4 * k);
+      k = k + 1;
+      j = j + 1;
+    }
+    l1 = h2 + 1;
+  }
+  i = l1;
+  for (;
+  k < n;
+  i = i + 1;) {
+    int ai = (arr & mask << 4 * i) >> 4 * i;
+    temp = (temp & ~(mask << 4 * k)) + (ai << 4 * k);
+    k = k + 1;
+  }
+  i = 0;
+  for (;
+  i < n;
+  i = i + 1;) {
+    int tempi = (temp & mask << 4 * i) >> 4 * i;
+    arr = (arr & ~(mask << 4 * i)) + (tempi << 4 * i);
+  }
+}
+for (int x = 0;
+x < ARRAY_SIZE;
+x = x + 1;) {
+  int a = (arr & mask << 4 * x) >> 4 * x;
+  if (correct) if (a >= lastone) lastone = a; else correct = 0;
+}
+return correct;
+* TMP FILES:
+*  c_obj/tmp55d9e649.s
+*  c_obj/tmp55d9e649.o
+*  c_bin/tmp55d9e649
+compiling:
+int arr = 0;
+int ARRAY_SIZE = 7;
+int mask = 15;
+int correct = 1;
+int lastone = -1;
+arr = (arr & ~mask) + 1;
+arr = (arr & ~(mask << 4)) + (6 << 4);
+arr = (arr & ~(mask << 8)) + (9 << 8);
+arr = (arr & ~(mask << 12)) + (7 << 12);
+arr = (arr & ~(mask << 16)) + (0 << 16);
+arr = (arr & ~(mask << 20)) + (4 << 20);
+arr = (arr & ~(mask << 24)) + (5 << 24);
+{
+  int numbers = arr;
+  int array_size = ARRAY_SIZE;
+  int i = 0;
+  int temp = 0;
+  int mask = 15;
+  i = array_size >> 1;
+  for (;
+  i >= 0;
+  i = i - 1;) {
+    int root = i;
+    int bottom = array_size - 1;
+    int done = 0;
+    int maxChild = 0;
+    int temp = 0;
+    int n1 = 0;
+    int n2 = 0;
+    done = 0;
+    while (root * 2 <= bottom & !done) {
+      if (root * 2 == bottom) maxChild = root * 2; else if ((numbers &
+                                                             mask <<
+                                                             4 * root * 2)
+                                                            >> 4 * root * 2 >
+                                                            (numbers &
+                                                             mask <<
+                                                             4 *
+                                                             (root * 2 + 1))
+                                                            >>
+                                                            4 *
+                                                            (root * 2 + 1)) 
+      maxChild = root * 2; else maxChild = root * 2 + 1;
+      n1 = (numbers & mask << 4 * root) >> 4 * root;
+      n2 = (numbers & mask << 4 * maxChild) >> 4 * maxChild;
+      if (n1 < n2) {
+        temp = n1;
+        numbers = (numbers & ~(mask << 4 * root)) + (n2 << 4 * root);
+        numbers =
+        (numbers & ~(mask << 4 * maxChild)) + (temp << 4 * maxChild);
+        root = maxChild;
+      } else done = 1;
+    }
+  }
+  i = array_size - 1;
+  for (;
+  i >= 1;
+  i = i - 1;) {
+    int root = 0;
+    int bottom = i - 1;
+    int done = 0;
+    int maxChild = 0;
+    int temp = 0;
+    int n1 = 0;
+    int n2 = 0;
+    temp = numbers & mask;
+    numbers = (numbers & ~mask) + ((numbers & mask << 4 * i) >> 4 * i);
+    numbers = (numbers & ~(mask << 4 * i)) + (temp << 4 * i);
+    done = 0;
+    while (root * 2 <= bottom & !done) {
+      if (root * 2 == bottom) maxChild = root * 2; else if ((numbers &
+                                                             mask <<
+                                                             4 * root * 2)
+                                                            >> 4 * root * 2 >
+                                                            (numbers &
+                                                             mask <<
+                                                             4 *
+                                                             (root * 2 + 1))
+                                                            >>
+                                                            4 *
+                                                            (root * 2 + 1)) 
+      maxChild = root * 2; else maxChild = root * 2 + 1;
+      n1 = (numbers & mask << 4 * root) >> 4 * root;
+      n2 = (numbers & mask << 4 * maxChild) >> 4 * maxChild;
+      if (n1 < n2) {
+        temp = n1;
+        numbers = (numbers & ~(mask << 4 * root)) + (n2 << 4 * root);
+        numbers =
+        (numbers & ~(mask << 4 * maxChild)) + (temp << 4 * maxChild);
+        root = maxChild;
+      } else done = 1;
+    }
+  }
+  arr = numbers;
+}
+for (int x = 0;
+x < ARRAY_SIZE;
+x = x + 1;) {
+  int a = (arr & mask << 4 * x) >> 4 * x;
+  if (correct) if (a >= lastone) lastone = a; else correct = 0;
+}
+return correct;
+* TMP FILES:
+*  c_obj/tmp55d9e64a.s
+*  c_obj/tmp55d9e64a.o
+*  c_bin/tmp55d9e64a
+
+Easy Parse Tests (20/20 points):
+  OK
+Medium Parse Tests (10/10 points):
+  OK
+Parse Error Tests (10/10 points):
+  OK
+Scope tests (0/5 points)
+  scope1: failed - File "scope1.oat" should not compile: variable x is not in scope.
+  scope2: failed - File "scope2.oat" should not compile: variable x is not in scope.
+  scope3: failed - File "scope3.oat" should not compile: variable x is not in scope.
+  scope4: failed - File "scope4.oat" should not compile: variable x is not in scope.
+Easy tests (0/15 points)
+  test1: failed - unimplemented
+  test2: failed - alloc not implemented
+  test3: failed - alloc not implemented
+  test4: failed - alloc not implemented
+  test5: failed - alloc not implemented
+  test6: failed - alloc not implemented
+  test7: failed - alloc not implemented
+  test8: failed - alloc not implemented
+  test9: failed - alloc not implemented
+  test10: failed - alloc not implemented
+  test12: failed - alloc not implemented
+  easy_um1: failed - alloc not implemented
+  easy_uu1: failed - alloc not implemented
+  easy_uu2: failed - alloc not implemented
+  easy_uu3: failed - alloc not implemented
+  easy_mu1: failed - alloc not implemented
+  easy_mu2: failed - alloc not implemented
+  easy_mu3: failed - alloc not implemented
+  easy_mm1: failed - alloc not implemented
+  easy_mm2: failed - alloc not implemented
+  easy_mm3: failed - alloc not implemented
+  easy_mm4: failed - alloc not implemented
+  easy_ub1: failed - alloc not implemented
+  easy_ub2: failed - alloc not implemented
+  easy_mb1: failed - alloc not implemented
+  easy_mb2: failed - alloc not implemented
+  easy_mb3: failed - alloc not implemented
+  easy_mb4: failed - alloc not implemented
+Medium tests (0/10 points)
+  test11: failed - alloc not implemented
+  medium_mw1: failed - alloc not implemented
+  medium_mw3: failed - alloc not implemented
+  medium_mw4: failed - alloc not implemented
+  medium_mw5: failed - alloc not implemented
+  medium_mf1: failed - alloc not implemented
+  medium_mf2: failed - alloc not implemented
+  medium_mf3: failed - alloc not implemented
+  medium_mf4: failed - alloc not implemented
+  medium_uw1: failed - alloc not implemented
+  medium_uf1: failed - alloc not implemented
+  medium_uf2: failed - alloc not implemented
+  medium_uimw1: failed - alloc not implemented
+  medium_uimw2: failed - alloc not implemented
+  medium_uimf1: failed - alloc not implemented
+  medium_uimf2: failed - alloc not implemented
+  medium_uwmw1: failed - alloc not implemented
+  medium_ufmf1: failed - alloc not implemented
+  medium_mwmw1: failed - alloc not implemented
+  medium_mwmw2: failed - alloc not implemented
+  medium_mfmf1: failed - alloc not implemented
+  medium_mfmf2: failed - alloc not implemented
+  medium_seq1: failed - alloc not implemented
+  medium_seq2: failed - alloc not implemented
+  medium_seq3: failed - alloc not implemented
+  medium_seq4: failed - alloc not implemented
+  medium_seq5: failed - alloc not implemented
+  medium_seq6: failed - alloc not implemented
+  medium_seq7: failed - alloc not implemented
+  medium_seq8: failed - alloc not implemented
+  medium_seq9: failed - alloc not implemented
+  medium_ctx1: failed - alloc not implemented
+  medium_ctx2: failed - alloc not implemented
+  medium_ctx3: failed - alloc not implemented
+  medium_ctx4: failed - unimplemented
+  medium_ctx5: failed - alloc not implemented
+  medium_nest1: failed - alloc not implemented
+  medium_nest2: failed - alloc not implemented
+  medium_nest3: failed - alloc not implemented
+  medium_nest4: failed - alloc not implemented
+Hard tests (0/10 points)
+  bsort: failed - alloc not implemented
+  msort: failed - alloc not implemented
+  hsort: failed - alloc not implemented
+Stress tests (hidden) (??/10 points):
+  Hidden
+StyleManual (??/10 points):
+  Hidden
+---------------------------------------------------
+Passed: 49/124
+Failed: 75/124
+Score: 40/80 (given)
+       ??/20 (hidden)

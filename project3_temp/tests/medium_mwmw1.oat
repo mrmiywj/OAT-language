@@ -1,0 +1,12 @@
+int x=10;
+int y=0;
+
+while (x<=40) 
+  if (x <= 20)
+    while (x<=20)
+      if (x > 0) x = x + 1; else x = x + 2;
+  else 
+    while (x<=40)
+      if (x > 0) x = x + 3; else x = x + 4;
+
+return x;

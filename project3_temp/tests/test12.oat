@@ -1,0 +1,8 @@
+int x = 3 + 4;
+int y = 17 * 5;
+int z = 0;
+if (x == y)
+   z = 3;
+else
+  z = 4;
+return z;

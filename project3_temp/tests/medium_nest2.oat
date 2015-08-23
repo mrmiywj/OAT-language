@@ -1,0 +1,22 @@
+int i=0;
+for(;i<100;) {
+  int j = 0;
+  i = i + 10;
+  while (j<100) {
+    int k = j;
+    for (;k>-900;) {
+      k = k - 100;
+      if (k & 1) {
+        int x = 100;
+        int y=0;
+        while (y<x) {y=y+5;}
+      } else {
+        int w=100;
+        for (;w>-100;) { w = w-1; w = w-1; w=w-1;}
+      }
+    }
+    j = j + 18 * 1;
+  }
+}
+return i;
+
