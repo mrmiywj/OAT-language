@@ -1,0 +1,5 @@
+string[][] strs = {{"abc", "def"}, {"789", "123"}};
+int program (int argc, string[] argv) {
+  print_string (strs[1][1]);
+  return 0;
+}

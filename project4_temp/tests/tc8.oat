@@ -1,0 +1,5 @@
+unit f() {
+  int[] a = {1};
+  while (a) {}
+  return;
+}

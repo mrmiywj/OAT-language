@@ -1,0 +1,5 @@
+unit f() {return;}
+unit g() {
+  int i = f();
+  return;
+}

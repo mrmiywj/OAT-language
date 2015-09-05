@@ -1,0 +1,5 @@
+int program (int argc, string[] argv) {
+  int[] arr = {0, 1, 2};
+  int len = length_of_array (arr);
+  return len;
+}

@@ -1,0 +1,78 @@
+int[] b = {108, -110, -111, -109, -117, -119, -113, -120, -108};
+int n = 8;
+
+int program (int argc, string[] argv) {
+
+        int[] a = new int[9] (fun i -> 0);
+        int i = 0;
+        int j = 0;
+        int k = 0;
+        int r=0;
+        int check=a[0];
+
+        a[0]=b[0];
+        i=1;
+        for(;i<=n;i=i+1;){
+                a[i] = -b[i];
+                restoreHup(a,i);
+        }
+
+
+        j=n;
+        i=1;
+        for(;i<=j;i=i+1;)
+        {
+                int temp=0;
+                temp=a[1];
+                a[1]=a[n];
+                a[n]=temp;
+                n=n-1;
+                restoreHdown(a,1,n);
+        }
+
+        n=j;
+
+        i=1; 
+        for(;i<=n;i=i+1;){
+          if(a[i]>=check) {
+            check=a[i]; 
+          } else r=1;
+        }
+
+       return r;
+}
+
+unit restoreHup(int[] a,int i)
+{
+        int v=a[i];
+
+        while((i>1)&(a[i>>1]<v))
+        {
+                a[i]=a[i>>1];
+                i=i>>1;
+        }
+        a[i]=v;
+
+        return;
+}
+
+unit restoreHdown(int[] a, int i,int n)
+{
+        int v=a[i];
+        int j=i*2;
+        int done = 0;
+        while(j<=n & done==0)
+        {
+                if((j<n)&(a[j]<a[j+1]))
+                        j=j+1;
+                if(a[j]<a[j>>1]) done = 1;
+
+                if (done==0) {
+                  a[j>>1]=a[j];
+                  j=j*2;
+                }
+        }
+        a[j>>1]=v;
+
+        return;
+}

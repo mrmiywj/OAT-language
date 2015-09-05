@@ -1,0 +1,6 @@
+int f() {
+  int f=0; 
+  { bool f = true; }
+  { string f = "hello"; }
+  return f;
+}

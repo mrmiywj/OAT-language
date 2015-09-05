@@ -1,0 +1,5 @@
+int program (int argc, string[] argv) {
+  int[][] arr={{1,2}, {3,4}};
+
+  return arr[1][1];
+}

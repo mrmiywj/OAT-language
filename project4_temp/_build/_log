@@ -1,0 +1,212 @@
+### Starting build.
+# Target: main.ml.depends, tags: { extension:ml, file:main.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep.opt -modules main.ml > main.ml.depends
+# Target: driver.ml.depends, tags: { extension:ml, file:driver.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep.opt -modules driver.ml > driver.ml.depends
+# Target: assert.mli.depends, tags: { extension:mli, file:assert.mli, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep.opt -modules assert.mli > assert.mli.depends
+# Target: ast.mli.depends, tags: { extension:mli, file:ast.mli, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep.opt -modules ast.mli > ast.mli.depends
+# Target: astlib.mli.depends, tags: { extension:mli, file:astlib.mli, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep.opt -modules astlib.mli > astlib.mli.depends
+# Target: ast.cmi, tags: { byte, compile, extension:mli, file:ast.mli, interf, ocaml, quiet }
+/usr/bin/ocamlc.opt -c -o ast.cmi ast.mli
+# Target: range.mli.depends, tags: { extension:mli, file:range.mli, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep.opt -modules range.mli > range.mli.depends
+# Target: range.cmi, tags: { byte, compile, extension:mli, file:range.mli, interf, ocaml, quiet }
+/usr/bin/ocamlc.opt -c -o range.cmi range.mli
+# Target: cunit.mli.depends, tags: { extension:mli, file:cunit.mli, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep.opt -modules cunit.mli > cunit.mli.depends
+# Target: x86.mli.depends, tags: { extension:mli, file:x86.mli, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep.opt -modules x86.mli > x86.mli.depends
+# Target: x86.cmi, tags: { byte, compile, extension:mli, file:x86.mli, interf, ocaml, quiet }
+/usr/bin/ocamlc.opt -c -o x86.cmi x86.mli
+# Target: gradedtests.ml.depends, tags: { extension:ml, file:gradedtests.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep.opt -modules gradedtests.ml > gradedtests.ml.depends
+# Target: assert.cmi, tags: { byte, compile, extension:mli, file:assert.mli, interf, ocaml, quiet }
+/usr/bin/ocamlc.opt -c -o assert.cmi assert.mli
+# Target: astlib.cmi, tags: { byte, compile, extension:mli, file:astlib.mli, interf, ocaml, quiet }
+/usr/bin/ocamlc.opt -c -o astlib.cmi astlib.mli
+# Target: LibUtil.mli.depends, tags: { extension:mli, file:LibUtil.mli, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep.opt -modules LibUtil.mli > LibUtil.mli.depends
+# Target: lllib.mli.depends, tags: { extension:mli, file:lllib.mli, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep.opt -modules lllib.mli > lllib.mli.depends
+# Target: ll.mli.depends, tags: { extension:mli, file:ll.mli, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep.opt -modules ll.mli > ll.mli.depends
+# Target: ll.cmi, tags: { byte, compile, extension:mli, file:ll.mli, interf, ocaml, quiet }
+/usr/bin/ocamlc.opt -c -o ll.cmi ll.mli
+# Target: occ.mli.depends, tags: { extension:mli, file:occ.mli, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep.opt -modules occ.mli > occ.mli.depends
+# Target: phase1.mli.depends, tags: { extension:mli, file:phase1.mli, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep.opt -modules phase1.mli > phase1.mli.depends
+# Target: platform.mli.depends, tags: { extension:mli, file:platform.mli, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep.opt -modules platform.mli > platform.mli.depends
+# Target: tc.mli.depends, tags: { extension:mli, file:tc.mli, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep.opt -modules tc.mli > tc.mli.depends
+# Target: LibUtil.cmi, tags: { byte, compile, extension:mli, file:LibUtil.mli, interf, ocaml, quiet }
+/usr/bin/ocamlc.opt -c -o LibUtil.cmi LibUtil.mli
+# Target: lllib.cmi, tags: { byte, compile, extension:mli, file:lllib.mli, interf, ocaml, quiet }
+/usr/bin/ocamlc.opt -c -o lllib.cmi lllib.mli
+# Target: occ.cmi, tags: { byte, compile, extension:mli, file:occ.mli, interf, ocaml, quiet }
+/usr/bin/ocamlc.opt -c -o occ.cmi occ.mli
+# Target: phase1.cmi, tags: { byte, compile, extension:mli, file:phase1.mli, interf, ocaml, quiet }
+/usr/bin/ocamlc.opt -c -o phase1.cmi phase1.mli
+# Target: platform.cmi, tags: { byte, compile, extension:mli, file:platform.mli, interf, ocaml, quiet }
+/usr/bin/ocamlc.opt -c -o platform.cmi platform.mli
+# Target: tc.cmi, tags: { byte, compile, extension:mli, file:tc.mli, interf, ocaml, quiet }
+/usr/bin/ocamlc.opt -c -o tc.cmi tc.mli
+# Target: lexer.mll, tags: { extension:mll, file:lexer.mll, lexer, ocaml, ocamllex, quiet }
+/usr/bin/ocamllex.opt -q lexer.mll
+# Target: lexer.ml.depends, tags: { extension:ml, file:lexer.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep.opt -modules lexer.ml > lexer.ml.depends
+# Target: parser.mly, tags: { extension:mly, file:parser.mly, infer, ocaml, ocamlyacc, parser, quiet }
+/usr/bin/ocamlyacc parser.mly
+# Target: parser.mli.depends, tags: { extension:mli, file:parser.mli, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep.opt -modules parser.mli > parser.mli.depends
+# Target: parser.cmi, tags: { byte, compile, extension:mli, file:parser.mli, interf, ocaml, quiet }
+/usr/bin/ocamlc.opt -c -o parser.cmi parser.mli
+# Target: Oconfig.mli.depends, tags: { extension:mli, file:Oconfig.mli, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep.opt -modules Oconfig.mli > Oconfig.mli.depends
+# Target: providedtests.ml.depends, tags: { extension:ml, file:providedtests.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep.opt -modules providedtests.ml > providedtests.ml.depends
+# Target: cunit.cmi, tags: { byte, compile, extension:mli, file:cunit.mli, interf, ocaml, quiet }
+/usr/bin/ocamlc.opt -c -o cunit.cmi cunit.mli
+# Target: gradedtests.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:gradedtests.cmo, file:gradedtests.ml, implem, ocaml, quiet }
+/usr/bin/ocamlc.opt -c -o gradedtests.cmo gradedtests.ml
+# Target: lexer.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:lexer.cmo, file:lexer.ml, implem, ocaml, quiet }
+/usr/bin/ocamlc.opt -c -o lexer.cmo lexer.ml
++ /usr/bin/ocamlc.opt -c -o lexer.cmo lexer.ml
+File "lexer.mll", line 95, characters 27-40:
+Warning 3: deprecated: String.create
+Use Bytes.create instead.
+File "lexer.mll", line 114, characters 27-40:
+Warning 3: deprecated: String.create
+Use Bytes.create instead.
+File "lexer.mll", line 116, characters 10-20:
+Warning 3: deprecated: String.set
+Use Bytes.set instead.
+File "lexer.mll", line 122, characters 10-20:
+Warning 3: deprecated: String.set
+Use Bytes.set instead.
+# Target: Oconfig.cmi, tags: { byte, compile, extension:mli, file:Oconfig.mli, interf, ocaml, quiet }
+/usr/bin/ocamlc.opt -c -o Oconfig.cmi Oconfig.mli
+# Target: providedtests.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:providedtests.cmo, file:providedtests.ml, implem, ocaml, quiet }
+/usr/bin/ocamlc.opt -c -o providedtests.cmo providedtests.ml
+# Target: driver.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:driver.cmo, file:driver.ml, implem, ocaml, quiet }
+/usr/bin/ocamlc.opt -c -o driver.cmo driver.ml
+# Target: main.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:main.cmo, file:main.ml, implem, ocaml, quiet }
+/usr/bin/ocamlc.opt -c -o main.cmo main.ml
+# Target: assert.ml.depends, tags: { extension:ml, file:assert.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep.opt -modules assert.ml > assert.ml.depends
+# Target: ast.ml.depends, tags: { extension:ml, file:ast.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep.opt -modules ast.ml > ast.ml.depends
+# Target: astlib.ml.depends, tags: { extension:ml, file:astlib.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep.opt -modules astlib.ml > astlib.ml.depends
+# Target: ast.cmx, tags: { compile, extension:cmx, extension:ml, file:ast.cmx, file:ast.ml, implem, native, ocaml, quiet }
+/usr/bin/ocamlopt.opt -c -o ast.cmx ast.ml
+# Target: parser.ml.depends, tags: { extension:ml, file:parser.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep.opt -modules parser.ml > parser.ml.depends
+# Target: range.ml.depends, tags: { extension:ml, file:range.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep.opt -modules range.ml > range.ml.depends
+# Target: LibUtil.ml.depends, tags: { extension:ml, file:LibUtil.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep.opt -modules LibUtil.ml > LibUtil.ml.depends
+# Target: LibUtil.cmx, tags: { compile, extension:cmx, extension:ml, file:LibUtil.cmx, file:LibUtil.ml, implem, native, ocaml, quiet }
+/usr/bin/ocamlopt.opt -c -o LibUtil.cmx LibUtil.ml
++ /usr/bin/ocamlopt.opt -c -o LibUtil.cmx LibUtil.ml
+File "LibUtil.ml", line 55, characters 16-29:
+Warning 3: deprecated: String.create
+Use Bytes.create instead.
+# Target: range.cmx, tags: { compile, extension:cmx, extension:ml, file:range.cmx, file:range.ml, implem, native, ocaml, quiet }
+/usr/bin/ocamlopt.opt -c -o range.cmx range.ml
+# Target: parser.cmx, tags: { compile, extension:cmx, extension:ml, file:parser.cmx, file:parser.ml, implem, native, ocaml, quiet }
+/usr/bin/ocamlopt.opt -c -o parser.cmx parser.ml
+# Target: lexer.cmx, tags: { compile, extension:cmx, extension:ml, file:lexer.cmx, file:lexer.ml, implem, native, ocaml, quiet }
+/usr/bin/ocamlopt.opt -c -o lexer.cmx lexer.ml
++ /usr/bin/ocamlopt.opt -c -o lexer.cmx lexer.ml
+File "lexer.mll", line 95, characters 27-40:
+Warning 3: deprecated: String.create
+Use Bytes.create instead.
+File "lexer.mll", line 114, characters 27-40:
+Warning 3: deprecated: String.create
+Use Bytes.create instead.
+File "lexer.mll", line 116, characters 10-20:
+Warning 3: deprecated: String.set
+Use Bytes.set instead.
+File "lexer.mll", line 122, characters 10-20:
+Warning 3: deprecated: String.set
+Use Bytes.set instead.
+# Target: cunit.ml.depends, tags: { extension:ml, file:cunit.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep.opt -modules cunit.ml > cunit.ml.depends
+# Target: x86.ml.depends, tags: { extension:ml, file:x86.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep.opt -modules x86.ml > x86.ml.depends
+# Target: x86.cmx, tags: { compile, extension:cmx, extension:ml, file:x86.cmx, file:x86.ml, implem, native, ocaml, quiet }
+/usr/bin/ocamlopt.opt -c -o x86.cmx x86.ml
+# Target: assert.cmx, tags: { compile, extension:cmx, extension:ml, file:assert.cmx, file:assert.ml, implem, native, ocaml, quiet }
+/usr/bin/ocamlopt.opt -c -o assert.cmx assert.ml
+# Target: astlib.cmx, tags: { compile, extension:cmx, extension:ml, file:astlib.cmx, file:astlib.ml, implem, native, ocaml, quiet }
+/usr/bin/ocamlopt.opt -c -o astlib.cmx astlib.ml
+# Target: lllib.ml.depends, tags: { extension:ml, file:lllib.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep.opt -modules lllib.ml > lllib.ml.depends
+# Target: ll.ml.depends, tags: { extension:ml, file:ll.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep.opt -modules ll.ml > ll.ml.depends
+# Target: ll.cmx, tags: { compile, extension:cmx, extension:ml, file:ll.cmx, file:ll.ml, implem, native, ocaml, quiet }
+/usr/bin/ocamlopt.opt -c -o ll.cmx ll.ml
+# Target: occ.ml.depends, tags: { extension:ml, file:occ.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep.opt -modules occ.ml > occ.ml.depends
+# Target: cunit.cmx, tags: { compile, extension:cmx, extension:ml, file:cunit.cmx, file:cunit.ml, implem, native, ocaml, quiet }
+/usr/bin/ocamlopt.opt -c -o cunit.cmx cunit.ml
+# Target: lllib.cmx, tags: { compile, extension:cmx, extension:ml, file:lllib.cmx, file:lllib.ml, implem, native, ocaml, quiet }
+/usr/bin/ocamlopt.opt -c -o lllib.cmx lllib.ml
+# Target: phase1.ml.depends, tags: { extension:ml, file:phase1.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep.opt -modules phase1.ml > phase1.ml.depends
+# Target: ctxt.ml.depends, tags: { extension:ml, file:ctxt.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep.opt -modules ctxt.ml > ctxt.ml.depends
+# Target: ctxt.mli.depends, tags: { extension:mli, file:ctxt.mli, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep.opt -modules ctxt.mli > ctxt.mli.depends
+# Target: ctxt.cmi, tags: { byte, compile, extension:mli, file:ctxt.mli, interf, ocaml, quiet }
+/usr/bin/ocamlc.opt -c -o ctxt.cmi ctxt.mli
+# Target: tc.ml.depends, tags: { extension:ml, file:tc.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep.opt -modules tc.ml > tc.ml.depends
+# Target: tctxt.ml.depends, tags: { extension:ml, file:tctxt.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep.opt -modules tctxt.ml > tctxt.ml.depends
+# Target: tctxt.mli.depends, tags: { extension:mli, file:tctxt.mli, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep.opt -modules tctxt.mli > tctxt.mli.depends
+# Target: tctxt.cmi, tags: { byte, compile, extension:mli, file:tctxt.mli, interf, ocaml, quiet }
+/usr/bin/ocamlc.opt -c -o tctxt.cmi tctxt.mli
+# Target: tctxt.cmx, tags: { compile, extension:cmx, extension:ml, file:tctxt.cmx, file:tctxt.ml, implem, native, ocaml, quiet }
+/usr/bin/ocamlopt.opt -c -o tctxt.cmx tctxt.ml
+# Target: ctxt.cmx, tags: { compile, extension:cmx, extension:ml, file:ctxt.cmx, file:ctxt.ml, implem, native, ocaml, quiet }
+/usr/bin/ocamlopt.opt -c -o ctxt.cmx ctxt.ml
+# Target: tc.cmx, tags: { compile, extension:cmx, extension:ml, file:tc.cmx, file:tc.ml, implem, native, ocaml, quiet }
+/usr/bin/ocamlopt.opt -c -o tc.cmx tc.ml
+# Target: phase2.ml.depends, tags: { extension:ml, file:phase2.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep.opt -modules phase2.ml > phase2.ml.depends
+# Target: phase2.mli.depends, tags: { extension:mli, file:phase2.mli, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep.opt -modules phase2.mli > phase2.mli.depends
+# Target: phase2.cmi, tags: { byte, compile, extension:mli, file:phase2.mli, interf, ocaml, quiet }
+/usr/bin/ocamlc.opt -c -o phase2.cmi phase2.mli
+# Target: platform.ml.depends, tags: { extension:ml, file:platform.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep.opt -modules platform.ml > platform.ml.depends
+# Target: platform.cmx, tags: { compile, extension:cmx, extension:ml, file:platform.cmx, file:platform.ml, implem, native, ocaml, quiet }
+/usr/bin/ocamlopt.opt -c -o platform.cmx platform.ml
+# Target: phase1.cmx, tags: { compile, extension:cmx, extension:ml, file:phase1.cmx, file:phase1.ml, implem, native, ocaml, quiet }
+/usr/bin/ocamlopt.opt -c -o phase1.cmx phase1.ml
+# Target: phase2.cmx, tags: { compile, extension:cmx, extension:ml, file:phase2.cmx, file:phase2.ml, implem, native, ocaml, quiet }
+/usr/bin/ocamlopt.opt -c -o phase2.cmx phase2.ml
+# Target: occ.cmx, tags: { compile, extension:cmx, extension:ml, file:occ.cmx, file:occ.ml, implem, native, ocaml, quiet }
+/usr/bin/ocamlopt.opt -c -o occ.cmx occ.ml
+# Target: Oconfig.ml.depends, tags: { extension:ml, file:Oconfig.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep.opt -modules Oconfig.ml > Oconfig.ml.depends
+# Target: gradedtests.cmx, tags: { compile, extension:cmx, extension:ml, file:gradedtests.cmx, file:gradedtests.ml, implem, native, ocaml, quiet }
+/usr/bin/ocamlopt.opt -c -o gradedtests.cmx gradedtests.ml
+# Target: Oconfig.cmx, tags: { compile, extension:cmx, extension:ml, file:Oconfig.cmx, file:Oconfig.ml, implem, native, ocaml, quiet }
+/usr/bin/ocamlopt.opt -c -o Oconfig.cmx Oconfig.ml
+# Target: providedtests.cmx, tags: { compile, extension:cmx, extension:ml, file:providedtests.cmx, file:providedtests.ml, implem, native, ocaml, quiet }
+/usr/bin/ocamlopt.opt -c -o providedtests.cmx providedtests.ml
+# Target: driver.cmx, tags: { compile, extension:cmx, extension:ml, file:driver.cmx, file:driver.ml, implem, native, ocaml, quiet }
+/usr/bin/ocamlopt.opt -c -o driver.cmx driver.ml
+# Target: main.cmx, tags: { compile, extension:cmx, extension:ml, file:main.cmx, file:main.ml, implem, native, ocaml, quiet }
+/usr/bin/ocamlopt.opt -c -o main.cmx main.ml
+# Target: main.native, tags: { dont_link_with, extension:native, file:main.native, link, native, ocaml, program, quiet }
+/usr/bin/ocamlopt.opt unix.cmxa str.cmxa LibUtil.cmx Oconfig.cmx assert.cmx ast.cmx range.cmx parser.cmx lexer.cmx astlib.cmx x86.cmx ll.cmx ctxt.cmx cunit.cmx lllib.cmx tctxt.cmx tc.cmx phase1.cmx platform.cmx phase2.cmx occ.cmx gradedtests.cmx providedtests.cmx driver.cmx main.cmx -o main.native
+# Compilation successful.

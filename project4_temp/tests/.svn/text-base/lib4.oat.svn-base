@@ -1,0 +1,10 @@
+string str = "hello"; 
+
+int program (int argc, string[] argv) {
+  int[] arr = array_of_string (str);
+  int s = 0;
+  for (int i=0; i<5; i=i+1;) {
+    s = s + arr[i];
+  }
+  return s; 
+}

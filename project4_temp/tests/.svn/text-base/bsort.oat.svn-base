@@ -1,0 +1,41 @@
+unit bubble_sort(int[] numbers, int array_size)
+{
+  int temp=0; 
+  int i = (array_size - 1);
+
+  for (; i > 0; i=i-1;)
+  {
+    for (int j = 1; j <= i; j=j+1;)
+    {
+      if (numbers[j-1] > numbers[j])
+      {
+        temp = numbers[j-1];
+        numbers[j-1] = numbers[j];
+        numbers[j] = temp;
+      }
+    }
+  }
+
+  return;
+}
+
+int program (int argc, string[] argv) {
+  int[] a = new int[8] (fun i -> 0);
+  
+  a[0] = 121;
+  a[1] = 125;
+  a[2] = 120;
+  a[3] = 111;
+  a[4] = 116;
+  a[5] = 110;
+  a[6] = 117;
+  a[7] = 119;
+
+  print_string (string_of_array (a));
+  print_string (" ");
+  bubble_sort (a, length_of_array(a));
+  print_string (string_of_array (a));
+ 
+  return -1;
+}
+

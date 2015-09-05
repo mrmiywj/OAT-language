@@ -1,0 +1,13 @@
+int i = 19;
+bool b1 = true;
+bool b2 = false;
+string str = "This is a string!";
+int[] arr1 = {0,1,2};
+int[][] arr2 = {{10,11},{20,21},{30,31}};
+string[] arr3 = {"String1", "String2", "String3"};
+string[][] arr4 = 
+  {
+   {"String00","String01"}, 
+   {"String10","String11"}, 
+   {"String20","String21"}
+  };

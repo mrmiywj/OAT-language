@@ -1,0 +1,5 @@
+int i=9;
+int program (int argc, string[] argv) {
+  int j = i;
+  return j;
+}

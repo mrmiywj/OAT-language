@@ -1,0 +1,5 @@
+int program (int argc, string[] argv) {
+  string str = "Hello world!\n";
+  print_string (str);
+  return 0;
+}

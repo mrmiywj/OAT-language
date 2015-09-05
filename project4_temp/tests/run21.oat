@@ -1,0 +1,4 @@
+int[] i={99,0};
+int program (int argc, string[] argv) {
+  return i[0];
+}

@@ -1,0 +1,22 @@
+string bar (int x, string y) {
+  string s = "This is a string";
+  int[] array = {1, 3};
+  int y = array[0];
+  return s;
+}
+
+unit proc1 () {
+  proc2 ( );
+  return;
+}
+
+unit proc2 ( ) {
+  proc1 ( );
+  return;
+}
+
+bool foo ( int x, int[] y ) {
+  string s = bar (x, "cis341");
+  proc1 ();
+  return true;
+}

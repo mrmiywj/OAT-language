@@ -1,0 +1,68 @@
+int program (int argc, string[] argv) {
+  int i = 0;
+  int[] a = {126,125,124,123,122,121,120,119,118,117};
+  print_string (string_of_array(a));
+  oat_mergesort(a,0,9);
+  print_string (" ");
+  print_string (string_of_array(a));
+  print_string (" ");
+  return i;  
+}
+
+unit oat_mergesort(int[] a, int low, int high)
+{
+  int mid=0;
+  if(low<high)
+  {
+    mid=(low+high)>>1;
+    oat_mergesort(a,low,mid);
+    oat_mergesort(a,mid+1,high);
+    merge(a,low,high,mid);  
+  }
+  return;
+}
+
+unit merge(int[] a, int low, int high, int mid)
+{
+  int i=0;
+  int j=0;
+  int k=0;
+  int[] c=new int[50] (fun i -> 0);
+  i=low;
+  j=mid+1;
+  k=low;
+  while((i<=mid)&(j<=high))
+  {
+    if(a[i]<a[j])
+    {
+      c[k]=a[i];
+      k=k+1;
+      i=i+1;
+    }
+    else
+    {
+      c[k]=a[j];
+      k=k+1;
+      j=j+1;
+    }
+  }
+  while(i<=mid)
+  {
+    c[k]=a[i];   
+    k=k+1;
+    i=i+1;
+  }
+  while(j<=high)
+  {
+    c[k]=a[j];
+    k=k+1;
+    j=j+1;
+  }
+  i=low;
+  for(;i<k;i=i+1;)
+  {
+    a[i]=c[i]; 
+  }
+
+  return;
+}

@@ -1,0 +1,10 @@
+int[][] garr = {{1, 2, 3}, {4, 5, 6}};
+
+int[] f (int[] arr) {
+  return arr;
+} 
+
+int program (int argc, string[] argv) {
+  int[] arr = f(garr[1]);
+  return arr[1];
+}

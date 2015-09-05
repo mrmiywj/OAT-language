@@ -1,0 +1,14 @@
+int f(int[][] a) {
+  return a[1][1];
+}
+
+int g(int x) {
+  int[][] arr = new int[][3](fun i -> new int[3](fun j -> x));
+  return arr[1][1];
+}
+
+int program (int argc, string[] argv) {
+  int[][] a = new int[][3](fun i -> new int[3] (fun j -> j));
+  int[][] arr = new int[][4] (fun i -> new int[5] (fun j -> i*j));
+  return arr[3][4] + a[1][2] + f(new int[][3](fun i -> new int[3] (fun j -> i*j))) + g(4); 
+}

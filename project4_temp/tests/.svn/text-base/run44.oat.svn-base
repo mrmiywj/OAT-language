@@ -1,0 +1,22 @@
+string[][][][][][][][][][][][][][]str = 
+             new string [][][][][][][][][][][][][]
+[1] (fun i-> new string [][][][][][][][][][][][] 
+[1] (fun i-> new string [][][][][][][][][][][]
+[1] (fun i-> new string [][][][][][][][][][]
+[1] (fun i-> new string [][][][][][][][][]
+[1] (fun i-> new string [][][][][][][][]
+[1] (fun i-> new string [][][][][][][]
+[1] (fun i-> new string [][][][][][]
+[1] (fun i-> new string [][][][][]
+[1] (fun i-> new string [][][][]
+[1] (fun i-> new string [][][]
+[1] (fun i-> new string [][]
+[1] (fun i-> new string []
+[1] (fun i-> new string
+[1] (fun i-> "hello" ))))))))))))));
+
+int program (int argc, string[] argv) {
+  print_string (str[0][0][0][0][0][0][0][0][0][0][0][0][0][0]);
+  return 0;
+}
+

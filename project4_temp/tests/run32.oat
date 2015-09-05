@@ -1,0 +1,16 @@
+int i=11;
+int f () {
+  int i=12;
+  return i;
+}
+int g() {
+  {int j=1;
+   int i=j;
+  }
+  {int i=10;
+  }
+  return i;
+}
+int program (int argc, string[] argv) {
+  return f() + g() + i;
+}

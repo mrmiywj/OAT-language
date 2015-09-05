@@ -1,0 +1,6 @@
+int program (int argc, string[] argv) {
+  bool[] b = {true, false};
+  int i = 0;
+  if (b[0]) i = 1;
+  return i;
+}

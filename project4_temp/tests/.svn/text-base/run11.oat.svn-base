@@ -1,0 +1,25 @@
+int i = 1;
+int[] arr1 = {99, 1, 99};
+int[][] arr2 = {{99,99,99}, {99,1,99}, {99,99,99}}; 
+
+int f(int[] arr) {
+  return arr[3];
+}
+
+int[] g() {
+  int[] arr = {99, 1, 99, 99};
+  return arr;
+}
+
+int program (int argc, string[] argv) {
+  int c = 1;
+  int[] arr4 = g();
+  int[] arr3 = {99, 99, 99, 1}; 
+  c = c + i;
+  c = c + arr1[1];
+  c = c + arr2[1][1];
+  c = c + arr3[3];
+  c = c + f(arr3);
+  c = c + arr4[1];
+  return c;
+}

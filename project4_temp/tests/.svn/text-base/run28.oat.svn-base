@@ -1,0 +1,5 @@
+int program (int argc, string[] argv) {
+  int i=9;
+  int j=i+i;
+  return i+i*i-j>>2<<2>>>2;
+}
