@@ -72,6 +72,8 @@ let builtin_functions : (string * ftyp) list = [
 ]
 
 
+
+
 (*****************************)
 (* Typechecking functions.   *)
 (*****************************)
@@ -119,26 +121,38 @@ let  tc_const (cn:Range.t const) : typ =
 
 (* Expressions *)
 let rec tc_exp (c:ctxt) (e:Range.t exp) : typ =
-  let error_msg = info_msg (exp_info exp)
+  let error_msg = info_msg (exp_info e)
     (sprintf "%s cannot be matched."
        (string_of_exp e))
   in
   begin match e with
   | Const x  -> tc_const x
   | Lhs x -> tc_lhs c x
-  | BinopNew (x,y,z) -> tc_bop x (tc_exp c y) (tc_exp c z)
+  | Binop (x,y,z) -> tc_bop x (tc_exp c y) (tc_exp c z)
   | New (typ,e1,id,e2) -> if (tc_exp c e1 <> TInt) then
       type_error error_msg
     else
-      TArray typ
+      let newc = add_local (snd id) TInt c in
+      TArray (tc_exp newc e2)
   | Unop (uop, e) -> tc_unop uop (tc_exp c e)
   | Ecall ((_,s),explist) ->
+    if s = "length_of_array" then
+      begin match explist with
+      | hd::[] ->
+        begin match tc_exp c hd with
+        | TArray t -> TInt
+        | _ -> type_error "length_of_array's arg is not array"
+        end
+      | _-> type_error "length_of_array has too much args"
+      end
+    else 
     let f = lookup_global_fn s c in
     begin match f with
-    | Some (paratyplist, rtyp) ->
+    | Some (paratyplist, rtyp) -> if
+        List.length paratyplist <> List.length explist then type_error "their length donot match"
+      else 
       if rtyp = None then type_error error_msg else
-        List.iter2 (fun a -> fun b -> if a = tc_exp c b then () else
-            type_error error_msg ) paratyplist explist;
+        List.iter2 (fun a -> fun b -> if (a = tc_exp c b) then () else type_error "Call type wrong") paratyplist explist;
       begin match rtyp with
       | Some t -> t
       | None -> type_error error_msg
@@ -148,12 +162,37 @@ let rec tc_exp (c:ctxt) (e:Range.t exp) : typ =
   end
 
 
+
 (* Left-hand sides *)
 and tc_lhs (c:ctxt) (l:Range.t lhs) : typ =
-failwith "unimplemented"
+  begin  match l with
+  | Var (_,s) -> let typop = lookup_local s c in
+                 begin match typop with
+                 | Some t -> t
+                 | None -> type_error "Some var does not have a type"
+                 end
+  | Index (lh,e) -> if (tc_exp c e <> TInt) then
+      type_error "Some array's index is not TInt"
+    else
+      let l = tc_lhs c lh in
+      begin match l with
+      | TArray (t) -> t
+      | _ -> type_error "Some array is not defined"
+      end
+  end 
 
 
-
+let rec cmp_typs (e:Range.t exp list) (t: typ list) (c:ctxt) :unit =
+  if List.length e <> List.length t then type_error "args dont match up" else
+    begin match t with
+    | h :: tl ->
+      begin match e with
+      | h2::tl2 -> if tc_exp c h2 <> h then type_error "type error!"
+        else cmp_typs tl2 tl c
+      | [] -> ()
+      end
+    | [] -> ()
+    end
 
 (* An optional exception is used in For loops, it must have type bool *)
 let tc_opt_exp (c:ctxt) (eo:(Range.t opt_exp)) : unit =
@@ -166,15 +205,39 @@ let tc_opt_exp (c:ctxt) (eo:(Range.t opt_exp)) : unit =
 
 (* Variable initializers *)
 let rec tc_init (c:ctxt) (expected:typ) (i:Range.t init) : unit =
-failwith "unimplemented"
+  begin match i with
+  | Iexp e -> if (tc_exp c e = expected) then () else type_error (type_error_msg (exp_info e) expected (tc_exp c e))
+  | Iarray (_,elist) ->
+    begin match expected with
+    | TArray t ->  List.iter (fun init -> tc_init c t init) elist
+    | _ -> type_error "which expected is not an array"
+    end
+  end
 
 (* List of variable declarations *)
 let tc_vdecls (c:ctxt) (vdecls:(Range.t vdecl) list) : ctxt =
-failwith "unimplemented"
+  List.fold_left (fun c vdecl -> if (in_locals (snd vdecl.v_id) c) then type_error "Some val has ben declared " else (tc_init c vdecl.v_ty vdecl.v_init);add_local (snd vdecl.v_id) vdecl.v_ty c) c vdecls
 
 (* Statements *)
 let rec tc_stmt (c:ctxt) (s:Range.t stmt) : unit =
-failwith "unimplemented"
+  begin match s with
+  | Assign (lh,e) -> if (tc_lhs c lh = tc_exp c e) then () else type_error "assign wrong"
+  | Scall ((_,s),elist) -> let f = lookup_global_fn s c in
+                            begin match f with
+                            | Some (tl,rt) -> cmp_typs elist tl c; if rt <> None then
+                                type_error "functions whose return type is not None cannot be stmt";()
+                            | None -> type_error "couldn't find this function";()
+                            end
+  | If (e1,st1,st2) -> if tc_exp c e1 <> TBool then
+      type_error "If statement should have TBool"else
+      tc_stmt c st1;tc_opt_stmt c st2
+  | While (e,st) -> if (tc_exp c e <> TBool) then type_error "while should have TBool" else
+      tc_stmt c st
+  | For (v,opt_exp, st1,st2) -> let newc = tc_vdecls c v in
+                                tc_opt_exp newc opt_exp;tc_stmt newc st2;tc_opt_stmt newc st1
+  | Block (vdecls, stmts) -> let newc = tc_vdecls c vdecls in
+                             tc_stmts newc stmts
+  end 
 
 (* Sequence of statements *)
 and tc_stmts (c:ctxt) (stmts:'a stmts) : unit =
