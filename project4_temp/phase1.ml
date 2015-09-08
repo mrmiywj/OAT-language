@@ -267,7 +267,38 @@ let rec cmp_exp (c:ctxt) (exp:Range.t Ast.exp) : (operand * stream) =
 	end
 
   | Ast.New(elem_ty,e1,id,e2) -> 
-failwith "unimplemented"
+    let (size,code_e1) =  cmp_exp c e1 in
+    let (array_op,alloc_code) = oat_alloc_array_dynamic elem_ty size in
+
+
+(*set up the context to add the fresh loop variables*)
+    let bound = mk_tmp () in
+    let bound_ty = I32 in
+    let (bound_id, bound_op) = gen_local_op (Ptr bound_ty) bound in
+    let c = add_local c bound bound_op in
+
+    let ptr = mk_tmp () in
+    let ptr_ty = cmp_ty (Ast.TArray elem_ty) in
+    let (ptr_id, ptr_op) = gen_local_op (Ptr ptr_ty) ptr in
+    let c = add_local c ptr ptr_op in
+
+    let loop_code = cmp_stmt c
+      Ast.(For ([{v_ty = TInt; v_id = id; v_init = Iexp (Astlib.ast_of_int 0)}],
+                Some(Binop (Lt Range.norange,
+                            Lhs (Var id),
+                            Lhs (Var (Range.norange,bound)))),
+                Some (Assign (Var id ,
+                              (Binop (Plus Range.norange,
+                                      Lhs (Var id),
+                                      Astlib.ast_of_int 1)))),
+                Assign (Index  ((Var (Range.norange,ptr),
+                               Lhs (Var id))), e2))) in
+    (array_op, code_e1 >@ alloc_code >::
+      I (Alloca(bound_id,bound_ty))>::
+      I (Store (size, bound_op)) >::
+      I (Alloca (ptr_id,ptr_ty)) >::
+      I (Store (array_op, ptr_op)) >@
+    loop_code)
 
 
 (* Because length_of_array is polymorphic, we'd have to use bitcast to

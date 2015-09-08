@@ -1,0 +1,1820 @@
+Configuring platform...
+[Linux]
+compiling:
+int program ( int argc,
+string[] argv ) { 
+  
+  return 0;
+}
+
+* TMP FILES:
+*  c_obj/run26.oatfa277e.s
+*  c_obj/run26.oat803b10.o
+*  c_bin/run26.oatdf7b5d
+* gcc -mstackrealign -c -m32 -o c_obj/run26.oat803b10.o c_obj/run26.oatfa277e.s
+* gcc -mstackrealign -m32 -o c_bin/run26.oatdf7b5d c_obj/run26.oat803b10.o runtime.c   
+* ./c_bin/run26.oatdf7b5d  > c_bin/run26.oatdf7b5d.out 2>&1
+compiling:
+int program ( int argc,
+string[] argv ) { 
+  int i  = 99;
+  return i;
+}
+
+* TMP FILES:
+*  c_obj/run27.oat4bc0d7.s
+*  c_obj/run27.oat6fc0f2.o
+*  c_bin/run27.oatdafd40
+* gcc -mstackrealign -c -m32 -o c_obj/run27.oat6fc0f2.o c_obj/run27.oat4bc0d7.s
+* gcc -mstackrealign -m32 -o c_bin/run27.oatdafd40 c_obj/run27.oat6fc0f2.o runtime.c   
+* ./c_bin/run27.oatdafd40  > c_bin/run27.oatdafd40.out 2>&1
+compiling:
+int program ( int argc,
+string[] argv ) { 
+  int i  = 9;
+  int j  = i + i;
+  return i + i * i - j >> 2 << 2 >>> 2;
+}
+
+* TMP FILES:
+*  c_obj/run28.oatb4c76d.s
+*  c_obj/run28.oat33a50a.o
+*  c_bin/run28.oat8aaa08
+* gcc -mstackrealign -c -m32 -o c_obj/run28.oat33a50a.o c_obj/run28.oatb4c76d.s
+* gcc -mstackrealign -m32 -o c_bin/run28.oat8aaa08 c_obj/run28.oat33a50a.o runtime.c   
+* ./c_bin/run28.oat8aaa08  > c_bin/run28.oat8aaa08.out 2>&1
+compiling:
+bool b  = true;
+int program ( int argc,
+string[] argv ) { 
+  int i  = 0;
+  if (b) i = 1;
+  return i;
+}
+
+* TMP FILES:
+*  c_obj/run29.oat686a5e.s
+*  c_obj/run29.oatcb78e7.o
+*  c_bin/run29.oatd00946
+compiling:
+int i  = 9;
+int program ( int argc,
+string[] argv ) { 
+  
+  return i;
+}
+
+* TMP FILES:
+*  c_obj/run30.oateac524.s
+*  c_obj/run30.oat379678.o
+*  c_bin/run30.oat84c71c
+compiling:
+int i  = 9;
+int program ( int argc,
+string[] argv ) { 
+  int j  = i;
+  return j;
+}
+
+* TMP FILES:
+*  c_obj/run31.oat97519f.s
+*  c_obj/run31.oat9420bc.o
+*  c_bin/run31.oat41e06f
+compiling:
+int f ( int x,
+int y ) { 
+  
+  return x;
+}
+int program ( int argc,
+string[] argv ) { 
+  
+  return f(1,
+  2);
+}
+
+* TMP FILES:
+*  c_obj/run13.oat1f79d0.s
+*  c_obj/run13.oat4e8cfa.o
+*  c_bin/run13.oat705a02
+compiling:
+int i  = 11;
+int f (  ) { 
+  int i  = 12;
+  return i;
+}
+int g (  ) { 
+  {
+    int j  = 1;
+    int i  = j;
+  }
+  {
+    int i  = 10;
+  }
+  return i;
+}
+int program ( int argc,
+string[] argv ) { 
+  
+  return f() + g() + i;
+}
+
+* TMP FILES:
+*  c_obj/run32.oat274dbc.s
+*  c_obj/run32.oat4d8468.o
+*  c_bin/run32.oatec3061
+compiling:
+int program ( int argc,
+string[] argv ) { 
+  int[] a  = {-1, -100, -999};
+  return a[2];
+}
+
+* TMP FILES:
+*  c_obj/run18.oatc207ed.s
+*  c_obj/run18.oat173243.o
+*  c_bin/run18.oat04121b
+compiling:
+int program ( int argc,
+string[] argv ) { 
+  int i  = 999;
+  int[] a  = {-1, -100, i};
+  return a[2];
+}
+
+* TMP FILES:
+*  c_obj/run19.oat92ed85.s
+*  c_obj/run19.oat7a1f2e.o
+*  c_bin/run19.oata0eac9
+compiling:
+int f (  ) { 
+  
+  return 19;
+}
+int program ( int argc,
+string[] argv ) { 
+  int[] a  = {-1, -100, f()};
+  return a[2];
+}
+
+* TMP FILES:
+*  c_obj/run20.oat3e0266.s
+*  c_obj/run20.oat03486a.o
+*  c_bin/run20.oat5def42
+compiling:
+int[] i  = {99, 0};
+int program ( int argc,
+string[] argv ) { 
+  
+  return i[0];
+}
+
+* TMP FILES:
+*  c_obj/run21.oatac9661.s
+*  c_obj/run21.oat304504.o
+*  c_bin/run21.oatbb59a8
+compiling:
+int[] a  = {12 * 7 + 13 >> 2, 9 - 4, 5 + 5};
+int program ( int argc,
+string[] argv ) { 
+  
+  return a[0];
+}
+
+* TMP FILES:
+*  c_obj/run24.oateece1e.s
+*  c_obj/run24.oatcf9a6f.o
+*  c_bin/run24.oat5e91ac
+compiling:
+int program ( int argc,
+string[] argv ) { 
+  bool[] b  = {true, false};
+  int i  = 0;
+  if (b[0]) i = 1;
+  return i;
+}
+
+* TMP FILES:
+*  c_obj/run33.oatae0c03.s
+*  c_obj/run33.oatdfa20b.o
+*  c_bin/run33.oatd34bf9
+compiling:
+int program ( int argc,
+string[] argv ) { 
+  int[][] a  = {{0, 1, 2, 3}, {4, 5, 6, 7}, {8, 9, 10, 11}};
+  int s  = 0;
+  for (int i  = 0;
+  i < 3;
+  i = i + 1;) {
+    for (int j  = 0;
+    j < 4;
+    j = j + 1;) {
+      s = s + a[i][j];
+    }
+  }
+  return s;
+}
+
+* TMP FILES:
+*  c_obj/run34.oatcec819.s
+*  c_obj/run34.oat4fd553.o
+*  c_bin/run34.oat949637
+compiling:
+int[][] a  = {{0, 1, 2, 3}, {4, 5, 6, 7}, {8, 9, 10, 11}};
+int program ( int argc,
+string[] argv ) { 
+  int s  = 0;
+  for (int i  = 0;
+  i < 3;
+  i = i + 1;) {
+    for (int j  = 0;
+    j < 4;
+    j = j + 1;) {
+      s = s + a[i][j];
+    }
+  }
+  return s;
+}
+
+* TMP FILES:
+*  c_obj/run35.oatbd4564.s
+*  c_obj/run35.oatc72da7.o
+*  c_bin/run35.oat12cb32
+compiling:
+int f1 (  ) { 
+  
+  return f2();
+}
+int f2 (  ) { 
+  
+  return f3();
+}
+int f3 (  ) { 
+  
+  return f4();
+}
+int f4 (  ) { 
+  
+  return f5();
+}
+int f5 (  ) { 
+  
+  return f6();
+}
+int f6 (  ) { 
+  
+  return f7();
+}
+int f7 (  ) { 
+  
+  return f8();
+}
+int f8 (  ) { 
+  
+  return f9();
+}
+int f9 (  ) { 
+  
+  return 31;
+}
+int program ( int argc,
+string[] argv ) { 
+  
+  return f1();
+}
+
+* TMP FILES:
+*  c_obj/run38.oat4ad747.s
+*  c_obj/run38.oat8ebc22.o
+*  c_bin/run38.oatb58317
+compiling:
+int f1 ( int i ) { 
+  
+  return f2(i);
+}
+int f2 ( int i ) { 
+  
+  return f3(i);
+}
+int f3 ( int i ) { 
+  
+  return f4(i);
+}
+int f4 ( int i ) { 
+  
+  return f5(i);
+}
+int f5 ( int i ) { 
+  
+  return f6(i);
+}
+int f6 ( int i ) { 
+  
+  return f7(i);
+}
+int f7 ( int i ) { 
+  
+  return f8(i);
+}
+int f8 ( int i ) { 
+  
+  return f9(i);
+}
+int f9 ( int i ) { 
+  
+  return i;
+}
+int program ( int argc,
+string[] argv ) { 
+  
+  return f1(argc);
+}
+
+* TMP FILES:
+*  c_obj/run39.oat45981b.s
+*  c_obj/run39.oat70f41b.o
+*  c_bin/run39.oat5680c4
+compiling:
+int i  = 8;
+int f (  ) { 
+  int j  = 0;
+  {
+    {
+      {
+        {
+          {
+            {
+              {
+                {
+                  {
+                    {
+                      {
+                        {
+                          {
+                            {
+                              {
+                                {
+                                  {
+                                    {
+                                      j = g();
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  return j;
+}
+int g (  ) { 
+  
+  return i;
+}
+int program ( int argc,
+string[] argv ) { 
+  
+  return f();
+}
+
+* TMP FILES:
+*  c_obj/run40.oat3aded7.s
+*  c_obj/run40.oate2b64b.o
+*  c_bin/run40.oat58f8b1
+compiling:
+int f ( int x1,
+int x2,
+int x3,
+int x4,
+int x5,
+int x6,
+int x7,
+int x8 ) { 
+  
+  return x1 + x2 + x3 + x4 + x5 + x6 + x7 + x8;
+}
+int program ( int argc,
+string[] argv ) { 
+  
+  return f(1,
+  2,
+  3,
+  4,
+  5,
+  -5,
+  -4,
+  -3);
+}
+
+* TMP FILES:
+*  c_obj/run41.oatc465c3.s
+*  c_obj/run41.oatfd3a0d.o
+*  c_bin/run41.oat960ddf
+compiling:
+int program ( int argc,
+string[] argv ) { 
+  int[][] a1  = new int[][ 3 ] ( fun i -> new int[ 3 ] ( fun i -> 1 ) );
+  int[][] a2  = new int[][ 3 ] ( fun i -> new int[ 3 ] ( fun i -> 2 ) );
+  int[][] a3  = new int[][ 3 ] ( fun i -> new int[ 3 ] ( fun i -> 3 ) );
+  int[][] a4  = new int[][ 3 ] ( fun i -> new int[ 3 ] ( fun i -> 4 ) );
+  a1 = a2;
+  a3 = a1;
+  a1 = a4;
+  a2 = a3;
+  a4 = a2;
+  a3 = a4;
+  return a3[0][0];
+}
+
+* TMP FILES:
+*  c_obj/run42.oat1e2762.s
+*  c_obj/run42.oatceebaf.o
+*  c_bin/run42.oate6c004
+compiling:
+int program ( int argc,
+string[] argv ) { 
+  print_string("abc");
+  return 0;
+}
+
+* TMP FILES:
+*  c_obj/run49.oat2d2674.s
+*  c_obj/run49.oatbf7c6e.o
+*  c_bin/run49.oat57528e
+compiling:
+int program ( int argc,
+string[] argv ) { 
+  print_string("abcde");
+  return 0;
+}
+
+* TMP FILES:
+*  c_obj/run50.oat67079a.s
+*  c_obj/run50.oat98a842.o
+*  c_bin/run50.oate7c90d
+compiling:
+int x  = 10;
+int program ( int argc,
+string[] argv ) { 
+  int y  = 0;
+  {
+    int x  = x + 1;
+    y = x;
+  }
+  return y;
+}
+
+* TMP FILES:
+*  c_obj/run52.oat414cd4.s
+*  c_obj/run52.oatb3b5fb.o
+*  c_bin/run52.oata61998
+compiling:
+int i  = 3;
+int program ( int argc,
+string[] argv ) { 
+  i = 341;
+  return i;
+}
+
+* TMP FILES:
+*  c_obj/run60.oat92049a.s
+*  c_obj/run60.oat137267.o
+*  c_bin/run60.oat348d2f
+compiling:
+string s  = "341";
+int program ( int argc,
+string[] argv ) { 
+  print_string(s);
+  return 0;
+}
+
+* TMP FILES:
+*  c_obj/run61.oata13934.s
+*  c_obj/run61.oat11da6d.o
+*  c_bin/run61.oat1be75f
+compiling:
+int i  = 42;
+int[][] garr  = {{1, 2}, {3, 4}};
+int f ( int x ) { 
+  
+  return x;
+}
+int g ( int[] y ) { 
+  
+  return y[2];
+}
+int program ( int argc,
+string[] argv ) { 
+  int[] arr  = {1, 2, 3, 4};
+  int p  = 0;
+  for (int j  = 0;
+  j < 100;
+  j = j + 1;) {
+    p = p + 1;
+  }
+  return g(arr) + f(i) + f(arr[3]) + f(garr[1][1]) + f(p);
+}
+
+* TMP FILES:
+*  c_obj/run1.oatb250bb.s
+*  c_obj/run1.oatb78a5e.o
+*  c_bin/run1.oat8e0eaf
+compiling:
+int i  = 0;
+int f ( int x,
+int y ) { 
+  int r  = 0;
+  if (x >= 1) r = 1 + f(x - 1, y); else r = x + y;
+  return r;
+}
+int program ( int argc,
+string[] argv ) { 
+  int x  = 3;
+  int y  = 3;
+  return f(x, y) + i;
+}
+
+* TMP FILES:
+*  c_obj/run2.oatdcdc1a.s
+*  c_obj/run2.oat6959c4.o
+*  c_bin/run2.oat27e91d
+compiling:
+int[] arr  = {1, 2};
+int program ( int argc,
+string[] argv ) { 
+  
+  return arr[1];
+}
+
+* TMP FILES:
+*  c_obj/run3.oat1ec10c.s
+*  c_obj/run3.oat7b5639.o
+*  c_bin/run3.oat48683c
+compiling:
+int[][] arr  = {{1, 2}, {3, 4}};
+int program ( int argc,
+string[] argv ) { 
+  
+  return arr[1][1];
+}
+
+* TMP FILES:
+*  c_obj/run5.oat86aa2b.s
+*  c_obj/run5.oat6a1db0.o
+*  c_bin/run5.oat079f49
+compiling:
+int program ( int argc,
+string[] argv ) { 
+  int[] arr  = {1, 2};
+  return arr[1];
+}
+
+* TMP FILES:
+*  c_obj/run8.oat276464.s
+*  c_obj/run8.oat9d4c1f.o
+*  c_bin/run8.oat4b8aba
+compiling:
+int program ( int argc,
+string[] argv ) { 
+  int[][] arr  = {{1, 2}, {3, 4}};
+  return arr[1][1];
+}
+
+* TMP FILES:
+*  c_obj/run9.oat24aa09.s
+*  c_obj/run9.oatfc9a5e.o
+*  c_bin/run9.oatb1a12e
+compiling:
+int[][] garr  = {{1, 2, 3}, {4, 5, 6}};
+int[] f ( int[] arr ) { 
+  
+  return arr;
+}
+int program ( int argc,
+string[] argv ) { 
+  int[] arr  = f(garr[1]);
+  return arr[1];
+}
+
+* TMP FILES:
+*  c_obj/run10.oatf628aa.s
+*  c_obj/run10.oat8d85d5.o
+*  c_bin/run10.oat361679
+compiling:
+int i  = 1;
+int[] arr1  = {99, 1, 99};
+int[][] arr2  = {{99, 99, 99}, {99, 1, 99}, {99, 99, 99}};
+int f ( int[] arr ) { 
+  
+  return arr[3];
+}
+int[] g (  ) { 
+  int[] arr  = {99, 1, 99, 99};
+  return arr;
+}
+int program ( int argc,
+string[] argv ) { 
+  int c  = 1;
+  int[] arr4  = g();
+  int[] arr3  = {99, 99, 99, 1};
+  c = c + i;
+  c = c + arr1[1];
+  c = c + arr2[1][1];
+  c = c + arr3[3];
+  c = c + f(arr3);
+  c = c + arr4[1];
+  return c;
+}
+
+* TMP FILES:
+*  c_obj/run11.oat0f1473.s
+*  c_obj/run11.oatb1f53e.o
+*  c_bin/run11.oat37f4d0
+compiling:
+int f ( int[] a ) { 
+  
+  return a[1];
+}
+int g ( int x ) { 
+  int[] arr  = new int[ 3 ] ( fun i -> x );
+  return arr[1];
+}
+int program ( int argc,
+string[] argv ) { 
+  int[] a  = new int[ 3 ] ( fun i -> i );
+  int[] arr  = new int[ 4 ] ( fun i -> i * i );
+  return arr[3] + a[1] + f(new int[ 3 ] ( fun i -> 2 * i )) + g(4);
+}
+
+* TMP FILES:
+*  c_obj/run14.oat86760a.s
+*  c_obj/run14.oat74cec9.o
+*  c_bin/run14.oat47cb80
+compiling:
+int f ( int[][] a ) { 
+  
+  return a[1][1];
+}
+int g ( int x ) { 
+  int[][] arr  = new int[][ 3 ] ( fun i -> new int[ 3 ] ( fun j -> x ) );
+  return arr[1][1];
+}
+int program ( int argc,
+string[] argv ) { 
+  int[][] a  = new int[][ 3 ] ( fun i -> new int[ 3 ] ( fun j -> j ) );
+  int[][] arr  = new int[][ 4 ] ( fun i -> new int[ 5 ] ( fun j -> i * j ) );
+  return arr[3][4] + a[1][2] +
+         f(new int[][ 3 ] ( fun i -> new int[ 3 ] ( fun j -> i * j ) )) +
+         g(4);
+}
+
+* TMP FILES:
+*  c_obj/run15.oat28d643.s
+*  c_obj/run15.oat7f3bb3.o
+*  c_bin/run15.oat7dbf54
+compiling:
+int program ( int argc,
+string[] argv ) { 
+  int x  = 10;
+  int[][] a  = new int[][ 3 ] ( fun i -> new int[ 3 ] ( fun j -> x + i + j ) );
+  int[][] b  = a;
+  return b[2][1];
+}
+
+* TMP FILES:
+*  c_obj/run16.oat13fe8a.s
+*  c_obj/run16.oat303143.o
+*  c_bin/run16.oat3a9ecf
+compiling:
+string[] strs  = {"abc", "def"};
+int program ( int argc,
+string[] argv ) { 
+  print_string(strs[0]);
+  return 0;
+}
+
+* TMP FILES:
+*  c_obj/run22.oat1dd39a.s
+*  c_obj/run22.oatadb8cf.o
+*  c_bin/run22.oat3ab8ae
+compiling:
+string[][] strs  = {{"abc", "def"}, {"789", "123"}};
+int program ( int argc,
+string[] argv ) { 
+  print_string(strs[1][1]);
+  return 0;
+}
+
+* TMP FILES:
+*  c_obj/run23.oatb0be9e.s
+*  c_obj/run23.oat8017eb.o
+*  c_bin/run23.oat79137b
+compiling:
+string str  = string_of_array(new int[ 3 ] ( fun i -> 110 ));
+int program ( int argc,
+string[] argv ) { 
+  print_string(str);
+  return 0;
+}
+
+* TMP FILES:
+*  c_obj/run25.oat0e74cc.s
+*  c_obj/run25.oatcd8875.o
+*  c_bin/run25.oatf69064
+compiling:
+int[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] a  = {{{{{{{{{{{{{{{{{{{{{{{{{{{{{{42}}}}}}}}}}}}}}}}}}}}}}}}}}}}}};
+int program ( int argc,
+string[] argv ) { 
+  
+  return a[0][0][0][0][0][0][0][0][0][0][0][0][0][0][0][0][0][0][0][0][0][0][0][0][0][0][0][0][0][0];
+}
+
+* TMP FILES:
+*  c_obj/run43.oat45101b.s
+*  c_obj/run43.oatc4252a.o
+*  c_bin/run43.oatd810be
+compiling:
+string[][][][][][][][][][][][][][] str  = new string[][][][][][][][][][][][][][ 1 ] ( fun i -> new string[][][][][][][][][][][][][ 1 ] ( fun i -> new string[][][][][][][][][][][][ 1 ] ( fun i -> new string[][][][][][][][][][][ 1 ] ( fun i -> new string[][][][][][][][][][ 1 ] ( fun i -> new string[][][][][][][][][ 1 ] ( fun i -> new string[][][][][][][][ 1 ] ( fun i -> new string[][][][][][][ 1 ] ( fun i -> new string[][][][][][ 1 ] ( fun i -> new string[][][][][ 1 ] ( fun i -> new string[][][][ 1 ] ( fun i -> new string[][][ 1 ] ( fun i -> new string[][ 1 ] ( fun i -> new string[ 1 ] ( fun i -> "hello" ) ) ) ) ) ) ) ) ) ) ) ) ) );
+int program ( int argc,
+string[] argv ) { 
+  print_string(str[0][0][0][0][0][0][0][0][0][0][0][0][0][0]);
+  return 0;
+}
+
+* TMP FILES:
+*  c_obj/run44.oat1b4f17.s
+*  c_obj/run44.oat5fdddb.o
+*  c_bin/run44.oatbd6786
+compiling:
+string[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] a  = {{{{{{{{{{{{{{{{{{{{{{{{{{{{{{"42"}}}}}}}}}}}}}}}}}}}}}}}}}}}}}};
+int program ( int argc,
+string[] argv ) { 
+  print_string(a[0][0][0][0][0][0][0][0][0][0][0][0][0][0][0][0][0][0][0][0][0][0][0][0][0][0][0][0][0][0]);
+  return 0;
+}
+
+* TMP FILES:
+*  c_obj/run45.oatf02501.s
+*  c_obj/run45.oat9033b0.o
+*  c_bin/run45.oatf46e56
+compiling:
+int program ( int argc,
+string[] argv ) { 
+  {
+    {
+      {
+        {
+          {
+            {
+              {
+                {
+                  {
+                    {
+                      {
+                        {
+                          {
+                            {
+                              {
+                                {
+                                  {
+                                    {
+                                      {
+                                        {
+                                          {
+                                            {
+                                              {
+                                                {
+                                                  {
+                                                    {
+                                                      {
+                                                        {
+                                                          {
+                                                            {
+                                                              {
+                                                                {
+                                                                  {
+                                                                    {
+                                                                      
+                                                                    {
+                                                                      
+                                                                    {
+                                                                      
+                                                                    {
+                                                                      
+                                                                    {
+                                                                      
+                                                                    {
+                                                                      
+                                                                    {
+                                                                      
+                                                                    {
+                                                                      
+                                                                    {
+                                                                      
+                                                                    {
+                                                                      
+                                                                    {
+                                                                      
+                                                                    {
+                                                                      
+                                                                    {
+                                                                      
+                                                                    string[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] a  = {{{{{{{{{{{{{{{{{{{{{{{{{{{{{{"42"}}}}}}}}}}}}}}}}}}}}}}}}}}}}}};
+                                                                    print_string(a[0][0][0][0][0][0][0][0][0][0][0][0][0][0][0][0][0][0][0][0][0][0][0][0][0][0][0][0][0][0]);
+                                                                    }
+                                                                    }
+                                                                    }
+                                                                    }
+                                                                    }
+                                                                    }
+                                                                    }
+                                                                    }
+                                                                    }
+                                                                    }
+                                                                    }
+                                                                    }
+                                                                    }
+                                                                  }
+                                                                }
+                                                              }
+                                                            }
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  return 0;
+}
+
+* TMP FILES:
+*  c_obj/run46.oate9596b.s
+*  c_obj/run46.oat855ea1.o
+*  c_bin/run46.oat37a77f
+compiling:
+int a  = 1;
+int f (  ) { 
+  a = a + 1;
+  return a;
+}
+int program ( int argc,
+string[] argv ) { 
+  int[] b  = new int[ f() ] ( fun i -> i );
+  return a + b[0] + b[1];
+}
+
+* TMP FILES:
+*  c_obj/run47.oatcd7d52.s
+*  c_obj/run47.oat86297b.o
+*  c_bin/run47.oat4edbda
+compiling:
+int a  = 1;
+int f (  ) { 
+  a = a + 1;
+  return a;
+}
+int program ( int argc,
+string[] argv ) { 
+  int[] b  = new int[ f() ] ( fun i -> f() );
+  return a + b[0] + b[1];
+}
+
+* TMP FILES:
+*  c_obj/run48.oataa532d.s
+*  c_obj/run48.oatec59e6.o
+*  c_bin/run48.oat864c5f
+compiling:
+int program ( int argc,
+string[] argv ) { 
+  int[] arr  = {0, 1, 2};
+  int len  = length_of_array(arr);
+  return len;
+}
+
+* TMP FILES:
+*  c_obj/lib1.oat0d9dab.s
+*  c_obj/lib1.oataf29e8.o
+*  c_bin/lib1.oat2b8213
+compiling:
+int program ( int argc,
+string[] argv ) { 
+  int[][] arr  = {{0, 0}, {1, 1}, {2, 2}, {3, 3}};
+  int len  = length_of_array(arr[2]);
+  return len;
+}
+
+* TMP FILES:
+*  c_obj/lib2.oat7f7d9b.s
+*  c_obj/lib2.oat2e8538.o
+*  c_bin/lib2.oat78f19c
+compiling:
+int program ( int argc,
+string[] argv ) { 
+  int[][] arr  = {{0, 0, 0, 0}, {1, 1}, {2, 2}, {3, 3}};
+  int len  = length_of_array(arr[0]);
+  return len;
+}
+
+* TMP FILES:
+*  c_obj/lib3.oat38f3fe.s
+*  c_obj/lib3.oat1fdc48.o
+*  c_bin/lib3.oatf5f312
+compiling:
+string str  = "hello";
+int program ( int argc,
+string[] argv ) { 
+  int[] arr  = array_of_string(str);
+  int s  = 0;
+  for (int i  = 0;
+  i < 5;
+  i = i + 1;) {
+    s = s + arr[i];
+  }
+  return s;
+}
+
+* TMP FILES:
+*  c_obj/lib4.oatdf1998.s
+*  c_obj/lib4.oat3b26e5.o
+*  c_bin/lib4.oat2affb8
+compiling:
+int program ( int argc,
+string[] argv ) { 
+  string str  = "hello";
+  int[] arr  = array_of_string(str);
+  int s  = 0;
+  for (int i  = 0;
+  i < 5;
+  i = i + 1;) {
+    s = s + arr[i];
+  }
+  return s;
+}
+
+* TMP FILES:
+*  c_obj/lib5.oatc06504.s
+*  c_obj/lib5.oat2f0d32.o
+*  c_bin/lib5.oat777769
+compiling:
+int[] arr1  = {111, 112, 113, 114, 115};
+int program ( int argc,
+string[] argv ) { 
+  string str  = string_of_array(arr1);
+  int[] arr2  = array_of_string(str);
+  int s  = 0;
+  for (int i  = 0;
+  i < 5;
+  i = i + 1;) {
+    s = s + arr2[i];
+  }
+  return s;
+}
+
+* TMP FILES:
+*  c_obj/lib6.oat33176e.s
+*  c_obj/lib6.oat72602f.o
+*  c_bin/lib6.oatf4cbea
+compiling:
+int program ( int argc,
+string[] argv ) { 
+  int[] arr1  = {111, 112, 113, 114, 115};
+  string str  = string_of_array(arr1);
+  int[] arr2  = array_of_string(str);
+  int s  = 0;
+  for (int i  = 0;
+  i < 5;
+  i = i + 1;) {
+    s = s + arr2[i];
+  }
+  return s;
+}
+
+* TMP FILES:
+*  c_obj/lib7.oat06417a.s
+*  c_obj/lib7.oatc7ef43.o
+*  c_bin/lib7.oat0860de
+compiling:
+int program ( int argc,
+string[] argv ) { 
+  string str  = "Hello world!\n";
+  print_string(str);
+  return 0;
+}
+
+* TMP FILES:
+*  c_obj/lib8.oatb9e260.s
+*  c_obj/lib8.oat7cdcd5.o
+*  c_bin/lib8.oat4f60b6
+compiling:
+int program ( int argc,
+string[] argv ) { 
+  for (int i  = 1;
+  i < argc;
+  i = i + 1;) {
+    print_string(argv[i]);
+  }
+  return argc;
+}
+
+* TMP FILES:
+*  c_obj/lib9.oat734f20.s
+*  c_obj/lib9.oat0392bb.o
+*  c_bin/lib9.oat0979c6
+compiling:
+int my_length_of_string ( string str ) { 
+  
+  return length_of_array(array_of_string(str));
+}
+int program ( int argc,
+string[] argv ) { 
+  
+  return my_length_of_string("Hello?");
+}
+
+* TMP FILES:
+*  c_obj/lib10.oat8e62f8.s
+*  c_obj/lib10.oat365931.o
+*  c_bin/lib10.oat70bd57
+compiling:
+int program ( int argc,
+string[] argv ) { 
+  int[] arr  = array_of_string("1234967890");
+  int sum  = 0;
+  for (int i  = 0;
+  i < 10;
+  i = i + 1;) {
+    arr[i] = i;
+  }
+  for (int i  = 0;
+  i < 10;
+  i = i + 1;) {
+    sum = sum + arr[i];
+  }
+  return sum;
+}
+
+* TMP FILES:
+*  c_obj/lib11.oatb00fee.s
+*  c_obj/lib11.oatea6158.o
+*  c_bin/lib11.oatf3a5d4
+compiling:
+int[] a  = {126, 125, 124, 123, 122, 121, 120, 119, 118, 117};
+int program ( int argc,
+string[] argv ) { 
+  print_string(string_of_array(a));
+  return 0;
+}
+
+* TMP FILES:
+*  c_obj/lib14.oatc08593.s
+*  c_obj/lib14.oat62a72c.o
+*  c_bin/lib14.oat3f86a9
+compiling:
+string sub ( string str,
+int start,
+int len ) { 
+  int[] arr  = array_of_string(str);
+  int[] r  = new int[ len ] ( fun i -> arr[i + start] );
+  return string_of_array(r);
+}
+int program ( int argc,
+string[] argv ) { 
+  print_string(sub(argv[1],
+  3,
+  5));
+  return 0;
+}
+
+* TMP FILES:
+*  c_obj/lib15.oatb536a4.s
+*  c_obj/lib15.oatc65335.o
+*  c_bin/lib15.oat49aa94
+compiling:
+int f ( int i ) { 
+  int r  = 0;
+  if (i == 0) r = 1; else r = i * f(i - 1);
+  return r;
+}
+int program ( int argc,
+string[] argv ) { 
+  
+  return f(5);
+}
+
+* TMP FILES:
+*  c_obj/fac.oat5eba22.s
+*  c_obj/fac.oat7b182a.o
+*  c_bin/fac.oat25232b
+compiling:
+ quick_sort ( int[] a,
+int l,
+int r ) { 
+  int j  = 0;
+  if (l < r) {
+    j = partition(a, l, r);
+    quick_sort(a,
+    l,
+    j - 1);
+    quick_sort(a,
+    j + 1,
+    r);
+  }
+  return ;
+}
+int partition ( int[] a,
+int l,
+int r ) { 
+  int pivot  = a[l];
+  int i  = l;
+  int j  = r + 1;
+  int t  = 0;
+  int done  = 0;
+  while (done == 0) {
+    i = i + 1;
+    while (a[i] <= pivot & i <= r) i = i + 1;
+    j = j - 1;
+    while (a[j] > pivot) j = j - 1;
+    if (i >= j) done = 1;
+    if (done == 0) {
+      t = a[i];
+      a[i] = a[j];
+      a[j] = t;
+    }
+  }
+  t = a[l];
+  a[l] = a[j];
+  a[j] = t;
+  return j;
+}
+int program ( int argc,
+string[] argv ) { 
+  int[] a  = {107, 112, 121, 102, 123, 115, 104, 111, 109};
+  print_string("\n");
+  print_string(string_of_array(a));
+  print_string("\n");
+  quick_sort(a,
+  0,
+  8);
+  print_string(string_of_array(a));
+  print_string("\n");
+  return 255;
+}
+
+* TMP FILES:
+*  c_obj/qsort.oat771932.s
+*  c_obj/qsort.oat33e2fc.o
+*  c_bin/qsort.oatd65150
+compiling:
+ bubble_sort ( int[] numbers,
+int array_size ) { 
+  int temp  = 0;
+  int i  = array_size - 1;
+  for (;
+  i > 0;
+  i = i - 1;) {
+    for (int j  = 1;
+    j <= i;
+    j = j + 1;) {
+      if (numbers[j - 1] > numbers[j]) {
+        temp = numbers[j - 1];
+        numbers[j - 1] = numbers[j];
+        numbers[j] = temp;
+      }
+    }
+  }
+  return ;
+}
+int program ( int argc,
+string[] argv ) { 
+  int[] a  = new int[ 8 ] ( fun i -> 0 );
+  a[0] = 121;
+  a[1] = 125;
+  a[2] = 120;
+  a[3] = 111;
+  a[4] = 116;
+  a[5] = 110;
+  a[6] = 117;
+  a[7] = 119;
+  print_string(string_of_array(a));
+  print_string(" ");
+  bubble_sort(a,
+  length_of_array(a));
+  print_string(string_of_array(a));
+  return -1;
+}
+
+* TMP FILES:
+*  c_obj/bsort.oatab6204.s
+*  c_obj/bsort.oatc8523b.o
+*  c_bin/bsort.oat1e33fb
+compiling:
+int program ( int argc,
+string[] argv ) { 
+  int i  = 0;
+  int[] a  = {126, 125, 124, 123, 122, 121, 120, 119, 118, 117};
+  print_string(string_of_array(a));
+  oat_mergesort(a,
+  0,
+  9);
+  print_string(" ");
+  print_string(string_of_array(a));
+  print_string(" ");
+  return i;
+}
+ oat_mergesort ( int[] a,
+int low,
+int high ) { 
+  int mid  = 0;
+  if (low < high) {
+    mid = low + high >> 1;
+    oat_mergesort(a,
+    low,
+    mid);
+    oat_mergesort(a,
+    mid + 1,
+    high);
+    merge(a,
+    low,
+    high,
+    mid);
+  }
+  return ;
+}
+ merge ( int[] a,
+int low,
+int high,
+int mid ) { 
+  int i  = 0;
+  int j  = 0;
+  int k  = 0;
+  int[] c  = new int[ 50 ] ( fun i -> 0 );
+  i = low;
+  j = mid + 1;
+  k = low;
+  while (i <= mid & j <= high) {
+    if (a[i] < a[j]) {
+      c[k] = a[i];
+      k = k + 1;
+      i = i + 1;
+    } else {
+      c[k] = a[j];
+      k = k + 1;
+      j = j + 1;
+    }
+  }
+  while (i <= mid) {
+    c[k] = a[i];
+    k = k + 1;
+    i = i + 1;
+  }
+  while (j <= high) {
+    c[k] = a[j];
+    k = k + 1;
+    j = j + 1;
+  }
+  i = low;
+  for (;
+  i < k;
+  i = i + 1;) {
+    a[i] = c[i];
+  }
+  return ;
+}
+
+* TMP FILES:
+*  c_obj/msort.oat236f03.s
+*  c_obj/msort.oatff6cce.o
+*  c_bin/msort.oatdef1fc
+compiling:
+int[] a  = {126, 125, 124, 123, 122, 121, 120, 119, 118, 117};
+int program ( int argc,
+string[] argv ) { 
+  int i  = 0;
+  print_string(string_of_array(a));
+  oat_mergesort(a,
+  0,
+  9);
+  print_string(" ");
+  print_string(string_of_array(a));
+  print_string(" ");
+  return i;
+}
+ oat_mergesort ( int[] a,
+int low,
+int high ) { 
+  int mid  = 0;
+  if (low < high) {
+    mid = low + high >> 1;
+    oat_mergesort(a,
+    low,
+    mid);
+    oat_mergesort(a,
+    mid + 1,
+    high);
+    merge(a,
+    low,
+    high,
+    mid);
+  }
+  return ;
+}
+ merge ( int[] a,
+int low,
+int high,
+int mid ) { 
+  int i  = 0;
+  int j  = 0;
+  int k  = 0;
+  int[] c  = new int[ 50 ] ( fun i -> 0 );
+  i = low;
+  j = mid + 1;
+  k = low;
+  while (i <= mid & j <= high) {
+    if (a[i] < a[j]) {
+      c[k] = a[i];
+      k = k + 1;
+      i = i + 1;
+    } else {
+      c[k] = a[j];
+      k = k + 1;
+      j = j + 1;
+    }
+  }
+  while (i <= mid) {
+    c[k] = a[i];
+    k = k + 1;
+    i = i + 1;
+  }
+  while (j <= high) {
+    c[k] = a[j];
+    k = k + 1;
+    j = j + 1;
+  }
+  i = low;
+  for (;
+  i < k;
+  i = i + 1;) {
+    a[i] = c[i];
+  }
+  return ;
+}
+
+* TMP FILES:
+*  c_obj/msort2.oat71802b.s
+*  c_obj/msort2.oat9bbd02.o
+*  c_bin/msort2.oat2d3cd1
+compiling:
+int[] b  = {108, -110, -111, -109, -117, -119, -113, -120, -108};
+int n  = 8;
+int program ( int argc,
+string[] argv ) { 
+  int[] a  = new int[ 9 ] ( fun i -> 0 );
+  int i  = 0;
+  int j  = 0;
+  int k  = 0;
+  int r  = 0;
+  int check  = a[0];
+  a[0] = b[0];
+  i = 1;
+  for (;
+  i <= n;
+  i = i + 1;) {
+    a[i] = -b[i];
+    restoreHup(a,
+    i);
+  }
+  j = n;
+  i = 1;
+  for (;
+  i <= j;
+  i = i + 1;) {
+    int temp  = 0;
+    temp = a[1];
+    a[1] = a[n];
+    a[n] = temp;
+    n = n - 1;
+    restoreHdown(a,
+    1,
+    n);
+  }
+  n = j;
+  i = 1;
+  for (;
+  i <= n;
+  i = i + 1;) {
+    if (a[i] >= check) {
+      check = a[i];
+    } else r = 1;
+  }
+  return r;
+}
+ restoreHup ( int[] a,
+int i ) { 
+  int v  = a[i];
+  while (i > 1 & a[i >> 1] < v) {
+    a[i] = a[i >> 1];
+    i = i >> 1;
+  }
+  a[i] = v;
+  return ;
+}
+ restoreHdown ( int[] a,
+int i,
+int n ) { 
+  int v  = a[i];
+  int j  = i * 2;
+  int done  = 0;
+  while (j <= n & done == 0) {
+    if (j < n & a[j] < a[j + 1]) j = j + 1;
+    if (a[j] < a[j >> 1]) done = 1;
+    if (done == 0) {
+      a[j >> 1] = a[j];
+      j = j * 2;
+    }
+  }
+  a[j >> 1] = v;
+  return ;
+}
+
+* TMP FILES:
+*  c_obj/hsort.oat196e8e.s
+*  c_obj/hsort.oat6b1d40.o
+*  c_bin/hsort.oatcfa00e
+compiling:
+ stoogeSort ( int[] a,
+int i,
+int j ) { 
+  int t  = 0;
+  if (a[j] < a[i]) {
+    t = a[i];
+    a[i] = a[j];
+    a[j] = t;
+  }
+  if (j - i > 1) {
+    t = j - i + 1 >> 1;
+    stoogeSort(a,
+    i,
+    j - t);
+    stoogeSort(a,
+    i + t,
+    j);
+    stoogeSort(a,
+    i,
+    j - t);
+  }
+  return ;
+}
+int program ( int argc,
+string[] argv ) { 
+  int[] nums  = {1, 4, 5, 3, -6, 3, 7, 10, -2, -5, 7, 5, 9, -3, 7};
+  int i  = 0;
+  int n  = length_of_array(nums);
+  stoogeSort(nums,
+  0,
+  n - 1);
+  i = 0;
+  for (;
+  i <= n - 1;
+  i = i + 1;) print_int(nums[i]);
+  return 0;
+}
+
+* TMP FILES:
+*  c_obj/stoogesort.oatd50752.s
+*  c_obj/stoogesort.oat34528d.o
+*  c_bin/stoogesort.oat0c1e51
+compiling:
+int getminindex ( int[] a,
+int s,
+int b ) { 
+  int i  = s;
+  int min  = a[s];
+  int mi  = s;
+  for (;
+  i < b;
+  i = i + 1;) {
+    if (a[i] < min) {
+      min = a[i];
+      mi = i;
+    }
+  }
+  return mi;
+}
+ selectionsort ( int[] a,
+int s ) { 
+  int t  = 0;
+  int mi  = 0;
+  for (int i  = 0;
+  i < s;
+  i = i + 1;) {
+    mi = getminindex(a, i, s);
+    t = a[i];
+    a[i] = a[mi];
+    a[mi] = t;
+  }
+  return ;
+}
+int program ( int argc,
+string[] argv ) { 
+  int[] ar  = {5, 200, 1, 65, 30, 99, 2, 0};
+  selectionsort(ar,
+  8);
+  for (int i  = 0;
+  i < 8;
+  i = i + 1;) {
+    print_int(ar[i]);
+  }
+  return 0;
+}
+
+* TMP FILES:
+*  c_obj/selectionsort.oat8e427f.s
+*  c_obj/selectionsort.oat520b59.o
+*  c_bin/selectionsort.oat963290
+compiling:
+int program ( int argc,
+string[] argv ) { 
+  int[][] a  = {{1, 3, 4}, {2, 0, 1}};
+  int[][] b  = {{1, 2, 3, 1}, {2, 2, 2, 2}, {3, 2, 1, 4}};
+  int[][] c  = {{0, 0, 0, 0}, {0, 0, 0, 0}};
+  matrix_Mult(a,
+  b,
+  c);
+  prnNx4(c,
+  2);
+  matrix_MultAlt(a,
+  b,
+  c);
+  prnNx4(c,
+  2);
+  return 0;
+}
+ matrix_Mult ( int[][] a1,
+int[][] a2,
+int[][] a3 ) { 
+  for (int i  = 0;
+  i < 2;
+  i = i + 1;) for (int j  = 0;
+  j < 4;
+  j = j + 1;) for (int k  = 0;
+  k < 3;
+  k = k + 1;) a3[i][j] = a3[i][j] + a1[i][k] * a2[k][j];
+  return ;
+}
+ matrix_MultAlt ( int[][] a1,
+int[][] a2,
+int[][] a3 ) { 
+  for (int i  = 0;
+  i < 2;
+  i = i + 1;) for (int j  = 0;
+  j < 4;
+  j = j + 1;) a3[i][j] = dot3(a1, a2, i, j);
+  return ;
+}
+int dot3 ( int[][] a1,
+int[][] a2,
+int row,
+int col ) { 
+  int sum  = 0;
+  for (int k  = 0;
+  k < 3;
+  k = k + 1;) sum = sum + a1[row][k] * a2[k][col];
+  return sum;
+}
+ prnNx4 ( int[][] ar,
+int n ) { 
+  for (int i  = 0;
+  i < n;
+  i = i + 1;) {
+    for (int j  = 0;
+    j < 4;
+    j = j + 1;) {
+      print_int(ar[i][j]);
+      print_string(" ");
+    }
+    print_string("\n");
+  }
+  return ;
+}
+
+* TMP FILES:
+*  c_obj/matrixmult.oatf7f4f1.s
+*  c_obj/matrixmult.oat7483d0.o
+*  c_bin/matrixmult.oat668cf4
+compiling:
+int[] arr  = {1, 2};
+int program ( int argc,
+string[] argv ) { 
+  
+  return arr[2];
+}
+
+* TMP FILES:
+*  c_obj/run4.oat3775bb.s
+*  c_obj/run4.oatdfcb22.o
+*  c_bin/run4.oatd42c75
+compiling:
+int[][] arr  = {{1, 2}, {3, 4}};
+int program ( int argc,
+string[] argv ) { 
+  
+  return arr[1][3];
+}
+
+* TMP FILES:
+*  c_obj/run6.oatfeab77.s
+*  c_obj/run6.oat8ef149.o
+*  c_bin/run6.oatd55c20
+compiling:
+int[][] arr  = {{1, 2}, {3, 4}};
+int program ( int argc,
+string[] argv ) { 
+  
+  return arr[3][0];
+}
+
+* TMP FILES:
+*  c_obj/run7.oate9ce20.s
+*  c_obj/run7.oatd297c7.o
+*  c_bin/run7.oat35ef9e
+compiling:
+int program ( int argc,
+string[] argv ) { 
+  int x  = 10;
+  int[][] a  = new int[][ 3 ] ( fun i -> new int[ 3 ] ( fun j -> x + i + j ) );
+  int[][] b  = a;
+  return b[2][3];
+}
+
+* TMP FILES:
+*  c_obj/run17.oatfe6434.s
+*  c_obj/run17.oat6cc386.o
+*  c_bin/run17.oatfe5743
+compiling:
+int program ( int argc,
+string[] argv ) { 
+  int[] a  = {0, 0};
+  return a[-1];
+}
+
+* TMP FILES:
+*  c_obj/run36.oat31706e.s
+*  c_obj/run36.oat194a94.o
+*  c_bin/run36.oatd10798
+compiling:
+int program ( int argc,
+string[] argv ) { 
+  int[][] a  = {{0, 0}, {0, 0}};
+  return a[1][3];
+}
+
+* TMP FILES:
+*  c_obj/run37.oataf6ab4.s
+*  c_obj/run37.oat314181.o
+*  c_bin/run37.oatcf571a
+compiling:
+string sub ( string str,
+int start,
+int len ) { 
+  int[] arr  = array_of_string(str);
+  int[] r  = new int[ len ] ( fun i -> arr[i + start] );
+  return string_of_array(r);
+}
+int program ( int argc,
+string[] argv ) { 
+  print_string(sub(argv[1],
+  3,
+  5));
+  return 0;
+}
+
+* TMP FILES:
+*  c_obj/lib15.oat85ee4d.s
+*  c_obj/lib15.oat6c83d9.o
+*  c_bin/lib15.oat51fc84
+
+Typechecking error tests (15/15 points):
+  OK
+Typechecking correctness tests (15/15 points):
+  OK
+Easy tests (1/10 points)
+  run26: passed
+  run27: passed
+  run28: passed
+  run29: failed - test threw exception: Tc.TypeError("Some var does not have a type")
+  run30: failed - test threw exception: Tc.TypeError("Some var does not have a type")
+  run31: failed - test threw exception: Tc.TypeError("Some var does not have a type")
+  run13: failed - unimplemented
+  run32: failed - test threw exception: Tc.TypeError("Some var does not have a type")
+  run18: failed - unimplemented
+  run19: failed - unimplemented
+  run20: failed - unimplemented
+  run21: failed - test threw exception: Tc.TypeError("Some var does not have a type")
+  run24: failed - test threw exception: Tc.TypeError("Some var does not have a type")
+  run33: failed - unimplemented
+  run34: failed - unimplemented
+  run35: failed - test threw exception: Tc.TypeError("Some var does not have a type")
+  run38: failed - unimplemented
+  run39: failed - unimplemented
+  run40: failed - test threw exception: Tc.TypeError("Some var does not have a type")
+  run41: failed - unimplemented
+  run42: failed - unimplemented
+  run49: failed - unimplemented
+  run50: failed - unimplemented
+  run52: failed - test threw exception: Tc.TypeError("Some var does not have a type")
+  run60: failed - test threw exception: Tc.TypeError("Some var does not have a type")
+  run61: failed - test threw exception: Tc.TypeError("Some var does not have a type")
+Medium tests (0/10 points)
+  run1: failed - test threw exception: Tc.TypeError("Some var does not have a type")
+  run2: failed - test threw exception: Tc.TypeError("Some var does not have a type")
+  run3: failed - test threw exception: Tc.TypeError("Some var does not have a type")
+  run5: failed - test threw exception: Tc.TypeError("Some var does not have a type")
+  run8: failed - unimplemented
+  run9: failed - unimplemented
+  run10: failed - test threw exception: Tc.TypeError("Some var does not have a type")
+  run11: failed - test threw exception: Tc.TypeError("Some var does not have a type")
+  run14: failed - unimplemented
+  run15: failed - unimplemented
+  run16: failed - unimplemented
+  run22: failed - test threw exception: Tc.TypeError("Some var does not have a type")
+  run23: failed - test threw exception: Tc.TypeError("Some var does not have a type")
+  run25: failed - test threw exception: Tc.TypeError("Some var does not have a type")
+  run43: failed - test threw exception: Tc.TypeError("Some var does not have a type")
+  run44: failed - test threw exception: Tc.TypeError("Some var does not have a type")
+  run45: failed - test threw exception: Tc.TypeError("Some var does not have a type")
+  run46: failed - unimplemented
+  run47: failed - test threw exception: Tc.TypeError("Some var does not have a type")
+  run48: failed - test threw exception: Tc.TypeError("Some var does not have a type")
+  lib1: failed - unimplemented
+  lib2: failed - unimplemented
+  lib3: failed - unimplemented
+  lib4: failed - test threw exception: Tc.TypeError("Some var does not have a type")
+  lib5: failed - unimplemented
+  lib6: failed - test threw exception: Tc.TypeError("Some var does not have a type")
+  lib7: failed - unimplemented
+  lib8: failed - unimplemented
+  lib9: failed - unimplemented
+  lib10: failed - unimplemented
+  lib11: failed - unimplemented
+  lib14: failed - test threw exception: Tc.TypeError("Some var does not have a type")
+  lib15: failed - unimplemented
+Hard tests (0/10 points)
+  fac: failed - unimplemented
+  qsort: failed - unimplemented
+  bsort: failed - unimplemented
+  msort: failed - unimplemented
+  msort2: failed - test threw exception: Tc.TypeError("Some var does not have a type")
+  hsort: failed - test threw exception: Tc.TypeError("Some var does not have a type")
+  stoogesort: failed - unimplemented
+  selectionsort: failed - unimplemented
+  matrixmult: failed - unimplemented
+Runtime error tests (0/20 points)
+  run4: failed - test threw exception: Tc.TypeError("Some var does not have a type")
+  run6: failed - test threw exception: Tc.TypeError("Some var does not have a type")
+  run7: failed - test threw exception: Tc.TypeError("Some var does not have a type")
+  run17: failed - unimplemented
+  run36: failed - unimplemented
+  run37: failed - unimplemented
+  lib15: failed - unimplemented
+Stress tests (hidden) (??/10 points):
+  Hidden
+StyleManual (??/10 points):
+  Hidden
+---------------------------------------------------
+Passed: 38/110
+Failed: 72/110
+Score: 31/80 (given)
+       ??/20 (hidden)

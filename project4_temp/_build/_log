@@ -150,7 +150,7 @@
 # Target: tc.cmx, tags: { compile, extension:cmx, extension:ml, file:tc.cmx, file:tc.ml, implem, native, ocaml, quiet }
 /usr/bin/ocamlopt.opt -c -o tc.cmx tc.ml
 + /usr/bin/ocamlopt.opt -c -o tc.cmx tc.ml
-File "tc.ml", line 229, characters 38-78:
+File "tc.ml", line 228, characters 38-78:
 Warning 21: this statement never returns (or has an unsound type.)
 # Target: phase2.ml.depends, tags: { extension:ml, file:phase2.ml, ocaml, ocamldep, quiet }
 /usr/bin/ocamldep.opt -modules phase2.ml > phase2.ml.depends # cached

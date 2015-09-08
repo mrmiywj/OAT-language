@@ -166,10 +166,9 @@ let rec tc_exp (c:ctxt) (e:Range.t exp) : typ =
 (* Left-hand sides *)
 and tc_lhs (c:ctxt) (l:Range.t lhs) : typ =
   begin  match l with
-  | Var (_,s) -> let typop = lookup_local s c in
-                 begin match typop with
-                 | Some t -> t
-                 | None -> type_error "Some var does not have a type"
+  | Var (_,s) ->  begin match lookup_local s c,lookup_global_val s c with
+                 | Some t,_ | None, Some t -> t
+                 | None,None -> type_error "Some var does not have a type"
                  end
   | Index (lh,e) -> if (tc_exp c e <> TInt) then
       type_error "Some array's index is not TInt"
@@ -216,7 +215,7 @@ let rec tc_init (c:ctxt) (expected:typ) (i:Range.t init) : unit =
 
 (* List of variable declarations *)
 let tc_vdecls (c:ctxt) (vdecls:(Range.t vdecl) list) : ctxt =
-  List.fold_left (fun c vdecl -> if (in_locals (snd vdecl.v_id) c) then type_error "Some val has ben declared " else (tc_init c vdecl.v_ty vdecl.v_init);add_local (snd vdecl.v_id) vdecl.v_ty c) c vdecls
+  List.fold_left (fun c vdecl -> if (in_locals (snd vdecl.v_id) c) then type_error "Some val has ben declared " else ((tc_init c vdecl.v_ty vdecl.v_init);add_local (snd vdecl.v_id) vdecl.v_ty c)) c vdecls
 
 (* Statements *)
 let rec tc_stmt (c:ctxt) (s:Range.t stmt) : unit =
