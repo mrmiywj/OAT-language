@@ -1,0 +1,15 @@
+class A {
+  int[] arr;
+  new () () this.arr = new int [10] (fun i -> 110); {}
+};
+
+class B<:A {
+  new () () {}
+};
+
+int program (int argc, string[] argv) {
+  B b = new B ();
+  print_string (string_of_array (b.arr));
+  return 0;
+}
+

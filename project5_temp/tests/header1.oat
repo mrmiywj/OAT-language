@@ -1,0 +1,14 @@
+#ifndef __HEADER1_OAT__
+#define __HEADER1_OAT__
+
+class A {
+  new()(){}
+  unit print () {
+    print_string ("A");
+    return;
+  }
+};
+
+A a1 = new A();
+
+#endif

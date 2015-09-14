@@ -1,0 +1,3 @@
+unit f (A a) { return; }
+
+class A { new ()(){} };

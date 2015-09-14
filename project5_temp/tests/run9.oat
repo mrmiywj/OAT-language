@@ -1,0 +1,11 @@
+class A {
+  string? str;
+  new () () { }
+  string? f() { this.str = "hello"; return this.str; }
+};
+
+int program (int argc, string[] argv) {
+  A a = new A ();
+  if? (string x = a.f()) print_string (x);
+  return 0;
+}

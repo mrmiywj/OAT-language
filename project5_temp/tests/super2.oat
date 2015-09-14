@@ -1,0 +1,33 @@
+class A <: Object {
+  new()() {
+  }
+  int six() {
+    return 1;
+  }
+  unit f () {print_string ("A");return;}
+};
+
+class B <: A {
+  new()() {
+  }
+  int six() {
+    return super.six() + 2;
+  }
+  unit f () {print_string ("B");return;}
+};
+
+class C <: B {
+  new()() {}
+  int six() {
+    return super.six() + 3;
+  }
+  unit f () {print_string ("C");return;}
+};
+
+int program(int argc, string[] argv) {
+  C c = new C();
+  int i = c.six();
+  c.f();
+  return i;
+}
+

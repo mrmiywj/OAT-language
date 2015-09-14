@@ -1,0 +1,12 @@
+#include "header1.oat"
+#include "header2.oat"
+#include "header3.oat"
+
+int program (int argc, string[] argv) {
+  A a = new A();
+  a.print();
+  a1.print();
+  a2.print();
+  a3.print();
+  return 0;
+}

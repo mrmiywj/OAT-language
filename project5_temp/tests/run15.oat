@@ -1,0 +1,17 @@
+/* B calls A's ctor */
+
+class A {
+  string str;
+  new () () this.str = "str"; {}
+};
+
+class B<:A {
+  new () () {}
+};
+
+int program (int argc, string[] argv) {
+  B b = new B ();
+  print_string (b.str);
+  return 0;
+}
+

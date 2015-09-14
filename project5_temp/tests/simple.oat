@@ -1,0 +1,20 @@
+class A <: Object {
+  int x;
+
+  new (int y)() 
+    this.x = y;	 {
+  }
+
+  unit print() {
+    print_string(string_cat("A: x=", string_of_int(this.x)));
+    return;
+  }
+
+};
+
+A a = new A(1 + 2);
+
+int program (int argc, string[] argv) {
+  a.print();
+  return 0;
+}

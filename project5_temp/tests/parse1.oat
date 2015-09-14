@@ -1,0 +1,16 @@
+class A {
+  new () () { 
+  }
+};
+
+class B <: A {
+  new () () { 
+  }
+};
+
+class C <: B {
+  int i;
+  new () () { 
+  }
+  int f () {return i;}
+};

@@ -1,0 +1,8 @@
+int i=0;
+class A {
+  new () () { }
+};
+
+class B<: A {
+  new () () { this.i = 0; }
+};

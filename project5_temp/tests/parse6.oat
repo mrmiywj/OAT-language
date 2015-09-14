@@ -1,0 +1,18 @@
+A a = a.f().g().d;
+int f() {
+ i = this.a;
+ this.a.b = this.f();
+ this.a[2].f().b = this.f()[6].g();
+ i = super.f();
+ super.f().a = super.f().f().g;
+ a.f()[2].b = a.f();
+ return a.f().g()[3];
+}
+
+class A {
+  int a;
+  new()() 
+    this.a = 1;
+    this.b = 1;
+  {}
+};

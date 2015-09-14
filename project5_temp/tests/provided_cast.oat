@@ -1,0 +1,45 @@
+class A {
+  new()() {}
+  unit name() {print_string("A"); return;}
+};
+
+class B <: A {
+  int only_b;
+  new()() { this.only_b = 1; }
+  unit name() {print_string("B"); return;}
+};
+
+class Bb <: A {
+  int only_bb;
+  new()() { this.only_bb = 2; }
+  unit name() {print_string("Bb"); return;}
+};
+
+int program (int argc, string[] argv) {
+
+A ana = new A();
+A anb = new B();
+A anbb = new Bb();
+
+int sum = 0;
+cast(Bb bb = anbb) {
+  sum = sum + bb.only_bb;
+  bb.name();
+}
+cast(B b = anb) {
+  sum = sum + b.only_b;
+  b.name();
+}
+cast(Bb bb = anb) {
+  fail ("???");
+} else {
+  print_string("makes sense.");
+}
+cast(B b = anbb) {
+  fail ("???");
+} else {
+  print_string("makes sense.");
+}
+return sum;
+}
+

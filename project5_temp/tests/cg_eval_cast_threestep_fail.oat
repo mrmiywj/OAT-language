@@ -1,0 +1,24 @@
+class A <: Object { new()() {} };
+class B <: A { new()() {} };
+class Cc <: B { new()() {} };
+class CC <: B { new()() {} };
+class Ccc <: Cc { new()() {} };
+class CcC <: Cc { new()() {} };
+class CCc <: CC { new()() {} };
+class CCC <: CC { new()() {} };
+
+int docast(Object o) {
+  int r = 0;
+  cast (CCC c = o) {
+    r = 12;
+  } else {
+    r = 21;
+  }
+  return r;
+}
+
+int program(int argc, string[] argv) {
+  return docast(new Cc());
+}
+
+/* Result: 21 */

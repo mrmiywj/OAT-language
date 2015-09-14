@@ -1,0 +1,7 @@
+class A { new ()() {} };
+class B {
+  new () () {
+    A a = new A();
+    a.f();
+  }
+};

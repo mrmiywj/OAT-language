@@ -1,0 +1,17 @@
+class A {
+  new () () {}
+  unit f () {
+    return;
+  }
+  unit g () {
+    print_string ("g");
+    return;
+  }
+};
+
+int program (int argc, string[] argv) {
+  A b = new A ();
+  b.g();
+  return 0;
+}
+

@@ -1,0 +1,9 @@
+class B {
+  new () () { 
+    this.f();
+    super.f();
+    fail ("abc");
+    i = this.f();
+    i = super.f();
+  }
+};

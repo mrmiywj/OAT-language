@@ -1,0 +1,51 @@
+
+class Array <: Object {
+  Array[] a;
+  int length;
+  int value;
+  
+  new()() 
+    this.a = new Array [0](fun i -> new Array());
+  {
+    this.value = 0;
+    this.length = 0;
+  }
+
+  unit set_length(int l) {
+    this.length = l;
+    this.a = new Array [this.length](fun i -> new Array());
+    return;
+  }
+  unit add_dimension() {
+    this.a = new Array [this.length](fun i -> new Array());
+    for(int x = 0; x < this.length; x = x + 1;) {
+      this.a[x].set_length(this.length);
+    }
+    return;
+  }
+  unit fill_random_bits() {
+    for(int x = 0; x < this.length; x = x + 1;) {
+      this.a[x].fill_random_bits();
+    }
+    this.value = 2;
+    return;
+  }
+  int total() {
+    int t = this.value;
+    for(int x = 0; x < this.length; x = x + 1;) {
+      t = t + this.a[x].total();
+    }
+    return t;
+  }
+};
+
+Array a = new Array();
+int program(int argc, string[] argv) {
+  a.set_length(5);
+  a.add_dimension();
+  a.add_dimension();
+  a.add_dimension();
+  a.fill_random_bits();
+  return a.total();
+}
+

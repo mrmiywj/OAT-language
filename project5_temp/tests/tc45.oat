@@ -1,0 +1,10 @@
+class S {
+  new()(){}
+  int f() { return 0;}
+};
+ 
+class A <: S {
+  int i;
+  new () () this.i=super.f(); {}
+};
+   

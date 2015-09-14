@@ -1,0 +1,44 @@
+#include "list.oat"
+
+class Foo <: Object {
+  int x;
+  new (int x)() {
+   this.x = x;
+  }
+  unit print() {
+    print_string(string_of_int(this.x));
+    return;
+  }
+};
+
+unit printFooList(List l) {
+  ListItem? cursor = l.head;
+  while (!equals(cursor, null)) {
+    if? (ListItem item = cursor) {
+      if? (Object o = item.obj) {
+        cast (Foo f = o) f.print(); else print_string("failed cast");
+      } else print_string("failed null");
+      cursor = item.next;
+    }
+  }
+  return;
+}
+
+List l = new List();
+
+int program (int argc, string[] argv) {
+  ListItem? cursor = null;
+
+  for (int i = 0; i< 10; i = i+ 1;) {
+    l.insert(new Foo(i));
+  }
+  printFooList(l);
+  cursor = l.head;
+  if? (ListItem item = cursor) {
+    if? (ListItem next =  item.next)
+      l.remove(next);
+  }
+  printFooList(l);
+
+  return 0;
+}

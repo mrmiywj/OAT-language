@@ -1,0 +1,19 @@
+class A <: Object {
+  string nnstr;
+  Object nnobj;
+  string nnstr2;
+  Object[] nnobjarr;
+  string[] nnstrarr;
+  
+  new()()
+    this.nnstr = "hello!";
+    this.nnstrarr = new string [3](fun i -> "hello");
+  {}
+};
+
+int program (int argc, string[] argv) {
+  A a = new A();
+  return 0;
+}
+
+/* result: runtime error */

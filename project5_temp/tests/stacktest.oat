@@ -1,0 +1,24 @@
+#include "stack.oat"
+
+Stack s = new Stack();
+
+int program(int argc, string[] argv) {
+  int r=0;
+  s.push(7);
+  s.push(3);
+  s.push(9);
+  r = r+s.pop();
+  s.push(3);
+  s.push(17);
+  s.push(2);
+  r = r+s.pop();
+  s.push(1);
+  s.push(98);
+  r = r+s.pop();
+  s.push(43);
+  s.push(11);
+  r = r+s.pop();
+  return r;
+}
+
+/*result: 11*/

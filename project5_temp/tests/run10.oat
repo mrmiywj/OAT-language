@@ -1,0 +1,15 @@
+class A {
+  int[]? arr;
+  new () () { }
+  int[]? f() { 
+    this.arr = new int [5] (fun i -> 110);
+    return this.arr;
+  }
+};
+
+int program (int argc, string[] argv) {
+  A a = new A ();
+  if? (int[] arr = a.f())
+    print_string (string_of_array (arr));
+  return 0;
+}

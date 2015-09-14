@@ -1,0 +1,9 @@
+class A {
+  int i;
+  new ()() {}
+};
+
+class B<:A {
+  int i;
+  new ()() {}
+};

@@ -1,0 +1,10 @@
+Object o = new Object ();
+unit f() {
+  Object o = new Object ();
+  return;
+}
+int program (int argc, string[] argv) {
+  Object o = new Object ();
+  f();
+  return 0;
+}

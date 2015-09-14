@@ -1,0 +1,27 @@
+class A <: Object{
+  new ()() {}
+  Object f() { return new B(); }
+  unit print() { print_string ("A"); return; }
+};
+
+class B <: A {
+  new ()() {}
+  C f() { return new C(); }
+  unit print() { print_string ("B"); return; }
+};
+
+class C <: Object{
+  new ()() {}
+  unit print() { print_string ("C"); return; }
+};
+
+int program(int argc, string[] argv) {
+  A a = new A();
+  B b = new B();
+  C c = new C();
+  a.print();
+  b.print();
+  b.f().print();
+  c.print();
+  return 0;  
+}

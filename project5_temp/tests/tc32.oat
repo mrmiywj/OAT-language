@@ -1,0 +1,6 @@
+unit f() {
+  A a = new A();
+  return;
+}
+
+class A {new ()() {}};

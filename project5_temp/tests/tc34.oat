@@ -1,0 +1,12 @@
+class O1 {new()(){}};
+class O2 <: O1 {new()(){}};
+
+class A {
+  new ()() {}
+  O2 f() {return new O2();}
+};
+
+class B<:A {
+  new ()() {}
+  O1 f() {return new O1();}
+};

@@ -1,0 +1,5 @@
+int f () {
+  cast (B? b = a) {
+  } else { }
+  return 0;
+}

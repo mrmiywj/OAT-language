@@ -1,0 +1,44 @@
+class A {
+  new () () { }
+  unit f () {
+    print_string ("A");
+    return;
+  }
+};
+
+class B <: A {
+  new () () { }
+  unit f () {
+    print_string ("B");
+    return;
+  }
+};
+
+class C <: B {
+  new () () { }
+  unit f () {
+    print_string ("C");
+    return;
+  }
+};
+
+unit f (A x) {
+  cast (C c = x) { 
+    c.f();
+  }
+  cast (B b = x) { 
+    b.f();
+  }
+  cast (A a = x) { 
+    a.f();
+  }
+  return;
+}
+
+int program (int argc, string[] argv) {
+  f (new A());
+  f (new B());
+  f (new C());
+  return 0;
+}
+

@@ -1,0 +1,45 @@
+class Wl {
+  new()() {
+  }
+  
+  string noise() {
+    return "oot!";
+  }
+  
+  int parentmethod() {
+    return 40;
+  }
+  
+  int secondoverride() {
+    return -2;
+  }
+};
+
+class Owl <: Wl {
+  new()() {
+  }
+
+  string noise() {
+    return "hoot!";
+  }
+  
+  int childmethod() {
+    return 3;
+  }
+  
+  int secondoverride() {
+    return super.secondoverride() + 1;
+  }
+};
+
+string getNoise(Wl thing) {
+  return thing.noise();
+}
+
+Owl o = new Owl();
+
+int program (int argc, string[] argv) {
+  print_string(getNoise(o));
+  return o.childmethod() + o.parentmethod() + o.secondoverride();
+}
+

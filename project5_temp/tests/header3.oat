@@ -1,0 +1,8 @@
+#ifndef __HEADER3_OAT__
+#define __HEADER3_OAT__
+
+#include "header1.oat"
+
+A a3 = new A();
+
+#endif

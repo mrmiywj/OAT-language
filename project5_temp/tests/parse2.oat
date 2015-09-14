@@ -1,0 +1,13 @@
+class A {
+  new (int a, int b) () { 
+  }
+};
+
+unit p() {
+  A a1 = new A ();
+  A[] arr = new A [10] (fun i -> new A ());
+  A? a2 = null;
+  if? (A x = a2) {} else {}
+  cast (A v = a2) {} else {}
+  return;
+}

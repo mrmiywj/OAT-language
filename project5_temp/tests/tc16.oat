@@ -1,0 +1,14 @@
+class A { 
+  int f;
+  new () () {} 
+};
+
+class B <: A {
+  new () () { }
+};
+
+class C <: B {
+  new () () { 
+    if (this.f) {} 
+  }
+};

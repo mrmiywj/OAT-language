@@ -1,0 +1,16 @@
+class A {
+  new () () {}
+};
+
+class B {
+  new () () {}
+};
+
+int program (int argc, string[] argv) {
+  A? a = null;
+  B b = new B ();
+  if (a == b) {}
+  return 0;
+}
+
+

@@ -1,0 +1,19 @@
+int program (int argc, string[] argv) {
+string? nulstr = null;
+string? str = "hello";
+string? oldbind = null;
+int x = 0;
+if? (string astr = nulstr) {
+  print_string(astr);
+  x = x + 2;
+  oldbind = nulstr;
+}
+if? (string bstr = str) {
+  print_string(bstr);
+  x = x + 40;
+  oldbind = nulstr;
+}
+return x;
+}
+
+/* Result: 40 */

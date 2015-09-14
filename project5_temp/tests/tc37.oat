@@ -1,0 +1,7 @@
+class A {
+  new (int i)() {}
+};
+
+class B<:A {
+  new ()(0,1) {}
+};

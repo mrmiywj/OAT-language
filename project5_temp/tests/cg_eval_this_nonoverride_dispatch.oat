@@ -1,0 +1,46 @@
+class A <: Object {
+  new()() {}
+  
+  int over(int x) {
+    return x + 1;
+  }
+  
+  int foo(int x) {
+    return x + 8;
+  }
+  
+  int call() {
+    return 0;
+  }
+};
+
+class B <: A {
+  new()() {}
+
+  int over(int x) {
+    return x + 2;
+  }
+  
+  int call() {
+    return 0;
+  }
+};
+
+class C <: B {
+  new()() {}
+
+  int notover(int x) {
+    return x + 1;
+  }
+  
+  int call() {
+    return this.foo(3);
+  }
+};
+
+A a = new C();
+int program(int argc, string[] argv) {
+ return a.call();
+}
+
+/* Result: 11 */

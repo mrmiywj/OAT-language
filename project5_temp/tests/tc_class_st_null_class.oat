@@ -1,0 +1,6 @@
+unit g() {
+  Object? o = null;
+  o = new Object();
+  return;
+}
+

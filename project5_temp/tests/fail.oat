@@ -1,0 +1,6 @@
+int x = 3;
+
+int program (int argc, string[] argv) {
+  if (x == 3) fail("X is three!"); else x = 4;
+  return x;
+}

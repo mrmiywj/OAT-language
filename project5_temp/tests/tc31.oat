@@ -1,0 +1,6 @@
+
+class B <: A {
+  new ()() {}
+};
+
+class A {new ()() {}};

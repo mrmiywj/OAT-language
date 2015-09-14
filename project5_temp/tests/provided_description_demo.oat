@@ -1,0 +1,38 @@
+class Animal {
+  string name;
+  new(string name)() this.name = name; {}
+  string noise() {
+    fail ("???");
+    return "???";
+  }
+};
+
+class Dog <: Animal {
+  string? owner;
+  new(string name)(name) {}
+  string noise() { return "arf"; }
+};
+
+class Cow <: Animal {
+  new(string name)(name) {}
+  string noise() { return "moo"; }
+};
+
+int program(int argc, string[] argv) {
+
+  Animal d = new Dog("Spot");
+  Animal c = new Cow("Example Cow");
+  print_string(d.noise());
+  print_string(c.noise());
+  cast(Dog adog = d) {
+    if?(string owned = adog.owner) {
+      print_string("This dog is owned by ");
+      print_string(owned);
+    } else {
+      adog.owner = "Timmy";
+      print_string("This dog is stray!");
+    }
+  }
+
+  return 0;
+}

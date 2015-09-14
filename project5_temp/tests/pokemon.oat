@@ -1,0 +1,72 @@
+
+class Pokemon <: Object {
+  int life;
+  string voice;
+
+  new ()()
+    this.voice = "9";
+  {this.life = 100; }
+
+  unit gethit(int s){
+    this.life = (this.life - s);
+    print_string (this.voice);
+    return;  
+  }
+};
+
+class Pikachu <: Pokemon {
+  int speed;
+
+  new()(){ this.speed = 25; this.voice = "2"; }
+
+  unit attack(Charmander ch) {
+    print_string ("3");
+    print_string (this.voice);
+    ch.gethit(this.speed);
+    return;
+  }
+
+  unit noise(){
+    print_string (this.voice);
+    return;
+  }
+};
+
+class Charmander <: Pokemon {
+  int speed;
+
+  new()()
+    this.voice = "4";
+  {this.speed = 16;}
+
+  unit attack(Pikachu pi) {
+   print_string ("5");
+   print_string (this.voice);
+   pi.gethit(this.speed);
+   return;
+ }
+
+  unit noise(){
+    print_string (this.voice);  
+    return;
+  }
+};
+
+Pikachu p = new Pikachu();
+Charmander c = new Charmander();
+
+int program(int argc, string[] argv){
+  c.attack(p);
+  p.attack(c);
+  c.attack(p);
+  p.attack(c);
+  c.attack(p);
+  p.attack(c);
+  c.attack(p);
+  p.attack(c);
+  c.attack(p);
+  print_string ("6");
+  return 0;
+}
+
+/*result is 0*/

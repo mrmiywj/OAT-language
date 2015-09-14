@@ -1,0 +1,5 @@
+unit f() {
+  (new A()).g = 1;
+  return;
+}
+

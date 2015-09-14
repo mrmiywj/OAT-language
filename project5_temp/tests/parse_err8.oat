@@ -1,0 +1,4 @@
+class A {
+  int f() { return 0; }
+  new () () { }
+};

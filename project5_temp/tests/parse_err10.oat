@@ -1,0 +1,5 @@
+unit f() {
+  a.f() = 1;
+  return;
+}
+

@@ -1,0 +1,14 @@
+class A { 
+  new () () {} 
+};
+
+class B <: A {
+  new () () { }
+};
+
+class C {
+  new (A a, B b) () { 
+  }
+};
+
+C c = new C (new B(), new A());

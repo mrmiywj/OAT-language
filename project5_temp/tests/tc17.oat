@@ -1,0 +1,15 @@
+class A { 
+  new () () {} 
+};
+
+class B <: A {
+  new () () { }
+};
+
+class C {
+  new () () { 
+    A a = new A();
+    this.f (a);
+  }
+  unit f (B a) { return; }
+};

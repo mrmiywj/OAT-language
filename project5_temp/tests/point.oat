@@ -1,0 +1,19 @@
+class Point <: Object {
+  int x;
+  int y;
+  new ()() {
+    this.x = 0;
+    this.y = 0;
+  }
+  Point move(int dx, int dy) {
+    this.x = this.x + dx;
+    this.y = this.y + dy;
+    return this;
+  }
+};
+
+int program (int argc, string[] argv) {
+  Point p1 = new Point();
+  Point p2 = p1.move(3,4);
+  return p2.x;
+}

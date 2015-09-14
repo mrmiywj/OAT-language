@@ -1,0 +1,4 @@
+int f () {
+  cast (string? str = null) {}
+  return 0;
+}

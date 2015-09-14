@@ -1,0 +1,13 @@
+string? s1 = "hello";
+string? s2 = null;
+string? s3 = "goodbye";
+
+int program (int argc, string[] argv) {
+  int i = 0;
+
+  if? (string s = s1) i = length_of_string(s); else i = 0;
+  if? (string s = s2) i = i + length_of_string(s); else i = i + 30;
+  if? (string s = s3) i = i + length_of_string(s); else i = i + 41;
+ 
+  return i;  
+}

@@ -1,0 +1,10 @@
+class A <: Object {
+  new(string a, int b)() {}
+};
+
+class B <: A {
+  new(string? a, int b)(a, b) {}
+};
+
+
+/* error on 6 */

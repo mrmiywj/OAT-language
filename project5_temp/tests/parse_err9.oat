@@ -1,0 +1,4 @@
+unit f() {
+  i = super.a;
+  return;
+}

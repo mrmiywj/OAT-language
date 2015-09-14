@@ -1,0 +1,20 @@
+class Fields {
+  int afield;
+  int bfield;
+  int cfield;
+
+  new()() {
+    this.afield = 12;
+  }
+  
+  Fields sumab() {
+    this.bfield = 1 + this.afield;
+    return this;
+  }
+};
+
+int program (int argc, string[] argv) {
+  Fields fields = new Fields();
+  Fields o = fields.sumab ();
+  return o.bfield;
+}

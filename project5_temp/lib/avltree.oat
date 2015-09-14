@@ -1,0 +1,713 @@
+#ifndef __AVLTREE_OAT__
+#define __AVLTREE_OAT__
+
+#include "math.oat"
+
+bool equals(Object? o1, Object? o2) {
+  return o1 == o2;
+}
+
+class Number <: Object
+{
+  new()(){}
+
+  /* return <0 if this<a, 0 if this=a, >0 if this>a */
+  int compareTo(Number a)
+  {
+    fail ("Abstract compareTo");
+    return 0;
+  }
+
+  string toString()
+  {
+    fail ("Abstract toString");
+    return "";
+  }
+};
+
+class Quotient <: Number
+{
+  int n;
+  int d;
+  new(int n,int d)()
+  {
+    int g=gcd(n,d);
+    if (d==0)
+      fail ("Zero denominator");
+    n=oat_div (n,g);
+    d=oat_div (d,g);
+    if (d<0)
+    {
+      n=-n;
+      d=-d;
+    }
+    this.n=n;
+    this.d=d;
+  }
+
+  int num()
+  {
+    return this.n;
+  }
+
+  int denom()
+  {
+    return this.d;
+  }
+
+  Quotient add(Quotient a)
+  {
+    /* find common denominator */
+    int c=gcd(this.d,a.d);
+    return new Quotient(oat_div(a.d,c)*this.n+oat_div(this.d,c)*a.n, 
+                        oat_div(a.d,c)*this.d);
+  }
+
+  int div()
+  {
+    return oat_div (this.num(),this.denom());
+  }
+
+  int mod()
+  {
+    return oat_mod (this.num(),this.denom());
+  }
+
+  /* return <0 if this<a, 0 if this=a, >0 if this>a */
+  int compareTo(Number x)
+  {
+    int r=0;
+    cast(Quotient a=x)
+      r = this.n*a.d-this.d*a.n;
+    else
+      r = super.compareTo(x);
+    return r;
+  }
+
+  string toString()
+  {
+    return string_cat(string_cat(string_of_int(this.n),"/"),string_of_int(this.d));
+  }
+};
+
+class Integer <: Quotient
+{
+  new(int x)(x,1){}
+
+  int val()
+  {
+    return this.num();
+  }
+
+  int compareTo(Number x)
+  {
+    int r=0;
+    cast(Integer a=x)
+      r=this.n-a.n;
+    else
+      r=super.compareTo(x);
+    return r;
+  }
+
+  string toString()
+  {
+    return string_of_int(this.n);
+  }
+};
+
+class Zero <: Integer
+{
+  new()(0){}
+
+  Quotient add(Quotient a)
+  {
+    return new Quotient(a.n,a.d);
+    /* a*/
+  }
+
+  string toString()
+  {
+    return "0";
+  }
+};
+
+int gcd(int a,int b)
+{
+  a=abs(a);
+  b=abs(b);
+  while(b!=0)
+  {
+    int tmp=oat_mod(a,b);
+    a=b;
+    b=tmp;
+  }
+  return a;
+}
+
+int abs(int x)
+{
+  int r = 0;
+  if (x>=0) r = x; else r = -x;
+  return r;
+}
+
+bool ptr_eq(Object? a, Object? b) {
+  bool ret = false;
+  if?(Object a1 = a) {
+    if?(Object b1 = b) {
+      ret = (a1 == b1);
+    }
+  }
+  return ret;
+}
+
+
+/* Binary Search Tree
+ * Elements can be duplicates.
+ * Support deletion.
+ */
+class BSTree <: Object
+{
+  Number? val;
+  BSTree? left;
+  BSTree? right;
+  BSTree? parent;
+
+  new()()
+  {
+    this.val=null;
+    this.left=null;
+    this.right=null;
+    this.parent=null;
+  }
+
+  unit insert(Number x)
+  {
+    BSTree? cur=this;
+    BSTree? prev=null;
+    while (!equals(cur,null))
+    {
+      if?(BSTree cur_=cur)
+        if?(Number key=cur_.val)
+        {
+          int cmp=x.compareTo(key);
+          if (cmp<0)
+          {
+            prev=cur;
+            cur=cur_.left;
+          }
+          else
+          {
+            prev=cur;
+            cur=cur_.right;
+          }
+        }
+        else  /* empty tree */
+          cur=null;
+    }
+
+    /* insert */
+    if?(BSTree prev_=prev)
+    {
+      /* create new node */
+      BSTree n=new BSTree();
+      n.val=x;
+      n.parent=prev_;
+      if?(Number key=prev_.val)
+        if (x.compareTo(key)<0)
+          prev_.left=n;
+        else
+          prev_.right=n;
+    }
+    else  /* empty tree; change root */
+      this.val=x;
+    return;
+  }
+
+  /* return 1 if found; 0 if not found */
+  int find(Number x)
+  {
+    BSTree? cur=this;
+    int found=0;
+    while (found == 0 & !equals(cur,null))
+    {
+      if?(BSTree cur_=cur)
+        if?(Number key=cur_.val)
+        {
+          int cmp=x.compareTo(key);
+          if (cmp==0)
+          {
+            found=1;
+          }
+          else if (cmp<0)
+            cur=cur_.left;
+          else
+            cur=cur_.right;
+        }
+        else  /* empty tree */
+          cur=null;
+    }
+    return found;
+  }
+
+  /* delete x; if not found, fail */
+  unit remove(Number x)
+  {
+    BSTree? cur=this;
+    BSTree? prev=null;
+    int found=0;
+    while (found == 0 & !equals(cur,null))
+    {
+      if?(BSTree cur_=cur)
+        if?(Number key=cur_.val)
+        {
+          int cmp=x.compareTo(key);
+          if (cmp==0)
+          {
+            found=1;
+          }
+          else if (cmp<0)
+          {
+            prev=cur;
+            cur=cur_.left;
+          }
+          else
+          {
+            prev=cur;
+            cur=cur_.right;
+          }
+        }
+        else  /* empty tree */
+          cur=null;
+    }
+    if (found == 0)
+      fail ("Element not found");
+    else
+      if?(BSTree c=cur)
+        this.remove_node(c);
+      else
+        fail ("Fatal Error: Inconsistent node state.");
+    return;
+  }
+
+  unit remove_node(BSTree c)
+  {
+    if (equals(c.left,null) & equals(c.right,null))
+      if?(BSTree p=c.parent)
+        if (equals(p.left,c))
+          p.left=null;
+        else
+          p.right=null;
+      else /* no parent -> root */
+        this.val=null;
+    else if (equals(c.left, null))
+      if?(BSTree p=c.parent)
+        if (equals(p.left, c))
+          p.left=c.right;
+        else
+          p.right=c.right;
+      else /* no parent -> root */
+      {
+        if?(BSTree n=c.right)
+        {
+          this.val=n.val;
+          this.left=n.left;
+          this.right=n.right;
+        }
+        else
+          fail ("Fatal Error: Inconsistent node state.");
+      }
+    else if (equals(c.right, null))
+      if?(BSTree p=c.parent)
+        if (equals(p.left, c))
+          p.left=c.left;
+        else
+          p.right=c.left;
+      else /* no parent -> root */
+      {
+        if?(BSTree n=c.left)
+        {
+          this.val=n.val;
+          this.left=n.left;
+          this.right=n.right;
+        }
+        else
+          fail ("Fatal Error: Inconsistent node state.");
+      }
+    else  /* difficult case */
+    {
+      /* find leftmost BSTree of right subtree */
+      if?(BSTree t=c.right)
+      {
+        while(!equals(t.left, null))
+          if?(BSTree tt=t.left) t=tt; else fail ("Unexpected");
+        
+        /* replace value c <- t */
+        c.val=t.val;
+
+        /* remove t */
+        this.remove_node(t);
+      }
+      else
+        fail ("Unexpected");
+    }
+    return;
+  }
+};
+
+class AVLTree <: BSTree
+{
+  int height;
+
+  new()()
+  {
+    this.height=-1;
+  }
+
+  unit insert(Number x)
+  {
+    AVLTree? cur=this;
+    AVLTree? prev=null;
+    while (!equals(cur, null))
+    {
+      if?(AVLTree cur_=cur)
+        if?(Number key=cur_.val)
+        {
+          int cmp=x.compareTo(key);
+          if (cmp<0)
+          {
+            prev=cur_;
+            cur=this.bstToAvl(cur_.left);
+          }
+          else
+          {
+            prev=cur_;
+            cur=this.bstToAvl(cur_.right);
+          }
+        }
+        else  /* empty tree */
+          cur=null;
+    }
+
+    if?(AVLTree prev_=prev)
+    {
+      /* create new node */
+      AVLTree n=new AVLTree();
+      n.val=x;
+      n.height=0;
+      n.parent=prev_;
+      if?(Number key=prev_.val)
+        if (x.compareTo(key)<0)
+          prev_.left=n;
+        else
+          prev_.right=n;
+      cur=prev_;
+    }
+    else  /* empty tree; change root */
+    {
+      this.val=x;
+      this.height=0;
+      cur=null;
+    }
+
+    /* check heights and balances */
+    while(!equals(cur, null))
+    {
+      if?(AVLTree c=cur)
+      {
+        c.updateHeight();
+        c.checkBalance();
+        cur=this.bstToAvl(c.parent);
+      }
+    }
+    return;
+  }
+
+  unit remove_node(BSTree c)
+  {
+    if (equals(c.left, null) & equals(c.right, null))
+      if?(AVLTree p=this.bstToAvl(c.parent))
+      {
+        if (equals(p.left, c))
+          p.left=null;
+        else
+          p.right=null;
+
+        {
+          AVLTree? cur=p;
+          while(!equals(cur, null))
+          {
+            if?(AVLTree cur_=cur)
+            {
+              cur_.updateHeight();
+              cur_.checkBalance();
+              cur=this.bstToAvl(cur_.parent);
+            }
+          }
+        }
+      }
+      else /* no parent -> root */
+      {
+        this.val=null;
+        this.height=-1;
+      }
+    else if (equals(c.left, null))
+      if?(AVLTree p=this.bstToAvl(c.parent))
+      {
+        if (equals(p.left, c))
+          p.left=c.right;
+        else
+          p.right=c.right;
+
+        {
+          AVLTree? cur=p;
+          while(!equals(cur, null))
+          {
+            if?(AVLTree cur_=cur)
+            {
+              cur_.updateHeight();
+              cur_.checkBalance();
+              cur=this.bstToAvl(cur_.parent);
+            }
+          }
+        }
+      }
+      else /* no parent -> root */
+      {
+        if?(BSTree n=c.right)
+        {
+          this.val=n.val;
+          this.left=n.left;
+          this.right=n.right;
+          this.updateHeight();
+          this.checkBalance();
+        }
+        else
+          fail ("Fatal Error: Inconsistent node state.");
+      }
+    else if (equals(c.right, null))
+      if?(AVLTree p=this.bstToAvl(c.parent))
+      {
+        if (equals(p.left, c))
+          p.left=c.left;
+        else
+          p.right=c.left;
+
+        {
+          AVLTree? cur=p;
+          while(!equals(cur, null))
+          {
+            if?(AVLTree cur_=cur)
+            {
+              cur_.updateHeight();
+              cur_.checkBalance();
+              cur=this.bstToAvl(cur_.parent);
+            }
+          }
+        }
+      }
+      else /* no parent -> root */
+      {
+        if?(BSTree n=c.left)
+        {
+          this.val=n.val;
+          this.left=n.left;
+          this.right=n.right;
+          this.updateHeight();
+          this.checkBalance();
+        }
+        else
+          fail ("Fatal Error: Inconsistent node state.");
+      }
+    else  /* difficult case */
+    {
+      /* find leftmost BSTree of right subtree */
+      if?(BSTree t=c.right)
+      {
+        while(!equals(t.left, null))
+          if?(BSTree tt=t.left) t=tt; else fail ("Unexpected");
+        
+        /* replace value c <- t */
+        c.val=t.val;
+
+        /* remove t */
+        this.remove_node(t);
+      }
+      else
+        fail ("Unexpected");
+    }
+    return;
+  }
+
+  unit updateHeight()
+  {
+    int hl=0;
+    int hr=0;
+    if?(AVLTree l=this.bstToAvl(this.left)) hl=l.height; else hl=-1;
+    if?(AVLTree r=this.bstToAvl(this.right)) hr=r.height; else hr=-1;
+    this.height=max(hl,hr)+1;
+    return;
+  }
+
+  unit checkBalance()
+  {
+    int hl=0;
+    int hr=0;
+    if?(AVLTree l=this.bstToAvl(this.left)) hl=l.height; else hl=-1;
+    if?(AVLTree r=this.bstToAvl(this.right)) hr=r.height; else hr=-1;
+
+    if (abs(hl-hr)>1)
+    {
+      if (hl>hr)
+      {
+        if?(AVLTree l=this.bstToAvl(this.left))
+        {
+          int hll=0;
+          int hlr=0;
+          if?(AVLTree l=this.bstToAvl(l.left)) hll=l.height; else hll=-1;
+          if?(AVLTree r=this.bstToAvl(l.right)) hlr=r.height; else hlr=-1;
+
+          if (hll<hlr)  /* case 2: double rotation */
+            l.leftRotate();
+          
+          /* case 1: single rotation */
+          this.rightRotate();
+        }
+        else
+          fail ("Inconsistent tree height");
+      }
+      else
+      {
+        if?(AVLTree r=this.bstToAvl(this.right))
+        {
+          int hrl=0;
+          int hrr=0;
+          if?(AVLTree l=this.bstToAvl(r.left)) hrl=l.height; else hrl=-1;
+          if?(AVLTree r=this.bstToAvl(r.right)) hrr=r.height; else hrr=-1;
+
+          if (hrr<hrl)  /* case 4: double rotation */
+            r.rightRotate();
+          
+          /* case 3: single rotation */
+          this.leftRotate();
+        }
+        else
+          fail ("Inconsistent tree height");
+      }
+    }
+    return;
+  }
+
+  unit leftRotate()
+  {
+    if?(BSTree r=this.right)
+    {
+      Number? tmp=this.val;
+      this.val=r.val;
+      r.val=tmp;
+
+      this.right=r.right;
+      r.right=r.left;
+      r.left=this.left;
+      this.left=r;
+
+      /* fix parent */
+      if?(BSTree lr=this.right)
+        lr.parent=this;
+      if?(BSTree ll=r.left)
+        ll.parent=r;
+
+      /* update height */
+      if?(AVLTree ar=this.bstToAvl(r))
+        ar.updateHeight();
+      else
+        fail ("Not AVL");
+      this.updateHeight();
+    }
+    else
+      fail ("Invalid tree");
+    return;
+  }
+
+  unit rightRotate()
+  {
+    if?(BSTree l=this.left)
+    {
+      Number? tmp=this.val;
+      this.val=l.val;
+      l.val=tmp;
+
+      this.left=l.left;
+      l.left=l.right;
+      l.right=this.right;
+      this.right=l;
+
+      /* fix parent */
+      if?(BSTree ll=this.left)
+        ll.parent=this;
+      if?(BSTree lr=l.right)
+        lr.parent=l;
+
+      /* update height */
+      if?(AVLTree al=this.bstToAvl(l))
+        al.updateHeight();
+      else
+        fail ("Not AVL");
+      this.updateHeight();
+    }
+    else
+      fail ("Invalid tree");
+    return;
+  }
+
+  AVLTree? bstToAvl(BSTree? t)
+  {
+    AVLTree? r=null;
+    if?(BSTree bt=t)
+      cast(AVLTree at=bt)
+        r=at;
+      else
+        fail ("Not AVL");
+    else
+      r=null;
+    return r;
+  }
+
+  int get_height()
+  {
+    return this.height;
+  }
+};
+
+int max(int x,int y)
+{
+  int r=0;
+  if (x<y) r=y; else r=x;
+  return r;
+}
+
+unit inOrder(BSTree t)
+{
+  if?(BSTree l=t.left)
+    inOrder(l);
+  if?(Number num=t.val)
+    print_string(num.toString());
+  if?(BSTree r=t.right)
+    inOrder(r);
+  return;
+}
+
+Quotient addAll(BSTree t)
+{
+  Quotient sum=new Zero();
+  if?(BSTree l=t.left)
+    sum=sum.add(addAll(l));
+  if?(Number num=t.val)
+    cast(Quotient q=num)
+      sum=sum.add(q);
+  if?(BSTree r=t.right)
+    sum=sum.add(addAll(r));
+  return sum;
+}
+
+#endif

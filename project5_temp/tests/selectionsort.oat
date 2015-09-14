@@ -1,0 +1,147 @@
+/* An implementation of int array, and do selection sort */
+/* Please note it is NOT real array */
+/* Access time is O(n) for each entry */
+
+/* Array item */
+class ArrayItem <: Object
+{
+ int keyValue;
+ ArrayItem? nextItem;
+
+ new (int x)()
+ {
+   this.keyValue = x;
+   this.nextItem = null;
+ }
+
+ unit set (int x)
+ {
+   this.keyValue = x;
+   return;
+ }
+};
+
+/* Array */
+class Array <: Object
+{
+ int arrayLength;
+ ArrayItem? headItem;
+
+ new ()()
+ {
+   this.arrayLength = 0;
+ }
+
+ /* Get the ith entry */
+ int getElement (int index)
+ {
+   int r=0;
+   if? (ArrayItem currentItem = this.headItem)
+   {
+     for (int i = 1; i != index; i = i + 1;)
+     {
+       if? (ArrayItem next = currentItem.nextItem)
+         currentItem = next;
+     }
+     r = currentItem.keyValue;
+   }
+   else fail ("get error: out of range");
+   return r;
+ }
+
+ /* Set the ith entry */
+ unit setElement (int index, int key)
+ {
+   if? (ArrayItem currentItem = this.headItem)
+   {
+     for (int i = 1; i != index; i = i + 1;)
+     {
+       if? (ArrayItem next = currentItem.nextItem)
+         currentItem = next;
+     }
+     currentItem.keyValue = key;
+   }
+   else fail ("get error: out of range");
+   return;
+ }
+
+ /* Add an element at the end */
+ unit addElement (int key)
+ {
+   if (this.arrayLength == 0)
+     {
+       this.headItem = new ArrayItem (key);
+     }
+     else
+     {
+       if? (ArrayItem currentItem = this.headItem)
+       {
+         for (int i = 1; i != this.arrayLength; i = i + 1;)
+           if? (ArrayItem tempItem = currentItem.nextItem)
+             currentItem = tempItem;
+         currentItem.nextItem = new ArrayItem (key);
+       }
+     }
+   this.arrayLength = this.arrayLength + 1;
+   return;
+ }
+
+ /* Get the array length */
+ int getLength()
+ {
+   return this.arrayLength;
+ }
+};
+
+/* main program: sort */
+
+int program(int argc, string[] argv){
+
+/* initializae */
+Array a = new Array();
+int n = 0;
+int sorted = 0;
+a.addElement(79);
+/*
+a.addElement(97);
+a.addElement(100);
+a.addElement(80);
+a.addElement(64);
+a.addElement(100);
+a.addElement(82);
+
+/* selection sort */
+n = a.getLength();
+for (int i = 1; i < n; i = i + 1;)
+{
+ int k = i;
+ for (int j = i + 1; j <= n; j = j + 1;)
+ {
+   int aj = a.getElement(j);
+   int ak = a.getElement(k);
+   if (aj < ak) k = j;
+ }
+ if (k != i)
+ {
+   int ak = a.getElement(k);
+   int ai = a.getElement(i);
+   a.setElement(i, ak);
+   a.setElement(k, ai);
+ }
+}
+
+/* check whether a is sorted */
+for (int i = 1; i < n; i = i + 1;)
+{
+ int now = a.getElement(i);
+ int next = a.getElement(i + 1);
+ if (now > next)
+ {
+   sorted = sorted + 1;
+ }
+}
+
+return sorted;
+}
+
+/* Expected result is 0 */

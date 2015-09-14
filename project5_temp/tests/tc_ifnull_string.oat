@@ -1,0 +1,8 @@
+string g() {
+  string? n = null;
+  string str = "n";
+  if?(string o = n) { str = o; }
+  return str;
+}
+
+/* Result: TRef TString */

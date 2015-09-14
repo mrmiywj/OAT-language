@@ -1,0 +1,10 @@
+class A <: Object {
+  int mine;
+  new(int v)() { this.mine = v; }
+  int addToMine(int n) { return this.mine + n; }
+};
+
+int program (int argc, string[] argv) {
+  A a = new A(1);
+  return a.addToMine(2);
+}

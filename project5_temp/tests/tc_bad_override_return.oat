@@ -1,0 +1,11 @@
+class A <: Object {
+  new()(){}
+  string foo(int a, int b) { return "hi"; }
+};
+
+class B <: A {
+  new()(){}
+  string? foo(int a, int b) { return "hi"; }
+};
+
+/* error on 8 */

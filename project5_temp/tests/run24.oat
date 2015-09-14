@@ -1,0 +1,19 @@
+class A {
+  string str;
+  new () () this.str = "A"; {}
+  unit f () {
+    print_string (this.str);
+    return;
+  }
+};
+
+class B <: A {
+  new () () this.str = "B"; {}
+};
+
+int program (int argc, string[] argv) {
+  B b = new B ();
+  b.f();
+  return 0;
+}
+

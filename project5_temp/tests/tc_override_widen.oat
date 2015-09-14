@@ -1,0 +1,30 @@
+class A <: Object { new()() {} };
+class B <: Object { new()() {} };
+class Aa <: A { new()() {} };
+class AA <: A { new()() {} };
+class Bb <: B { new()() {} };
+class BB <: B { new()() {} };
+class Aaa <: Aa { new()() {} };
+class AaA <: Aa { new()() {} };
+class AAa <: AA { new()() {} };
+class AAA <: AA { new()() {} };
+class Bbb <: Bb { new()() {} };
+class BbB <: Bb { new()() {} };
+class BBb <: BB { new()() {} };
+class BBB <: BB { new()() {} };
+
+class X <: Object {
+  new()(){}
+  BB func(AA arg0, BB arg1) {
+    return new BB();
+  }
+};
+
+class Y <: X {
+  new()(){}
+  BBB func(A arg0, B arg1) {
+    return new BBB();
+  }
+};
+
+/* Result: TInt */

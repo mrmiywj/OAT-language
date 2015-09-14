@@ -1,0 +1,32 @@
+class A <: Object {
+  new()() {}
+};
+
+class B <: A {
+  new()() {}
+};
+
+class Bb <: A {
+  new()() {}
+};
+
+Object a = new A();
+Object b = new B();
+Object bb = new Bb();
+
+int program (int argc, string[] argv) {
+  int i = 0;
+
+  cast (A x = a) i=i+1; 
+  cast (A x = b) i=i+1;
+  cast (A x = bb) i=i+1;
+  cast (B x = b) i=i+1;
+  cast (Bb x = bb) i=i+1;
+  cast (B x = a) {} else i=i+1; 
+  cast (Bb x = a) {} else i=i+1;
+  cast (Bb x = b) {} else i=i+1;
+  cast (B x = bb) {} else i=i+1;
+
+  return i;
+}
+

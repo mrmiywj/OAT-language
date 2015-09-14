@@ -1,0 +1,28 @@
+class A {
+  int i;
+  new () () { this.i = 0; }
+};
+
+class B <: A {
+  new () () { this.i = 1; }
+};
+
+class C <: B {
+  new () () { this.i = 2; }
+};
+
+int program (int argc, string[] argv) {
+  A x = new A();
+  int i = -1;
+  cast (B b = x) { 
+    print_string ("yes");
+    i = b.i;
+  } else {
+    print_string ("no");
+    i = x.i;
+  }
+  return i;
+}
+
+
+

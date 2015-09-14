@@ -1,0 +1,24 @@
+#include "avltree.oat"
+
+int program (int argc, string[] argv) {
+
+  AVLTree t=new AVLTree();
+  int r = 0;
+  t.insert(new Zero());
+  t.insert(new Integer(1));
+  t.insert(new Integer(2));
+  t.insert(new Quotient(1,2));
+  t.insert(new Quotient(1,4));
+  t.insert(new Quotient(3,4));
+  t.insert(new Quotient(4,5));
+  t.remove(new Quotient(1,4));
+  {
+    int h=t.get_height();
+    Quotient sum=addAll(t);
+    sum=sum.add(new Integer(-h));
+    r = sum.num()-sum.denom();
+  }
+  return r;
+}
+
+/* result: 41 */

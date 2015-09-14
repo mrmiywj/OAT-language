@@ -128,7 +128,7 @@
 # Target: occ.ml.depends, tags: { extension:ml, file:occ.ml, ocaml, ocamldep, quiet }
 /usr/bin/ocamldep.opt -modules occ.ml > occ.ml.depends # cached
 # Target: phase1.ml.depends, tags: { extension:ml, file:phase1.ml, ocaml, ocamldep, quiet }
-/usr/bin/ocamldep.opt -modules phase1.ml > phase1.ml.depends # cached
+/usr/bin/ocamldep.opt -modules phase1.ml > phase1.ml.depends
 # Target: ctxt.ml.depends, tags: { extension:ml, file:ctxt.ml, ocaml, ocamldep, quiet }
 /usr/bin/ocamldep.opt -modules ctxt.ml > ctxt.ml.depends # cached
 # Target: ctxt.mli.depends, tags: { extension:mli, file:ctxt.mli, ocaml, ocamldep, quiet }
@@ -138,7 +138,7 @@
 # Target: ctxt.cmx, tags: { compile, extension:cmx, extension:ml, file:ctxt.cmx, file:ctxt.ml, implem, native, ocaml, quiet }
 /usr/bin/ocamlopt.opt -c -o ctxt.cmx ctxt.ml # cached
 # Target: tc.ml.depends, tags: { extension:ml, file:tc.ml, ocaml, ocamldep, quiet }
-/usr/bin/ocamldep.opt -modules tc.ml > tc.ml.depends
+/usr/bin/ocamldep.opt -modules tc.ml > tc.ml.depends # cached
 # Target: tctxt.ml.depends, tags: { extension:ml, file:tctxt.ml, ocaml, ocamldep, quiet }
 /usr/bin/ocamldep.opt -modules tctxt.ml > tctxt.ml.depends # cached
 # Target: tctxt.mli.depends, tags: { extension:mli, file:tctxt.mli, ocaml, ocamldep, quiet }
@@ -148,10 +148,7 @@
 # Target: tctxt.cmx, tags: { compile, extension:cmx, extension:ml, file:tctxt.cmx, file:tctxt.ml, implem, native, ocaml, quiet }
 /usr/bin/ocamlopt.opt -c -o tctxt.cmx tctxt.ml # cached
 # Target: tc.cmx, tags: { compile, extension:cmx, extension:ml, file:tc.cmx, file:tc.ml, implem, native, ocaml, quiet }
-/usr/bin/ocamlopt.opt -c -o tc.cmx tc.ml
-+ /usr/bin/ocamlopt.opt -c -o tc.cmx tc.ml
-File "tc.ml", line 228, characters 38-78:
-Warning 21: this statement never returns (or has an unsound type.)
+/usr/bin/ocamlopt.opt -c -o tc.cmx tc.ml # cached
 # Target: phase2.ml.depends, tags: { extension:ml, file:phase2.ml, ocaml, ocamldep, quiet }
 /usr/bin/ocamldep.opt -modules phase2.ml > phase2.ml.depends # cached
 # Target: phase2.mli.depends, tags: { extension:mli, file:phase2.mli, ocaml, ocamldep, quiet }

@@ -1,0 +1,17 @@
+class A <: Object { int x; new(int x)() {this.x = x;} };
+
+int try_ifnull(A? a) {
+  int v = 0;
+  if?(A aa = a) {
+    v = aa.x;
+  } else {
+    v = 12;
+  }
+  return v;
+}
+
+int program (int argc, string[] argv) {
+  return try_ifnull(null);
+}
+
+/* result: 12 */

@@ -1,0 +1,8 @@
+int g() {
+  int[]? n = null;
+  int i=0;
+  if?(int[] o = n) {i=o[0];} else {i=1;}
+  return i;
+}
+
+/* Result: TInt */

@@ -1,0 +1,14 @@
+class A {
+  string? stra;
+  new () () this.stra="non-bull"; { }
+};
+
+class B <: A {
+  string strb;
+  new () () { }
+};
+
+int program (int argc, string[] argv) {
+  B b = new B ();
+  return 0;
+}

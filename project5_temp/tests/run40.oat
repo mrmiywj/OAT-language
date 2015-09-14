@@ -1,0 +1,34 @@
+class A {
+  new () () { }
+  unit f () {
+    print_string ("A");
+    return;
+  }
+};
+
+class B {
+  A a;
+  new () () this.a = new A (); {}
+  unit f () {
+    print_string ("B");
+    return;
+  }
+};
+
+class C {
+  B b;
+  new () () this.b = new B (); {}
+  unit f () {
+    print_string ("C");
+    return;
+  }
+};
+
+int program (int argc, string[] argv) {
+  C c = new C ();
+  c.f();
+  c.b.f();
+  c.b.a.f();
+  return 0;
+}
+

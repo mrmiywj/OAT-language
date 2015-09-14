@@ -1,0 +1,28 @@
+class A <: Object {
+  new()() {
+  }
+  int six() {
+    return 1;
+  }
+};
+
+class B <: A {
+  new()() {
+  }
+  int six() {
+    return super.six() + 2;
+  }
+};
+
+class C <: B {
+  new()() {}
+  int six() {
+    return super.six() + 3;
+  }
+};
+
+int program(int argc, string[] argv) {
+  C c = new C();
+  return c.six();
+}
+

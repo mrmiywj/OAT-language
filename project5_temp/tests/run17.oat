@@ -1,0 +1,10 @@
+class A {
+  int i;
+  new (int i) () { this.i = i; }
+};
+
+int program (int argc, string[] argv) {
+  A a = new A (10);
+  return a.i;
+}
+

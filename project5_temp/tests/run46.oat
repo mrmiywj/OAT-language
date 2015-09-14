@@ -1,0 +1,28 @@
+int[] arr={0,0,0};
+
+class S {
+  int i;
+  new()(){this.i = 2;}
+  int[] g() {return arr;}
+  S f() { return new S(); }
+};
+
+class A {
+  int i;
+  S s;
+  new()() this.s = new S(); {this.i=1;}
+  A g() { return new A();}
+};
+
+class B {
+  new()(){}
+  A f() { return new A(); }
+};
+
+int program(int argc, string[] argv) {
+  B b = new B();
+  b.f().s.g()[1]=100;
+  return b.f().i + b.f().g().g().g().i + 
+    b.f().g().g().g().g().g().g().g().g().g().i +
+    b.f().s.f().i + arr[1] + b.f().s.g()[1];
+}

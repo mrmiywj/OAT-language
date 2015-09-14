@@ -1,0 +1,13 @@
+class A {
+  new () () { }
+};
+
+class B {
+  A a;
+  new () () { }
+};
+
+int program (int argc, string[] argv) {
+  B b = new B ();
+  return 0;
+}

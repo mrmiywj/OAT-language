@@ -1,0 +1,12 @@
+class A { 
+  new () () {} 
+};
+
+class B <: A {
+  new () () { }
+};
+
+int f () {
+  B b = new A();
+  return 0;
+}

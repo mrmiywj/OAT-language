@@ -1,0 +1,10 @@
+class A {
+  string str;
+  new () () { }
+};
+
+int program (int argc, string[] argv) {
+  A a = new A ();
+  return 0;
+}
+

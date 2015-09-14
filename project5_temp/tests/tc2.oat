@@ -1,0 +1,4 @@
+class A { 
+  new () () { f(); } 
+  unit f() { return; }
+};

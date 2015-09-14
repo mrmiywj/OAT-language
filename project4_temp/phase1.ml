@@ -335,7 +335,20 @@ and cmp_lhs (c:ctxt) (l:Range.t Ast.lhs) : operand * stream =
 	  | Some op -> (op, [])
 	end
     | Ast.Index(lhs,exp) ->
-failwith "unimplemented"
+      let (index, index_code) = cmp_exp c exp in
+      let (array_ptr, array_code) = cmp_lhs c lhs in
+      begin match array_ptr with
+      |  (Ptr(Ptr (Struct [I32; Array(0l,u)])), id) ->
+        let (id,op) = gen_local_op (Ptr u) "elt" in
+        let (bound_ptr, bound_ptr_op) = gen_local_op (Ptr I32) "bound_ptr" in
+        let (bound,bound_op) = gen_local_op I32 "bound" in
+        (op, array_code >@ index_code >::
+          I (Gep (bound_ptr, array_ptr,gep_array_len)) >::
+          I (Load (bound, bound_ptr_op)) >::
+          I (Call (None, oat_array_bounds_check_fn ,[bound_op; index])) >::
+          I (Gep (id, array_ptr, gep_array_index index)))
+      | (t,_) -> failwith ("cmp_lhs : index base had type: " ^ (string_of_ty t))
+      end 
 
 (* When we treat a left-hand-side as an expression yielding a value,
    we actually load from the resulting pointer. *)

@@ -1,0 +1,33 @@
+class A {
+  int i;
+  int j;
+  new () () {
+    this.i = 10;
+  }
+  int f() {
+    return this.i;
+  }
+  unit p() {
+    return;
+  }
+};
+
+class B <: A {
+  new () () {
+  }
+  int g() {
+    return super.f();
+  }
+};
+
+int program (int argc, string[] argv) {
+  A? a = new A ();
+  int i = 0;
+  if? (A x = a) {
+    cast (A b = x) {
+      i = b.f();
+      i = x.i + i;
+    } else {}
+  } else {}
+  return i;
+}

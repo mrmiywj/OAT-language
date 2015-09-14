@@ -1,0 +1,7 @@
+#ifndef __MATH_OAT__
+#define __MATH_OAT__
+
+int oat_div (int a, int b) extern
+int oat_mod (int a, int b) extern
+ 
+#endif

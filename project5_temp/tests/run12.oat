@@ -1,0 +1,10 @@
+class A {
+  int[] arr;
+  new () () { }
+};
+
+int program (int argc, string[] argv) {
+  A a = new A ();
+  return 0;
+}
+

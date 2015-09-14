@@ -1,0 +1,42 @@
+class O { new()() {} };
+
+class A <: O {
+  int a;
+  int b;
+  O? o;
+  A[]? arr;
+  new ()()
+    this.a = 1;
+    this.b = 2;
+  {}
+  unit init() {
+    this.o = new A();
+    if?(O o = this.o) cast (A x = o) {}
+    this.arr = new A [2] (fun i->new A());
+    return;
+  }
+  unit incr () {
+    this.a = this.a + 1;
+    this.b = this.b + 1;
+    return;
+  }
+  int sum() {
+    int r = 0;
+    if?(A[] x = this.arr) {
+      for(int i=0; i<length_of_array(x); i=i+1;) {
+        x[i].incr();
+      }
+      for(int i=0; i<length_of_array(x); i=i+1;) {
+        r = r + x[i].a;
+        r = r + x[i].b;
+      }
+    }
+    return r;
+  }
+};
+
+int program(int argc, string[] argv) {
+  A a = new A();
+  a.init();
+  return a.sum();
+}

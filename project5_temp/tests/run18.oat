@@ -1,0 +1,11 @@
+class A {
+  string str;
+  new (string str) () this.str = str; {}
+};
+
+int program (int argc, string[] argv) {
+  A a = new A ("cis341");
+  print_string (a.str);
+  return 0;
+}
+

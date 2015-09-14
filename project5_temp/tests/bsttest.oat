@@ -1,0 +1,25 @@
+#include "bst.oat"
+
+BST t=new BST();
+
+int program (int argc, string[] argv) {
+  int r=0;
+  t.insert(3);
+  t.insert(1);
+  t.insert(0);
+  t.insert(5);
+  t.insert(2);
+  t.insert(4);
+  {
+    int x=t.find(0);
+    t.remove(3);
+    {
+      int y=t.find(5);
+      int z=t.find(3); 
+      r=100*x+10*y+z;
+    }
+  }
+  return r;
+}
+
+/* result: 110 */

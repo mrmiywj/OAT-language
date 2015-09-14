@@ -1,0 +1,32 @@
+class A <: Object {
+  new()() {}
+  int over(int x) {
+    return x + 1;
+  }
+};
+
+class B <: A {
+  new()() {}
+  int over(int x) {
+    return x + 2;
+  }
+};
+
+class C <: B {
+  new()() {}
+
+  int notover(int x) {
+    return x + 1;
+  }
+  
+  int call() {
+    return this.over(3);
+  }
+};
+
+int program(int argc, string[] argv) {
+  C a = new C();
+  return a.call();
+}
+
+/* Result: 5 */

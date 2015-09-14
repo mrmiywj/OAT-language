@@ -1,0 +1,12 @@
+class A {
+  int[] arr;
+  new () () 
+    this.arr = new int [10] (fun i -> 110); 
+  {}
+};
+
+int program (int argc, string[] argv) {
+  A a = new A ();
+  print_string (string_of_array (a.arr));
+  return 0;
+}

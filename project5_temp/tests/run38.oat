@@ -1,0 +1,5 @@
+int program (int argc, string[] argv) {
+  fail ("failed");
+  return 0;
+}
+

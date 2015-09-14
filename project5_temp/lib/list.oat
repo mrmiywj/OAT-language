@@ -1,0 +1,66 @@
+/* An implementation of doubly linked lists */
+
+#ifndef __LIST_OAT__
+#define __LIST_OAT__
+
+bool equals(Object? o1, Object? o2) {
+  return o1 == o2;
+}
+
+class ListItem <: Object {
+  Object? obj;
+  ListItem? prev;
+  ListItem? next;
+
+  new (Object? o)() {
+    this.obj = o;
+    this.prev = null;
+    this.next = null;
+  }
+};
+
+class List <: Object {
+  ListItem? head;
+
+  new ()() {
+    this.head = null;
+  }
+
+  bool is_empty() {
+    return equals(this.head, null);
+  }
+
+  /* insert an item at the head of the list */
+  unit insert(Object o) {
+    ListItem new_item = new ListItem(o);
+    new_item.next = this.head;
+    if? (ListItem old_head = this.head)
+      old_head.prev = new_item;
+    this.head = new_item;
+    return;
+  }
+
+  /* remove an element from the list */
+  unit remove(ListItem item) {
+    if (equals(item, this.head)) {
+      /* item is the first element of the list */
+      this.head = item.next;
+      if? (ListItem next = item.next) 
+        next.prev = null;
+    } else {
+      /* item is in the middle or end of the list */
+      if? (ListItem prev = item.prev) {
+        prev.next = item.next;
+        if? (ListItem next = item.next)
+           next.prev = prev;
+      } else fail ( "invalid list" );
+    }
+    return;    
+  }
+
+};
+
+#endif
+
+
+

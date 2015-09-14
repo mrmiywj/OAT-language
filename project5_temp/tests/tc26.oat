@@ -1,0 +1,7 @@
+class A { new ()() {} };
+class B <: A { new ()() {} };
+
+int f () {
+  cast (A a = new B()) {}
+  return 0;
+}

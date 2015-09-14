@@ -1,0 +1,16 @@
+/* B calls A's ctor */
+
+class A {
+  int i;
+  new () () { this.i = 10; }
+};
+
+class B <: A {
+  new () () { }
+};
+
+int program (int argc, string[] argv) {
+  B b = new B ();
+  return b.i;
+}
+

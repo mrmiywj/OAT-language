@@ -1,0 +1,177 @@
+#ifndef __BST_OAT__
+#define __BST_OAT__
+
+bool equals(Object? o1, Object? o2) {
+  return o1 == o2;
+}
+
+class Node <: Object
+{
+  int val;
+  Node? parent;
+  Node? left;
+  Node? right;
+  new(int val)()
+  {
+    this.val=val;
+    this.parent=null;
+    this.left=null;
+    this.right=null;
+  }
+};
+
+/* Binary Search Tree
+ * Support deletion.
+ */
+class BST <: Object
+{
+  Node? root;
+
+  new()()
+  {
+    this.root=null;
+  }
+
+  unit insert(int x)
+  {
+    Node? cur=this.root;
+    Node? prev=null;
+    int found=0;
+    while (found == 0 & !equals(cur, null))
+    {
+      if?(Node cur_=cur)
+        if (x==cur_.val)
+        {
+          found=1;
+        }
+        else if (x<cur_.val)
+        {
+          prev=cur;
+          cur=cur_.left;
+        }
+        else
+        {
+          prev=cur;
+          cur=cur_.right;
+        }
+    }
+    if (found == 0) /* insert */
+    {
+      /* create new node */
+      Node n=new Node(x);
+      n.parent=prev;
+      if?(Node prev_=prev)
+        if (x<prev_.val)
+          prev_.left=n;
+        else
+          prev_.right=n;
+      else  /* root */
+        this.root=n;
+    }
+
+    return;
+  }
+
+  /* return 1 if found; 0 if not found */
+  int find(int x)
+  {
+    Node? cur=this.root;
+    int found=0;
+    while (found==0 & !equals(cur,null))
+    {
+      if?(Node cur_=cur)
+        if (x==cur_.val)
+        {
+          found=1;
+        }
+        else if (x<cur_.val)
+          cur=cur_.left;
+        else
+          cur=cur_.right;
+    }
+    return found;
+  }
+
+  /* delete x; if not found, fail */
+  unit remove(int x)
+  {
+    Node? cur=this.root;
+    Node? prev=null;
+    int found=0;
+    while (found==0 & !equals(cur,null))
+    {
+      if?(Node cur_=cur)
+        if (x==cur_.val)
+        {
+          found=1;
+        }
+        else if (x<cur_.val)
+        {
+          prev=cur;
+          cur=cur_.left;
+        }
+        else
+        {
+          prev=cur;
+          cur=cur_.right;
+        }
+    }
+    if (found==0)
+      fail ("Element not found");
+    else
+      if?(Node c=cur)
+        this.remove_node(c);
+      else
+        fail ("Fatal Error: Inconsistent node state.");
+    return;
+  }
+
+  unit remove_node(Node c)
+  {
+    if (equals(c.left,null) & equals(c.right,null))
+      if?(Node p=c.parent)
+        if (equals(p.left,c))
+          p.left=null;
+        else
+          p.right=null;
+      else /* no parent -> root */
+        this.root=null;
+    else if (equals(c.left,null))
+      if?(Node p=c.parent)
+        if (equals(p.left,c))
+          p.left=c.right;
+        else
+          p.right=c.right;
+      else /* no parent -> root */
+        this.root=c.right;
+    else if (equals(c.right,null))
+      if?(Node p=c.parent)
+        if (equals(p.left,c))
+          p.left=c.left;
+        else
+          p.right=c.left;
+      else /* no parent -> root */
+        this.root=c.left;
+    else  /* difficult case */
+    {
+      /* find leftmost node of right subtree */
+      if?(Node t=c.right)
+      {
+        while(!equals(t.left,null))
+          if?(Node tt=t.left) t=tt; else fail ("Unexpected");
+        
+        /* replace value c <- t */
+        c.val=t.val;
+
+        /* remove t */
+        this.remove_node(t);
+      }
+      else
+        fail ("Unexpected");
+    }
+    return;
+  }
+};
+
+#endif
+

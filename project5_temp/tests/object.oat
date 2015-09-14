@@ -1,0 +1,9 @@
+class C {
+  new ()() { }
+};
+
+int program(int argc, string[] argv) {
+  C c = new C();
+  print_string(c.get_name());
+  return 0;
+}

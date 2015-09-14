@@ -1,0 +1,60 @@
+#ifndef __BST2_OAT__
+#define __BST2_OAT__
+
+class Tree <: Object {
+  new ()() {}
+
+  bool is_leaf() {
+    return true;
+  }
+
+  Tree insert(int x) {
+    return new Node(x,this,this);
+  }
+}
+
+class Node <: Tree {
+  int val;
+  Tree left;
+  Tree right;
+
+  new(int val, Tree l, Tree r)() {
+    this.val = val;
+    this.left = l;
+    this.right = r;
+  }
+
+  bool is_leaf() {
+    return false;
+  }
+
+  int get_val() {
+    return val;
+  }
+
+  Tree insert(int x) {
+    if (x < val) 
+}
+
+class IntSet <: Object {
+  Tree t;
+ 
+  new()() 
+    t = new Tree()() {}
+
+  unit insert(int x) {
+    if (t.is_leaf()) {
+      t = new Node(x,t,t);
+    } else {
+      cast(Node n = t) {
+        int r = n.get_val();
+        if (x < r) {
+	  insert
+        }
+      }
+    }
+  }
+    
+
+
+#endif

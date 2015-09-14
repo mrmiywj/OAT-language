@@ -1,0 +1,22 @@
+class A {
+  new () () {}
+  unit f () {
+    print_string ("A");
+    return;
+  }
+};
+
+class B <: A {
+  new () () {}
+  unit g () {
+    super.f();
+    return;
+  }
+};
+
+int program (int argc, string[] argv) {
+  B b = new B ();
+  b.g();
+  return 0;
+}
+

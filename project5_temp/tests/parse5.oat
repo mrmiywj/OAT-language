@@ -1,0 +1,8 @@
+class Fields {
+  new()() {
+  }
+  Fields sumab() {
+    return this;
+  }
+};
+

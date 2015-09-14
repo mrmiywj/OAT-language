@@ -1,0 +1,55 @@
+
+/*A Node in the Stack
+ *for storing an integer value
+ */
+
+#ifndef __STACK_OAT__
+#define __STACK_OAT__
+
+class Node <: Object {
+  int item;
+  Node? next;
+
+  new(int val)() {
+    this.item = val;
+    this.next = null;
+  }
+
+  unit setnext(Node? t) {
+    this.next = t;
+    return;
+  }
+
+  int getitem() {
+    return this.item;
+  }
+};
+
+class Stack <: Object {
+  Node? top;
+
+  new()(){
+    this.top = null;
+  }
+
+  unit push(int n) {
+    Node ntop = new Node(n);
+    ntop.setnext(this.top);
+    this.top = ntop;
+    return;
+  }
+
+  int pop() {
+    int r=-1;
+    if?(Node tch = this.top) {
+      int ret = tch.getitem();
+      this.top = tch.next;
+      r = ret;
+    } else {
+      print_string("Empty Stack! Returned -1\n");
+    }
+    return r;
+  }
+};
+
+#endif

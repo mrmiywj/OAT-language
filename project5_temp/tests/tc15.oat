@@ -1,0 +1,14 @@
+class A { 
+  new () () {} 
+  int f () { return 0; }
+};
+
+class B <: A {
+  new () () { }
+};
+
+class C <: B {
+  new () () { 
+    super.f();
+  }
+};

@@ -1,0 +1,6 @@
+int f () {
+  string? str = "str";
+  if? (string x = str) {
+  } else { x = "a"; }
+  return 0;
+}

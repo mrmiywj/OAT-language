@@ -1,0 +1,12 @@
+class A {
+  new () () { }
+};
+
+class B {
+  new () () { }
+};
+
+int program (int argc, string[] argv) {
+  B[] arr = {new A(), new B()};
+  return 0;
+}

@@ -1,0 +1,4 @@
+int f () {
+  fail (-1);
+  return 0;
+}

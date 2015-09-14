@@ -1,0 +1,12 @@
+class A <: Object {
+  new()(){}
+  string foo(string? a, int b) { return "hi"; }
+};
+
+class B <: A {
+  new()(){}
+  string foo(string a, int b) { return "hi"; }
+};
+
+
+/* error on 8 */

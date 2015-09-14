@@ -1,0 +1,27 @@
+class A { new()(){} };
+class B { new()(){} };
+class C<:B { new()(){} };
+class D<:C { new()(){} };
+class E { new()(){} };
+class F<:B { new()(){} };
+class G<:D { new()(){} };
+
+int program(int argc, string[] argv) {
+  Object o = new Object ();
+  A a = new A ();
+  B b = new B ();
+  B c = new C ();
+  B d = new D ();
+  E e = new E ();
+  B f = new F ();
+  G g = new G ();
+  print_string (o.get_name());
+  print_string (a.get_name());
+  print_string (b.get_name());
+  print_string (c.get_name());
+  print_string (d.get_name());
+  print_string (e.get_name());
+  print_string (f.get_name());
+  print_string (g.get_name());
+  return 0;
+}

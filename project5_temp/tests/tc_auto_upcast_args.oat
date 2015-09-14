@@ -1,0 +1,22 @@
+class A <: Object { new()() {} };
+class B <: Object { new()() {} };
+class Aa <: A { new()() {} };
+class AA <: A { new()() {} };
+class Bb <: B { new()() {} };
+class BB <: B { new()() {} };
+class Aaa <: Aa { new()() {} };
+class AaA <: Aa { new()() {} };
+class AAa <: AA { new()() {} };
+class AAA <: AA { new()() {} };
+class Bbb <: Bb { new()() {} };
+class BbB <: Bb { new()() {} };
+class BBb <: BB { new()() {} };
+class BBB <: BB { new()() {} };
+
+int func(Aa arg0, Bb arg1, A arg3, Object arg4, AAA arg5, string? arg6, int[]? arg7) { return 1; }
+
+int program (int argc, string[] argv) {
+  return func(new Aaa(), new BbB(), new AAA(), new BBb(), new AAA(), "s", null);
+}
+
+/* Result: TInt */

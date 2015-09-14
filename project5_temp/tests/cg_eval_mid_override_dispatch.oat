@@ -1,0 +1,28 @@
+class A <: Object {
+  new()() {}
+  int over(int x) {
+    return x + 1;
+  }
+};
+
+class B <: A {
+  new()() {}
+  int over(int x) {
+    return x + 2;
+  }
+};
+
+class C <: B {
+  new()() {}
+  int notover(int x) {
+    return x + 1;
+  }
+};
+
+A a = new C();
+
+int program(int argc, string[] argv) {
+  return a.over(3);
+}
+
+/* Result: 5 */

@@ -1,0 +1,11 @@
+int i=0;
+class A {
+  new () () { }
+};
+
+class B {
+  new () () {
+    A a = new A();
+    a.i = 0;
+  }
+};

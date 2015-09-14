@@ -1,0 +1,15 @@
+class A {
+  string str;
+  new (string str) () this.str = str; {}
+};
+
+class B<:A {
+  new (string str) (str) {}
+};
+
+int program (int argc, string[] argv) {
+  B b = new B ("cis341");
+  print_string (b.str);
+  return 0;
+}
+

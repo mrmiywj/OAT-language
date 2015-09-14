@@ -1,0 +1,8 @@
+class O {
+  new (int i)() {}
+};
+
+class A <: O {
+  int i;
+  new () (this.i) {}
+};

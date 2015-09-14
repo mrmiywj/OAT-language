@@ -1,0 +1,4 @@
+int f () {
+  cast (int a = 0) {}
+  return 0;
+}

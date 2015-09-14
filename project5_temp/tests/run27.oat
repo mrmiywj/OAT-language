@@ -1,0 +1,10 @@
+int program (int argc, string[] argv) {
+  string? str=null;
+  if? (string x = str) { 
+    print_string ("non-null"); 
+  } else {
+    print_string ("null"); 
+  }
+  return 0;
+}
+

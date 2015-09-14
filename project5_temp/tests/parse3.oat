@@ -1,0 +1,21 @@
+class B <: A {
+  A a;
+  C c;
+  new (int a, int b) (a, b) 
+    this.a = new A();
+    this.c = new C();
+  { 
+    this.i = super.f();
+  }
+};
+
+unit p() {
+  A a = new A ();
+  int i = a.i;
+  i = b.a.i;
+  i = b.c.a.i;
+  i = a.f();
+  i = b.a.f();
+  i = b.c.a.f();
+  return;
+}

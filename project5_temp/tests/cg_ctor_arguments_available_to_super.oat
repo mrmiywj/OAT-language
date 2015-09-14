@@ -1,0 +1,17 @@
+class A <: Object {
+  int x;
+  
+  new(int x)() {
+    this.x = x;
+  }
+};
+
+class B <: A {
+  new(int a, int b)(a*10+b) {
+  }
+};
+
+int program (int argc, string[] argv) {
+  B b = new B(1,2);
+  return b.x;
+}

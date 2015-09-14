@@ -1,0 +1,55 @@
+#ifndef __CONSOLE_OAT__
+#define __CONSOLE_OAT__
+
+/* Initialize drawing with some useful defaults and hook termination to
+ * clean up the terminal. */
+unit con_init() extern
+
+/* Clean up drawing. */
+unit con_cleanup() extern
+
+/* Print str at the cursor location. */
+unit con_print(string str) extern
+
+/* Print ch at the cursor location. */
+unit con_printch(int ch) extern
+
+/* Move the cursor to a new location. */
+unit con_move(int x, int y) extern
+
+/* Set attributes for printing. */
+unit con_attrset(int attr) extern
+
+/* Returns current attributes. */
+int con_attrget() extern
+
+/* Clear the current line. */
+unit con_clrtoeol() extern
+
+/* Clear the screen. */
+unit con_clear() extern
+
+/* Refresh the console. */
+unit con_refresh() extern
+
+/* Wait for keyboard input. */
+int con_getch() extern
+
+/* Get an attribute set to a particular color. */
+int con_color(int c) extern
+
+/* Get the bold version of an attribute. */
+int con_bold(int c) extern
+
+/* Get the width of the terminal. */
+int con_width() extern
+
+/* Get the height of the terminal. */
+int con_height() extern
+
+/* Sleep for some number of seconds. */
+int con_sleep(int amt) extern
+
+int con_halfdelay(int x) extern
+
+#endif

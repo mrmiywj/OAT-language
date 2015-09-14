@@ -1,0 +1,15 @@
+class A {
+  string str;
+  new () () this.str="non-bull"; { }
+};
+
+class B <: A {
+  int[] arr;
+  new () () { }
+};
+
+int program (int argc, string[] argv) {
+  B b = new B ();
+  return 0;
+}
+

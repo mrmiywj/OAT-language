@@ -1,0 +1,3 @@
+string?[] arr = {"hello", null};
+
+/* Result: string? */

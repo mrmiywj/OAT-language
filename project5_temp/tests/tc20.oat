@@ -1,0 +1,9 @@
+class A { 
+  new () () {} 
+};
+
+class B <: A {
+  new () () { }
+};
+
+B b = new A();

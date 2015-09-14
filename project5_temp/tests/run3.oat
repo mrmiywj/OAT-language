@@ -1,0 +1,40 @@
+class A {
+  int i;
+  new () () {
+    this.i = 1;
+  }
+  unit x () {
+    this.i = this.i + 1;
+    return;
+  }
+  unit g () {
+    this.x ();
+    this.i = this.i + 1;
+    return;
+  }  
+  unit f () {
+    this.i = 999;
+    return;
+  }
+};
+
+class B <: A {
+  int j;
+  new () () {
+    this.j = 2;
+  }
+  unit f () {
+    this.j = this.j + 1;
+    return;
+  }
+  int h (int i) { 
+    this.f(); 
+    super.g(); 
+    return this.i+this.j+i;
+  }
+};
+
+int program (int argc, string[] argv) {
+  B b = new B();
+  return b.h(3);
+}

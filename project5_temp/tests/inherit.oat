@@ -1,0 +1,67 @@
+class A {
+  int x;
+
+  new (int x)() {
+    this.x = x;
+  }
+
+  unit print() {
+    print_string(string_cat("A: x=", string_of_int(this.x)));
+    return;
+  }
+};
+
+class B <: A {
+  int y;
+  int z;
+
+  new (int x, int y, int z)(x) {
+    this.y = y;
+    this.z = z;
+  }
+
+  unit print() {
+    print_string(string_cat("B: x=", string_of_int(this.x)));
+    print_string(string_cat("B: y=", string_of_int(this.y)));
+    print_string(string_cat("B: z=", string_of_int(this.z)));
+    return;
+  }
+};
+
+class C <: B {
+  int w;
+
+  new (int x, int y, int z, int w)(x,y,z) {
+    this.w = w;
+  }
+
+  unit foo(int a, int b) {
+    print_string(string_cat("C.foo: a=", string_of_int(a)));
+    print_string(string_cat("C.foo: b=", string_of_int(b)));
+    return;
+  }
+
+  unit print() {
+    print_string(string_cat("C: x=", string_of_int(this.x)));
+    print_string(string_cat("C: y=", string_of_int(this.y)));
+    print_string(string_cat("C: z=", string_of_int(this.z)));
+    print_string(string_cat("C: w=", string_of_int(this.w)));
+    return;
+  }
+};
+
+A a = new A(3);
+int x = 0;
+
+int program (int argc, string[] argv) {
+  B b = new B(x+1,x+2,x+3);
+  C c = new C(1,2,3,4);
+
+  a.print();
+  b.print();
+  c.print();
+  c.foo(x+1, x+2);
+
+  return 0;
+}
+

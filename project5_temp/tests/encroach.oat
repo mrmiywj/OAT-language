@@ -1,0 +1,364 @@
+#include "console.oat"
+#include "list.oat"
+#include "math.oat"
+
+bool ptr_equals(Object? o1, Object? o2) {
+  return o1 == o2;
+}
+
+class GameObject <: Object {
+  int x;  
+  int y; 
+
+  new (int x, int y)() {
+    this.x = x;
+    this.y = y;
+  }
+  
+  /* initialization code */
+  unit init() { return; }
+
+  /* overloaded in subclasses */
+  unit draw() { return; }
+};
+
+class DelayedObject <: GameObject {
+  int delay;
+  int current_delay;
+
+  new(int x, int y, int delay)(x,y) {
+    this.delay = delay;
+  }
+
+  /* called after each delay */
+  int move() { return 1; }
+
+  int update() {
+    int keep = 1;
+    this.current_delay = this.current_delay + 1;
+    if (this.current_delay >= this.delay) {
+      /* time to do the update */
+
+      keep = this.move();
+      
+      /* reset the clock */
+      this.current_delay = 0;
+    }
+    return keep;
+  }
+  
+};
+
+class Alien <: DelayedObject {
+  int dir;    /* -1 = left, 0 = immobile, 1 = right */
+  
+  int sizex;  /* dimensions of the alien */
+  int sizey;
+  int frames;
+  int current_frame;
+  string[][] pic;    /*  pic[frame][0] 1st line of a frame     <=> */
+                     /*  pic[frame][1] 2nd line of a frame      V  */ 
+
+  new (int x, int y, int delay)(x,y,delay)
+    this.pic = new string[][3](fun i -> new string[2](fun i -> ""));
+  {     
+    this.dir = -1;    /* start moving left */
+    this.sizex = 3;
+    this.sizey = 2;
+    this.frames = 2;
+    this.current_frame = 0;
+    this.delay = 5;
+    this.current_delay = 0;
+  }
+
+  unit init () {
+    this.pic[0][0] = "<=>";
+    this.pic[0][1] = " V ";
+    this.pic[1][0] = ">=<";
+    this.pic[1][1] = " V ";
+    return;
+  }
+
+  unit change_directions() {
+    this.dir = 0 - this.dir;
+    return;
+  }
+
+  unit blowup() {return;}
+
+  unit hit_edge() {
+    /* increment y coord */
+    this.y = this.y + this.sizey + 1;
+    /* change directions */
+    this.change_directions();
+    return;
+  }
+
+  int move() {
+    /* update the current frame */
+    this.current_frame = oat_mod (this.current_frame + 1, this.frames);
+
+    if (this.dir == -1) {
+    /* Moving left */
+      if (this.x == 0) this.hit_edge(); else this.x = this.x - 1;
+    } else if (this.dir == 1) {
+    /* Moving right */
+      if ((this.x + this.sizex) > con_width()) this.hit_edge ();
+      else this.x = this.x + 1;
+    }
+    return 1;
+  }
+
+  unit draw() {
+    for (int j = 0; j<this.sizey; j = j+1;) {
+      con_move(this.x, this.y + j);
+      con_print(this.pic[this.current_frame][j]);
+      con_move(0,0);
+    }
+    return;
+  }
+};
+
+class Missile <: DelayedObject {
+  int dir;   /* -1 = up, +1 = down */
+  string pic;
+
+  List aliens;  /* for collision detection */
+
+  new (int x, int y, int delay, List aliens)(x,y,delay) 
+    this.pic = "!";
+    this.aliens = aliens;
+  {
+    this.dir = -1;    /* start moving left */
+  }
+
+  int collision() {
+    int keep = 1;
+    ListItem? cursor = this.aliens.head;
+    while (!ptr_equals(cursor,null)) {
+      if?( ListItem item = cursor) {
+        if?( Object o = item.obj ) {
+          cast (Alien a = o) {
+            if ((a.x <= this.x) &
+                (this.x <= a.x + a.sizex) &
+                (a.y <= this.y) &
+                (this.y <= a.y + a.sizey)) {
+                   a.blowup();
+                   this.aliens.remove(item);
+                   keep = 0;
+             }
+          }
+        }
+        cursor = item.next;
+      }
+    }
+    return keep;
+  }
+
+  int move () {
+    int keep = 1;
+    if (this.dir < 0)
+      if (this.y == 0) keep = 0; else this.y = this.y - 1;
+    else if (this.dir > 0) 
+      if (this.y >= con_height()) keep = 0;
+      else this.y = this.y + 1;
+    else keep = 1;
+    if (keep==1) keep = this.collision();
+    return keep;
+  }
+
+  unit draw() {
+    con_move(this.x, this.y);
+    con_print(this.pic);
+    con_move(0,0);
+    return;
+  }
+
+};
+
+/******************************************************************************/
+
+class Guy <: GameObject {
+  int hp;
+  string pic;
+
+  new (int hp)(con_width() >> 1, con_height()-1)
+    this.pic = "_^_";
+  {
+    this.hp = hp;
+  }
+
+  unit move_left() {
+    if (this.x > 0) this.x = this.x - 1;
+    return;
+  }
+
+  unit move_right() {
+    if ((this.x+3) < con_width() ) this.x = this.x + 1;
+    return;
+  }
+
+  unit draw() {
+    con_move(0,0);
+    con_move(this.x, this.y);
+    con_print(this.pic);
+    con_move(0,0);
+    return;
+  }
+
+  Missile fire_missile(List aliens) {
+    return new Missile(this.x+1, this.y, 0, aliens);
+  }
+};
+
+unit update_list(List l) {
+    /* update the game objects */
+    ListItem? cursor = l.head;
+    while (!ptr_equals(cursor,null)) {
+      if?( ListItem item = cursor) {
+        if?( Object o = item.obj ) {
+          cast (DelayedObject dobj = o) {
+            int keep = dobj.update();
+            if (keep != 0) l.remove(item);
+          }
+        }
+        cursor = item.next;
+      }
+    }
+    return;
+  }
+
+
+unit draw_list(List l) {
+    /* update the game objects */
+    ListItem? cursor = l.head;
+    while (!ptr_equals(cursor,null)) {
+      if?( ListItem item = cursor) {
+        if?( Object o = item.obj ) {
+          cast (DelayedObject dobj = o) {
+            dobj.draw();
+          }
+        }
+        cursor = item.next;
+      }
+    }
+    return;
+  }
+
+class State <: Object {
+  int num_aliens;
+  Guy guy;  
+
+  /* A list of DelayedObjects - Aliens and missiles */
+  List aliens;
+  List missiles;
+
+  new ()() 
+    this.aliens = new List();
+    this.missiles = new List();
+    this.guy = new Guy(10);
+  {
+    this.num_aliens = oat_div (con_width(), 10);
+  }
+
+  unit create_aliens() {
+    int x = oat_div(con_width(), 10);   /* max number of aliens across */
+    int ay = 0;
+    for(int i = 0; i < this.num_aliens; i = i+1;) {
+       if (oat_mod (i, x) == 0) ay = ay + 5;
+       {
+         Alien a = new Alien(oat_mod (i, x) * 10, ay, 5);
+         a.init();
+         this.aliens.insert(a);
+         i = i+1;
+       }
+    }
+    return;
+  }
+
+  unit init() {
+    this.guy.init();
+    this.create_aliens();
+    return;
+  }
+
+  unit fire_missile() {
+    Missile m = this.guy.fire_missile(this.aliens);
+    this.missiles.insert(m);
+    return;
+  }
+
+  unit update(int k) {
+    /* update the guy */
+    if (k == 106) 
+       this.guy.move_left();
+    if (k == 108)
+       this.guy.move_right();
+    if (k == 102) 
+       this.fire_missile();
+    if (this.aliens.is_empty()) {
+      this.num_aliens = this.num_aliens + oat_div (con_width(), 10);
+      this.create_aliens();
+    }
+    update_list(this.aliens);
+    update_list(this.missiles);
+    return;
+  }
+
+  unit display() {
+    con_clear();
+
+    /* draw the guy */
+    this.guy.draw();
+
+    /* draw the game objects */
+    draw_list(this.aliens);
+    draw_list(this.missiles);
+
+    con_refresh();
+    return;
+  }
+};
+
+
+
+unit instructions() {
+  con_move(0,0);
+  con_print("
+    \\Extraterrestrial Encroachers. \n
+    \\  j - Move left \n
+    \\  l - Move right \n
+    \\  f - Fire \n
+    \\  Esc - quit \n\n
+    \\  [Press any key to begin]\n");
+  return;
+}
+
+unit lose() {
+  return;
+}
+
+int program(int argc, string[] argv) {
+  int minx = 80;
+  int miny = 25;
+  con_init();
+  instructions();
+  if ((con_width() >= minx) & (con_height() >= miny) ) {
+    State state = new State(); 
+    int lost = 0;
+    int k = 0;
+    int something = 0;
+    state.init();
+    something = con_halfdelay(1); 
+    while ((k != 27) & (lost != 0)) {
+      state.display();
+      k = con_getch();
+      state.update(k);
+    }
+    lose();
+  } else {
+    print_string("Minimum size of the console is 80x25!\n");
+  }
+  con_cleanup();
+  return 0;
+}
