@@ -2,7 +2,7 @@ open Ast
 
 (* A typing context contains two components: globals contains types
  * for functions and global value definitions.
- * 
+ *
  * locals maps function arguments and local variables to their
  * types.  *)
 type ctxt = {
@@ -14,7 +14,7 @@ type ctxt = {
 
 (* The initial context. *)
 let builtin_sigs = [
-  ("Object", (None, 
+  ("Object", (None,
               [("_name", TRef RString)], [],
               [("get_name", ([], Some (TRef RString)))]));
 ]
@@ -42,8 +42,8 @@ let builtin_fdecls = [
 ]
 
 let empty_ctxt = {
-  this = None; 
-  globals = builtin_fdecls; 
+  this = None;
+  globals = builtin_fdecls;
   locals = [];
   sigs = builtin_sigs;
 }
@@ -51,14 +51,14 @@ let empty_ctxt = {
 
 (* Determines whether a given identifier is in the local context *)
 let in_locals (id:string) (c:ctxt) : bool =
-  try 
+  try
     ignore (List.assoc id c.locals); true
   with
     | Not_found -> false
 
 (* Determines whether a given identifier is in the global context *)
 let in_globals (id:string) (c:ctxt) : bool =
-  try 
+  try
     ignore (List.assoc id c.globals); true
   with
     | Not_found -> false
@@ -86,7 +86,7 @@ let add_local (id:string) (t:typ) (c:ctxt) : ctxt =
  * Oat built-in function declarations are checked if the user- defined
  * functions don't mention the desired identifier.  *)
 let lookup_global_fn (fid:string) (c:ctxt) : ftyp option =
-  try 
+  try
     match (List.assoc fid c.globals) with
       | GFn ft -> Some ft
       | GVal _ -> None
@@ -117,7 +117,7 @@ let add_global_val (id:string) (t:typ) (c:ctxt) : ctxt =
 
 
 (* Binds a new class idenitifer to its signature in the context. *)
-let add_class_sig (cid:string) (extopt:string option) 
+let add_class_sig (cid:string) (extopt:string option)
     (fs:fcontext) (ts:typ list) (ms:mcontext) (c:ctxt) : ctxt =
   {c with sigs = (cid, (extopt, fs, ts, ms))::c.sigs}
 
@@ -130,5 +130,3 @@ let lookup_class_sig (cid:string) (c:ctxt) =
    where the 'this' pointer would be in scope *)
 let lookup_this (c:ctxt) : string option = c.this
 let set_this (ido:string option) (c:ctxt) = {c with this=ido}
-
-
