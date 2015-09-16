@@ -470,10 +470,23 @@ and cmp_call (c:ctxt) (ca:Range.t Ast.call) : operand option * stream =
       let fn = lookup_fn c id in
       let (op, call_code) = call_of (pack fn) args in
       (op, arg_code >@ call_code)
-    | Ast.SuperMethod ((_,id), es) -> failwith "phase1.ml: supermethod not implemented"
-    | Ast.PathMethod (p, es) -> failwith "phase1.ml: pathmethod not implemented"
-
-
+    | Ast.SuperMethod ((_,id), es) ->
+      let ext = match (lookup_csig c (lookup_this c)).ext with
+        | Some ext -> ext | None -> failwith "cmp_call: no super class in ctxt" in
+      let (_, fn) = lookup_method c ext id in
+      let (args, arg_code) = cmp_exps c es in
+      let (op, call_code) = call_of (pack fn) ((this_op c)::args) in
+      (op, arg_code >@ call_code)
+    | Ast.PathMethod (p, es) ->
+      (* Invariant: path must compile to a fptr where the first arg is
+         a supertype of the _base_ of the path. *)
+      let (args, arg_code) = cmp_exps c es in
+      let (this, fop, path_code) = cmp_path c p in
+      match fop with
+        | (Fptr (ty_args, rt), opn) ->
+          let (op, call_code) = call_of (ty_args, rt, opn) (this::args) in
+          (op, path_code >@ arg_code >@ call_code)
+        | _ -> failwith "cmp_call: compiling path returned non-fptr type"
 (* Compile an Oat path:
  * Invariant: the base of the path ('this' or lhs_or_call) must be a pointer
  * to an oat object. This function should raise an error if compiling it does
@@ -618,9 +631,57 @@ and cmp_stmt (c:ctxt) (stmt : Range.t Ast.stmt) : stream =
         (Ast.Scall (Ast.Func ((Range.ghost, "print_string"), [e]))) in
       print_code >::
         I (Call (None, op_of_fn oat_abort_fn, [i32_op_of_int (-1)]))
+ | Ast.Cast (cid, (_, id), e, st, sto)  ->
+      let vtable = (lookup_csig c cid).vtable in
+      let ref_ty = cmp_ty (Ast.TRef (Ast.RClass cid)) in
 
-    | Ast.Cast (cid, (_, id), e, st, sto)  -> failwith "phase1.ml: cast not implemented"
+      let ref_op, code = cast_op (cmp_exp c e) ref_ty in
+      let cref_op, code = cast_op (ref_op, code) (Ptr (Ptr I8)) in
+      let vt_op, code = cast_op (vtable, code) (Ptr I8) in
 
+      let slot_id, slot_op = gen_local_op (Ptr (Ptr I8)) "vt_ptr_slot" in
+      let var_id, var_op = gen_local_op (Ptr ref_ty) "var_slot" in
+      let c' = add_local c id var_op in
+
+      let t0_id, t0_op = gen_local_op (Ptr I8) "tmp0" in
+      let t1_id, t1_op = gen_local_op (Ptr I8) "tmp1" in
+      let t2_id, t2_op = gen_local_op (Ptr I8) "tmp2" in
+      let t3_id, t3_op = gen_local_op (Ptr (Ptr I8)) "tmp3" in
+      let t4_id, t4_op = gen_local_op (Ptr I8) "tmp4" in
+      let g1_id, g1_op = gen_local_op I1 "guard1" in
+      let g2_id, g2_op = gen_local_op I1 "guard2" in
+
+	  let lloop, lfall1, lfall2, lthen, lelse, ldone =
+        mk_lbl_hint "loop", mk_lbl_hint "fall1", mk_lbl_hint "fall2",
+        mk_lbl_hint "then", mk_lbl_hint "else", mk_lbl_hint "done"
+      in
+
+      code >::
+        I (Alloca (slot_id, (Ptr I8))) >::
+        I (Load (t0_id, cref_op)) >::
+        I (Store (t0_op, slot_op)) >::
+
+        L lloop >::
+          I (Load (t1_id, slot_op)) >::
+          I (Icmp (g1_id, Eq, t1_op, vt_op)) >::
+          T (Cbr (g1_op, lthen, lfall1)) >::
+        L lfall1 >::
+          I (Icmp (g2_id, Eq, t1_op, (Ptr I8, Null))) >::
+          T (Cbr (g2_op, lelse, lfall2)) >::
+        L lfall2 >::
+          I (Load (t2_id, slot_op)) >::
+          I (Bitcast (t3_id, t2_op, (Ptr (Ptr I8)))) >::
+          I (Load (t4_id, t3_op)) >::
+          I (Store (t4_op, slot_op)) >::
+          T (Br lloop) >::
+        L lthen >::
+          I (Alloca (var_id, ref_ty)) >::
+          I (Store (ref_op, var_op)) >@
+          cmp_stmt c' st >::
+          T (Br ldone) >::
+        L lelse >@
+          (match sto with None -> [] | Some st -> cmp_stmt c st) >::
+        L ldone
 
 and cmp_stmts (c:ctxt) (stmts:Range.t Ast.stmts) : stream =
   List.fold_left (fun code s -> code >@ (cmp_stmt c s)) [] stmts
@@ -736,7 +797,15 @@ let cmp_gvdecl (c:ctxt) (v:Range.t Ast.vdecl) : ctxt =
 	    add_global c id gop (GInit {name=init_gid; ty_args=[]; rty=None})
     end
 
-let cmp_cinits (c:ctxt) (is:Range.t Ast.cinits) : stream = failwith "cmp_cinits not implemented"
+let cmp_cinits (c:ctxt) (is:Range.t Ast.cinits) : stream =
+let this = lookup_this c in
+  let cmp_cinit code ((_,fname) as id, i) =
+    let _, l_op, l_code = cmp_path c (Ast.ThisId id) in
+    let _, field_ty = lookup_field c this fname in
+    let i_op, i_code = cmp_init c field_ty i in
+    code >@ l_code >@ i_code >:: I (Store (i_op, l_op))
+  in
+  List.fold_left cmp_cinit [] is
 
 (* Compile a constructor function.
  * 1) Compile the argument list, and extend the resulting Ll operand list
@@ -757,7 +826,43 @@ let cmp_cinits (c:ctxt) (is:Range.t Ast.cinits) : stream = failwith "cmp_cinits 
  *     add the function to the context and return the extended context.
  *)
 let cmp_ctor (c:ctxt) cid _ ((ar, es, is, b):Range.t Ast.ctor) : ctxt =
-  failwith "phase1.ml: compile_ctor not implemented"
+  let c', ar_code, ar_ops = cmp_args c ar in
+  let thiso = this_op c' in
+  let ar_ops' = thiso::ar_ops in
+
+  let ext_code = match (lookup_csig c (lookup_this c)).ext with
+    | None -> []
+    | Some ext ->
+      let ctor = (lookup_csig c' ext).ctor in
+      let e_ops, e_code = cmp_exps c' es in
+      let a_ops, c_code = cast_ops ((this_op c')::e_ops) ctor.ty_args in
+      e_code >@ c_code >::
+        I (Call (Some (gen_local "dummy"), op_of_fn ctor, a_ops))
+  in
+
+  let name_init = ((Range.ghost,"_name"),
+                   Ast.Iexp (Ast.Const (Ast.Cstring (Range.ghost, cid)))) in
+  let is_code = cmp_cinits c' (name_init::is) in
+
+  let ((vty,_) as vto) = (lookup_csig c' cid).vtable in
+  let vts_id, vts_op = gen_local_op (Ptr vty) "vt_slot" in
+  let vt_code = [] >::
+    I (Gep (vts_id, thiso, [i32_op_of_int 0; i32_op_of_int 0])) >::
+    I (Store (vto, vts_op))
+  in
+
+  let c', b_code = cmp_block c' b in
+
+  let ctor_sig = (lookup_csig c' cid).ctor in
+
+  build_fdecl c' ctor_sig ar_ops' (
+    ar_code  >@
+    ext_code >@
+    is_code  >@
+    vt_code  >@
+    b_code   >::
+    T (Ret (Some thiso))
+  )
 
 
 (* Compile a class definition *)
