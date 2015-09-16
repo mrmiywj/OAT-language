@@ -1,0 +1,28 @@
+# 1 "tests/fields.oat"
+# 1 "<built-in>" 1
+# 1 "<built-in>" 3
+# 320 "<built-in>" 3
+# 1 "<command line>" 1
+# 1 "<built-in>" 2
+# 1 "tests/fields.oat" 2
+class Fields {
+  int afield;
+  int bfield;
+  int cfield;
+
+  new()() {
+    this.afield = 12;
+  }
+  
+  Fields sumab() {
+    this.bfield = 1 + this.afield;
+    return this;
+  }
+};
+
+int program (int argc, string[] argv) {
+  Fields fields = new Fields();
+  Fields o = fields.sumab ();
+  return o.bfield;
+}
+

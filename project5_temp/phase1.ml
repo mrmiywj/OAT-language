@@ -5,7 +5,7 @@ let sprintf = Printf.sprintf
 
 (* We generate code as a stream of elements, now augmented to include
  * global string constants that should be lifted to the top level. *)
-type elt = 
+type elt =
   | L of lbl                (* Block labels *)
   | I of insn               (* LL IR instruction *)
   | T of terminator         (* Block terminators *)
@@ -15,7 +15,7 @@ type elt =
  * order when the stream is viewed as a list.  That is, instructions
  * closer to the head of the list are to be executed later in the
  * program.  That is because cons is more efficient then append.
- * 
+ *
  * To help make code generation easier, we define snoc (reverse cons)
  * and reverse append, which let us write code sequences in their
  * natural order. *)
@@ -50,7 +50,7 @@ let gep_array_len = [
 ]
 
 (* Functions to generate global identifiers. Legal oat identifiers
-   can't begin with '_', so we can be sure these won't collide with 
+   can't begin with '_', so we can be sure these won't collide with
    user-defined global identifiers *)
 let mk_meth_name cid id = sprintf "_%s_%s" cid id
 let mk_ctor_name cid = sprintf "_%s_ctor" cid
@@ -62,7 +62,7 @@ let mk_type_name str = sprintf "_%s_ty" str
    operand, and ctxt.this is always set when compiling a method or ctor. *)
 let this_op : ctxt -> operand =
   let this_id = mk_uid "_this" in
-  fun (c:ctxt) -> 
+  fun (c:ctxt) ->
     let this = lookup_this c in
     (Ptr (Namedt this), Id this_id)
 
@@ -76,9 +76,25 @@ let sizeof (c:ctxt) (cid:string) : int =
   let fields = (lookup_csig c cid).fields in
   4 * (field_offset + List.length fields)
 
+let associ a l =
+  let rec loop n = function
+    | [] -> raise Not_found
+    | (k,v) :: _ when k = a -> (n,v)
+    | _::l' -> loop (n + 1) l'
+  in
+  loop 0 l
+
+let lookup_method (c:ctxt) (cid:string) (mid:string) : (int * fn) =
+  let (i,fn) = associ mid (lookup_csig c cid).methods in
+  (i  + method_offset, fn)
+
+let lookup_field (c:ctxt) (cid:string) (fid:string) :(int * ty) =
+  let (i,ty) = associ fid (lookup_csig c cid).fields in
+  (i + field_offset, ty)
 
 
-(* Insert a cast to the specified type, if necessary. This is most 
+
+(* Insert a cast to the specified type, if necessary. This is most
    useful for wrapping the returned operand, stream pair from many
    of the cmp_* functions *)
 let cast_op (op, stream) ty : operand * stream =
@@ -111,14 +127,14 @@ let rec replace_or_assoc a (k, v) =
  * stores the size of the array.  A C-style string is stored as a
  * pointer to an array of chars, with no length information, since
  * Oat strings are immutable.
- * 
+ *
  * Note cmp_ty the translation of the *expression* types of the
  * language.  Left-hand-sides (of assignments ) are pointers to their
  * contained types.
- * 
+ *
  * Thus, a source variable of type t will have LL type: Ptr(cmp_ty t)
  * when used on the left-hand side of an assignment.
- * 
+ *
  * INVARIANT: The translation context maps source variables to their
  * LHS types.  *)
 let rec cmp_ty (t:Ast.typ) =
@@ -170,13 +186,13 @@ let builtin_fns = List.map (fun (n, ft) -> (n, cmp_ftyp n ft)) Tc.builtin_functi
 (* They are not stored in the context, so they won't be found unless
    the user redefines them.  The compiler generates references to them
    directly. *)
-let oat_malloc_fn : fn = 
+let oat_malloc_fn : fn =
   {name = mk_gid_unsafe "oat_malloc"; rty = Some (Ptr I32); ty_args = [I32]; }
 
-let oat_alloc_array_fn : fn = 
+let oat_alloc_array_fn : fn =
   {name = mk_gid_unsafe "oat_alloc_array"; rty = Some (cmp_ty (Ast.TRef (Ast.RArray Ast.TInt))); ty_args = [cmp_ty Ast.TInt];}
 
-let oat_array_bounds_check_fn : fn = 
+let oat_array_bounds_check_fn : fn =
   {name = mk_gid_unsafe "oat_array_bounds_check"; rty = None; ty_args = [I32; I32]; }
 
 let oat_abort_fn : fn =
@@ -190,23 +206,23 @@ let internal_fns = [
 ]
 
 
-(* 
+(*
  * Generate a call to the runtime.c function oat_alloc_array.
  *   t is the src type
  *   size is an I32 operand, the number of elements in the array
  * returns: an operand of type (cmp_ty (Ast.TArray t)) and the
  * code for allocating the array.  Note that because oat_all-c_array_fn
- * polymorphic (its proper return type is generic in the element type), 
- * we have to use the Bitcast operation to let LL IR know what type 
- * the array should have. 
+ * polymorphic (its proper return type is generic in the element type),
+ * we have to use the Bitcast operation to let LL IR know what type
+ * the array should have.
  *)
 let oat_alloc_array_dynamic (t:ty) (size:operand) : operand * stream =
   let ans_ty = Ptr (Struct [I32; Array(0l, t)]) in
   let (ptr_id, ptr_op) = gen_local_op (cmp_ty (Ast.TRef (Ast.RArray Ast.TInt))) "array_ptr" in
-  let (ans_id, ans_op) = gen_local_op ans_ty "array" in 
+  let (ans_id, ans_op) = gen_local_op ans_ty "array" in
     (ans_op, [] >::
       I (Call (Some ptr_id, op_of_fn oat_alloc_array_fn, [size])) >::
-      I (Bitcast(ans_id, ptr_op, ans_ty))) 
+      I (Bitcast(ans_id, ptr_op, ans_ty)))
 
 let oat_alloc_array_static (t:ty) (n:int) : operand * stream =
   let static_size = i32_op_of_int n in
@@ -216,15 +232,15 @@ let oat_alloc_object (c:ctxt) (cid:string) : operand * stream =
   let ans_ty = Ptr (Namedt cid) in
   let size = i32_op_of_int (sizeof c cid) in
   let (ptr_id, ptr_op) = gen_local_op (Ptr I32) "mem_ptr" in
-  let (ans_id, ans_op) = gen_local_op ans_ty "obj" in 
+  let (ans_id, ans_op) = gen_local_op ans_ty "obj" in
   (ans_op, [] >::
     I (Call(Some ptr_id, op_of_fn oat_malloc_fn, [size])) >::
-    I (Bitcast(ans_id, ptr_op, ans_ty))) 
+    I (Bitcast(ans_id, ptr_op, ans_ty)))
 
 
 (*
  * Generate code to write eop to the array index i of array array_op.
- * Note that array_op has LL type cmp_ty (TArray t) 
+ * Note that array_op has LL type cmp_ty (TArray t)
  *    =   Ptr ((Struct [I32; Array(0l, cmp_ty u)])
  * So generate a getelementptr instruction to index into the array.
  *)
@@ -243,9 +259,9 @@ let cmp_array_update_static (t:ty) (i:int) (array_op:operand) (eop:operand) : st
 let ty_of_bop (bop:Range.t Ast.binop) : ty =
   let open Ast in
   match bop with
-    | Plus _ | Times _ | Minus _ | Shl _ | Shr _ | Sar _  | IAnd _ | IOr _ -> 
+    | Plus _ | Times _ | Minus _ | Shl _ | Shr _ | Sar _  | IAnd _ | IOr _ ->
       cmp_ty TInt
-    | Eq _ | Neq _ | Lt _ | Lte _ | Gt _ | Gte _ | And _ | Or _ -> 
+    | Eq _ | Neq _ | Lt _ | Lte _ | Gt _ | Gte _ | And _ | Or _ ->
       cmp_ty TBool
 
 (* Find the (source) result type of a unary operation. *)
@@ -256,7 +272,7 @@ let ty_of_unop (unop:Range.t Ast.unop) : ty =
     | Lognot _ -> cmp_ty TBool
 
 
-(* 
+(*
  * Compile a source binop to an LL instruction.
  *)
 let cmp_binop (b : Range.t Ast.binop) : uid -> operand -> operand -> insn =
@@ -267,7 +283,7 @@ let cmp_binop (b : Range.t Ast.binop) : uid -> operand -> operand -> insn =
   | Ast.Times _ -> ib Ll.Mul
   | Ast.Minus _ -> ib Ll.Sub
   | Ast.And _   -> ib Ll.And
-  | Ast.IAnd _  -> ib Ll.And 
+  | Ast.IAnd _  -> ib Ll.And
   | Ast.IOr _   -> ib Ll.Or
   | Ast.Or _    -> ib Ll.Or
   | Ast.Shl _   -> ib Ll.Shl
@@ -282,20 +298,20 @@ let cmp_binop (b : Range.t Ast.binop) : uid -> operand -> operand -> insn =
   | Ast.Gte _  -> ic Ll.Sge
 
 
-(* Compile a constant expression.  Booleans and integers 
+(* Compile a constant expression.  Booleans and integers
  * are just straightforward operands.
- * Strings generate a global string identifier and 
+ * Strings generate a global string identifier and
  * create a pointer operand. *)
 let cmp_const  (cn:Range.t Ast.const) : operand * stream =
   match cn with
     | Ast.Cnull _      -> ((Ptr I8, Null), [])
     | Ast.Cbool(_,b)   -> (i1_op_of_bool b, [])
     | Ast.Cint(_,i)    -> (i32_op_of_int32 i, [])
-    | Ast.Cstring(_,s) -> 
+    | Ast.Cstring(_,s) ->
       let (gid, gop) = gen_global_op (cmp_ty Ast.(TRef RString)) "_const_str" in
 	  (gop, [G (gop, s)])
 
-        
+
 (* Compile an expression, yielding a value computed by the stream and
  * stored in the resulting (usually fresh) operand. *)
 let rec cmp_exp (c:ctxt) (exp:Range.t Ast.exp) : (operand * stream) =
@@ -306,13 +322,13 @@ let rec cmp_exp (c:ctxt) (exp:Range.t Ast.exp) : (operand * stream) =
 
     | Ast.LhsOrCall lhsc -> cmp_lhs_or_call c lhsc
 
-    | Ast.Binop (bop, e1, e2) -> 
+    | Ast.Binop (bop, e1, e2) ->
 	  let (op1, code1) = cmp_exp c e1 in
 	  let (op2, code2) = cmp_exp c e2 in
-	  let (ans_id, ans_op) = gen_local_op (ty_of_bop bop) "bop" in 
+	  let (ans_id, ans_op) = gen_local_op (ty_of_bop bop) "bop" in
 	  ((ans_op , code1 >@ code2 >:: I (cmp_binop bop ans_id op1 op2)))
 
-    | Ast.Unop (uop, e) -> 
+    | Ast.Unop (uop, e) ->
 	  let (op, code) = cmp_exp c e in
 	  let (ans_id, ans_op) = gen_local_op (ty_of_unop uop) "unop" in
 	  ((ans_op, code >::
@@ -321,7 +337,7 @@ let rec cmp_exp (c:ctxt) (exp:Range.t Ast.exp) : (operand * stream) =
 		  | Ast.Lognot _ -> Icmp  (ans_id, Eq, op, i1_op_of_bool false)
 		  | Ast.Not  _   -> Binop (ans_id, Xor, op, i32_op_of_int (-1)))))
 
-    | Ast.Ctor ((info,cid), es) -> 
+    | Ast.Ctor ((info,cid), es) ->
       let ctor = (lookup_csig c cid).ctor in
       let args, arg_code = cmp_exps c es in
       let this, mem_code = oat_alloc_object c cid in
@@ -330,7 +346,7 @@ let rec cmp_exp (c:ctxt) (exp:Range.t Ast.exp) : (operand * stream) =
       (res_op, arg_code >@ mem_code >::
         I (Call (Some res_id, op_of_fn ctor, this::args)))
 
-    | Ast.New(elem_ty,e1,id,e2) -> 
+    | Ast.New(elem_ty,e1,id,e2) ->
       let (size, code_e1) = cmp_exp c e1 in
       let t = cmp_ty elem_ty in
       let (array_op, alloc_code) = oat_alloc_array_dynamic t size in
@@ -355,7 +371,7 @@ let rec cmp_exp (c:ctxt) (exp:Range.t Ast.exp) : (operand * stream) =
                                (Binop (Plus Range.norange,
                                        LhsOrCall (Lhs (Var id)),
                                        Astlib.ast_of_int 1)))),
-                 Assign (Index (Lhs (Var (Range.norange, ptr)), 
+                 Assign (Index (Lhs (Var (Range.norange, ptr)),
                                 LhsOrCall (Lhs (Var id))), e2))) in
       (array_op, code_e1 >@ alloc_code >::
         I (Alloca(bound_id, bound_ty)) >::
@@ -378,11 +394,11 @@ and cmp_length_of_array (c:ctxt) (es:Range.t Ast.exp list) : operand option * st
   begin match es with
     | [e] ->
 	let (array_op, array_code) = cmp_exp c e in
-	let (len_id, len_op) = gen_local_op (Ptr I32) "len_ptr" in 
-	let (ans_id, ans_op) = gen_local_op I32 "len" in 
+	let (len_id, len_op) = gen_local_op (Ptr I32) "len_ptr" in
+	let (ans_id, ans_op) = gen_local_op I32 "len" in
 	  (Some ans_op,
-           array_code >:: 
-	     I (Gep(len_id, array_op, gep_array_len)) >:: 
+           array_code >::
+	     I (Gep(len_id, array_op, gep_array_len)) >::
 	     I (Load(ans_id, len_op)))
 
     | _ -> failwith "Compiler error: length_of_array called on wrong number of arguments"
@@ -394,7 +410,7 @@ and cmp_length_of_array (c:ctxt) (es:Range.t Ast.exp list) : operand option * st
  * stored.  We therefore do not dereference the pointer here.  *)
 and cmp_lhs (c:ctxt) (l:Range.t Ast.lhs) : operand * stream =
   match l with
-    | Ast.Var(_, id) -> 
+    | Ast.Var(_, id) ->
       begin match lookup_local id c, lookup_global_val id c with
         | None, None -> failwith ("cmp_lhs: variable not in the context: " ^ id)
         | None, Some op | Some op, _ -> (op, [])
@@ -402,7 +418,7 @@ and cmp_lhs (c:ctxt) (l:Range.t Ast.lhs) : operand * stream =
     | Ast.Path p -> let (_, op, code) = cmp_path c p in (op, code)
     | Ast.Index (lhsc, exp) ->
 	  let (array_ptr, array_code) = cmp_lhs_or_call c lhsc in
-	  let (index, index_code) = cmp_exp c exp in   
+	  let (index, index_code) = cmp_exp c exp in
 	  begin match array_ptr with
 	    | (Ptr (Struct [I32; Array(0l, u)]), id) ->
 		  (* Translation invariant: arrays as lhs translate as above
@@ -422,7 +438,7 @@ and cmp_lhs (c:ctxt) (l:Range.t Ast.lhs) : operand * stream =
    we dereference the resulting pointer. *)
 and cmp_lhs_or_call (c:ctxt) (lc:Range.t Ast.lhs_or_call) : operand * stream =
   match lc with
-    | Ast.Lhs l -> 
+    | Ast.Lhs l ->
       let (t,_) as lhs_op, lhs_code = cmp_lhs c l in
       begin match t with
         | Ptr t' ->
@@ -462,7 +478,7 @@ and cmp_call (c:ctxt) (ca:Range.t Ast.call) : operand option * stream =
  * Invariant: the base of the path ('this' or lhs_or_call) must be a pointer
  * to an oat object. This function should raise an error if compiling it does
  * not return an Ll operand type (Namedt <cid>).
- * 
+ *
  * The first returned operand must be a pointer to the Oat object being
  * indexed. It must have type (Ptr (Namedt <cid>)).
  *
@@ -474,13 +490,40 @@ and cmp_call (c:ctxt) (ca:Range.t Ast.call) : operand option * stream =
  * that method.
  *)
 and cmp_path (c:ctxt) (p:Range.t Ast.path) : operand * operand * stream =
-  failwith "phase1.ml: cmp_path not implemented"
+  let id,cid,b_op,b_code = match p with
+    | Ast.ThisId (_,id) -> (id, lookup_this c, this_op c, [])
+    | Ast.PathId (lsc, (_,id)) ->
+       match cmp_lhs_or_call c lsc with
+       | ((Ptr (Namedt cid), _) as op, code) -> (id, cid, op, code)
+       | _ -> failwith "cmp_path: lhs was not a pointer of class type"
+  in
+  match
+    (try Some (lookup_field c cid id) with Not_found -> None),
+    (try Some (lookup_method c cid id) with Not_found -> None)
+  with
+  | Some _, Some _ | None, None ->
+                      failwith "cmp_path: lhs was not a pointer of class type"
+  | Some(i,t),None ->
+     let ptr_id, ptr_op = gen_local_op (Ptr t) "path" in
+     (b_op, ptr_op, b_code >::
+                      I (Gep (ptr_id, b_op, [i32_op_of_int 0; i32_op_of_int i])))
+  | None, Some (i, {ty_args; rty}) ->
+     let (vty, _) = (lookup_csig c cid).vtable in
+     let (vt_id, vt_op) = gen_local_op vty "vtable" in
+     let (vtp_id, vtp_op) = gen_local_op (Ptr vty) "vtmp" in
+     let (fpp_id, fpp_op) = gen_local_op (Ptr (Fptr (ty_args, rty))) "fptmp" in
+     let (ans_id, ans_op) = gen_local_op (Fptr (ty_args, rty)) "method" in
+     (b_op, ans_op, b_code >::
+                      I (Gep (vtp_id, b_op, [i32_op_of_int 0; i32_op_of_int 0])) >::
+                      I (Load (vt_id, vtp_op)) >::
+                      I (Gep (fpp_id, vt_op, [i32_op_of_int 0; i32_op_of_int i])) >::
+                      I (Load (ans_id, fpp_op)))
 
 (* Compile an initializer. To avoid computing a common subtype of all elements
    of an array initializer, this function takes an extra parameter supplying the
    expected ll type of the initializer and then inserts the appropriate casts.
    Static arrays, like {1, 2, 3} have known size, so we can unroll the loop that
-   initializes them. This does not work for the 'new' construct, since the array 
+   initializes them. This does not work for the 'new' construct, since the array
    length isn't known until runtime. *)
 and cmp_init (c:ctxt) (ty:ty) (init:Range.t Ast.init) : (operand * stream) =
   match init with
@@ -490,7 +533,7 @@ and cmp_init (c:ctxt) (ty:ty) (init:Range.t Ast.init) : (operand * stream) =
         | Ptr (Struct [_; Array (_, t)]) -> t
         | _ -> failwith "cmp_init: Iarray expects an array type"
       in
-      
+
       let arr_op, arr_code = oat_alloc_array_static et (List.length is) in
       let init_code, _ = List.fold_left (fun (acc,i) init ->
         let eop, ecode = cmp_init c et init in
@@ -499,7 +542,7 @@ and cmp_init (c:ctxt) (ty:ty) (init:Range.t Ast.init) : (operand * stream) =
       (arr_op, arr_code >@ init_code)
 
 
-(* Compile a variable declaration in a local scope. *)    
+(* Compile a variable declaration in a local scope. *)
 and cmp_vdecls (c:ctxt) (vs: Range.t Ast.vdecls) : (ctxt * stream) =
   List.fold_left (fun (c, code) {Ast.v_id=(_,src_id); v_init; v_ty} ->
     let ll_ty = cmp_ty v_ty in
@@ -517,9 +560,9 @@ and cmp_conditional c guard_op st sto : stream =
 	let else_code = match sto with None -> [] | Some s -> cmp_stmt c s in
 	let lt, le, lm = mk_lbl_hint "then", mk_lbl_hint "else", mk_lbl_hint "merge" in
     [] >::
-	  T (Cbr (guard_op, lt, le)) >:: 
-	  L lt >@ then_code >:: T (Br lm) >:: 
-      L le >@ else_code >:: 
+	  T (Cbr (guard_op, lt, le)) >::
+	  L lt >@ then_code >:: T (Br lm) >::
+      L le >@ else_code >::
       L lm
 
 (* Compile statements. *)
@@ -533,15 +576,15 @@ and cmp_stmt (c:ctxt) (stmt : Range.t Ast.stmt) : stream =
         | _ -> failwith "cmp_stmt: lhs of assign is not of ptr type"
       end
 
-    | Ast.If (guard, st1, sto2) -> 
+    | Ast.If (guard, st1, sto2) ->
 	  let op, guard_code = cmp_exp c guard in
       guard_code >@ cmp_conditional c op st1 sto2
 
     | Ast.While (guard, body) ->
 	  let (op, guard_code) = cmp_exp c guard in
-	  let (lcond, lbody, lpost) = 
+	  let (lcond, lbody, lpost) =
         mk_lbl_hint "cond", mk_lbl_hint "body", mk_lbl_hint "post" in
-	  let body_code = cmp_stmt c body in 
+	  let body_code = cmp_stmt c body in
       [] >::
 	    L lcond >@ guard_code >:: T (Cbr (op, lbody, lpost)) >::
         L lbody >@ body_code  >:: T (Br lcond) >::
@@ -556,7 +599,7 @@ and cmp_stmt (c:ctxt) (stmt : Range.t Ast.stmt) : stream =
     | Ast.Scall call  -> snd (cmp_call c call)
     | Ast.Block block -> snd (cmp_block c block)
 
-    | Ast.IfNull (r, (_,id), e, st, sto) -> 
+    | Ast.IfNull (r, (_,id), e, st, sto) ->
       (* Adding id to the ctxt of sto is ok since the typechecking phase
        * guarantees that is never referenced *)
       let ref_op, ref_code = cmp_exp c e in
@@ -570,7 +613,7 @@ and cmp_stmt (c:ctxt) (stmt : Range.t Ast.stmt) : stream =
         I (Icmp (guard_id, Ne, ref_op, (Ptr I8, Null))) >@
         cmp_conditional c' guard_op st sto
 
-    | Ast.Fail e -> 
+    | Ast.Fail e ->
       let print_code = cmp_stmt c
         (Ast.Scall (Ast.Func ((Range.ghost, "print_string"), [e]))) in
       print_code >::
@@ -596,28 +639,28 @@ let build_fdecl (c:ctxt) (f:fn) (args:operand list) (code:stream) : ctxt =
     let (c, _l, _is, bs) =
       List.fold_right (fun e (c, l, is, bs) ->
         match e with
-          | L l' -> (c, Some l', [], 
+          | L l' -> (c, Some l', [],
 			         {label=fresh_or l;
 			          insns=List.rev is;
 			          terminator=Ll.Br l'}::bs)
           | I i  -> (c, l, i::is, bs)
-          | T t  -> (c, None, [], 
+          | T t  -> (c, None, [],
 			         {label=fresh_or l;
 			          insns=List.rev is;
 			          terminator=t}::bs)
-	      | G (op, s) -> 
+	      | G (op, s) ->
             (add_global c (mk_tmp ()) op (GString s), l, is, bs))
 	    elts (c, None, [], []) in
     (c, List.rev bs)
   in
-    
+
   let (c, cfg) = blocks_of_stream c code in
   let fdecl = {
     ll_name = f.name;
     ll_type = f.rty;
     ll_args = args;
     ll_cfg = cfg;
-  } 
+  }
   in
   add_fdecl c fdecl
 
@@ -628,7 +671,7 @@ let cmp_args (c:ctxt) args : (ctxt * stream * operand list) =
       let ll_ty = cmp_ty src_ty in
 
        (* arg_op is the LL representation of the 'formal argument' *)
-      let arg_op = id_op ll_ty (gen_local src_arg_name) in 
+      let arg_op = id_op ll_ty (gen_local src_arg_name) in
 
        (* alloca_id is the name of the stack slot for the argument *)
       let alloca_id = gen_local (src_arg_name ^ "_slot") in
@@ -639,19 +682,19 @@ let cmp_args (c:ctxt) args : (ctxt * stream * operand list) =
       (c, [I (Alloca (alloca_id, ll_ty))] >::
 	       I (Store (arg_op, slot)) >@ code,
        arg_op :: args)
-    ) args (c,[],[]) 
+    ) args (c,[],[])
 
 
 (* Compile a function declaration. *)
-let cmp_fdecl (c:ctxt) ((_, (_, fid), args, block, reto) : Range.t Ast.fdecl) : ctxt = 
+let cmp_fdecl (c:ctxt) ((_, (_, fid), args, block, reto) : Range.t Ast.fdecl) : ctxt =
   let c = enter_local_scope c in
   let c, args_code, args = cmp_args c args in
   let c, block_code = cmp_block c block in
 
   (* If 'this' is set, we are in class scope definining a method *)
-  let args, fsig = 
+  let args, fsig =
     match (try Some (lookup_this c) with Not_found -> None) with
-      | None -> args, lookup_fn c fid 
+      | None -> args, lookup_fn c fid
       | Some cid -> this_op c::args, List.assoc fid (lookup_csig c cid).methods
   in
 
@@ -677,14 +720,14 @@ let cmp_gvdecl (c:ctxt) (v:Range.t Ast.vdecl) : ctxt =
        context -- they cannot refer to other globals. *)
   let u = cmp_ty t in
   let toplevel_ctxt' = List.fold_left (fun c (cid, csig) ->
-    add_csig c cid csig 
-  ) toplevel_ctxt (get_csigs c) in        
+    add_csig c cid csig
+  ) toplevel_ctxt (get_csigs c) in
   let (op, code) = cmp_init toplevel_ctxt' u init in
   let gid = mk_gid id in  (* globals are always pointer types *)
-  let gop = (Ptr u, Gid gid) in 
+  let gop = (Ptr u, Gid gid) in
     begin match op with
       | (_, Const x) -> add_global c id gop (GConst x)  (* code should be empty *)
-      | _ -> 
+      | _ ->
 	  let init_name = (string_of_gid gid) ^ ".init" in
       let init_gid = mk_gid init_name in
 	  let init_fn = {name = init_gid; rty = None; ty_args = []} in
@@ -693,22 +736,22 @@ let cmp_gvdecl (c:ctxt) (v:Range.t Ast.vdecl) : ctxt =
 	    add_global c id gop (GInit {name=init_gid; ty_args=[]; rty=None})
     end
 
-let cmp_cinits (c:ctxt) (is:Range.t Ast.cinits) : stream = failwith "cmp_cinits not implemented"    
-    
+let cmp_cinits (c:ctxt) (is:Range.t Ast.cinits) : stream = failwith "cmp_cinits not implemented"
+
 (* Compile a constructor function.
- * 1) Compile the argument list, and extend the resulting Ll operand list 
+ * 1) Compile the argument list, and extend the resulting Ll operand list
  *    with an argument representing the 'this' pointer.
  * 2) Add the extended args to the local context
  * 3) Compile each expression in 'es', using the context extended by the
  *    constructor arguments
- * 4) Generate code to bitcast each operand representing the value of 'es' 
+ * 4) Generate code to bitcast each operand representing the value of 'es'
  *    to the types of the arguments required by the super class of cid
  * 5) Generate code to call the superclass constructor using 'es'
  * 6) Extend the 'is', the initializer list to set the field _name to the
  *    cid of the current class.
  * 7) Compile the initializer list
  * 8) Generate code to update the vtable pointer to this class' vtable pointer
- * 9) Return the _this pointer passed as the first argument to the compiled 
+ * 9) Return the _this pointer passed as the first argument to the compiled
  *    function
  * 10) Call build_fdecl with the function signature and code you generated to
  *     add the function to the context and return the extended context.
@@ -733,18 +776,18 @@ let cmp_prog (c:ctxt) (p:Range.t Ast.prog) : ctxt =
     | Ast.Gefdecl ed -> c
     | Ast.Gcdecl  cd -> cmp_cdecl c cd) c p
 
-(* The Object class. This is set to be the super class in cmp_fctxt whenever 
-   a class besides 'Object' has extopt = None. This should be the only class 
+(* The Object class. This is set to be the super class in cmp_fctxt whenever
+   a class besides 'Object' has extopt = None. This should be the only class
    with no super class. *)
 let object_cid = "Object"
-let object_decl = 
+let object_decl =
   let open Ast in
-  (Gcdecl 
-     (object_cid, None, 
-      [(TRef RString, (Range.norange, "_name"))], 
-      ([], [], [], ([], [])), 
-      [(Some (TRef RString), 
-        (Range.norange, "get_name"),[],([], []), 
+  (Gcdecl
+     (object_cid, None,
+      [(TRef RString, (Range.norange, "_name"))],
+      ([], [], [], ([], [])),
+      [(Some (TRef RString),
+        (Range.norange, "get_name"),[],([], []),
         Some (LhsOrCall (Lhs (Path (ThisId (Range.norange, "_name"))))))
       ]))
 
@@ -755,11 +798,11 @@ let object_decl =
    3) create a vtable based on the method table of the class, add it to the
       ctxt globals, and remember a pointer operand for it
    4) add type aliases for the vtable and object struct of this class *)
-let cmp_cctxt (c:ctxt) (cid, ext, fs, ctor_decl, ms) : ctxt = 
+let cmp_cctxt (c:ctxt) (cid, ext, fs, ctor_decl, ms) : ctxt =
   let this_ty = Ast.TRef (Ast.RClass cid) in
 
   (* Create ctor function signature from the declaration *)
-  let ctor = 
+  let ctor =
     let (arg_ops, _, _ ,_) = ctor_decl in
     let carg_tys = this_ty::List.map fst arg_ops in
     cmp_ftyp (mk_ctor_name cid) (carg_tys, (Some this_ty))
@@ -817,10 +860,10 @@ let rec cmp_fctxt (c:ctxt) (p:Range.t Ast.prog) : ctxt =
     | Ast.Gcdecl (cid, extopt, fs, ctfd, ms) ->
       (* In AST, we assume that the super class is implicitly Object
          when cidext = None . Make super classes explicit: *)
-      let ext = match extopt with 
+      let ext = match extopt with
         | None when cid <> object_cid -> Some object_cid
         | None -> None
-        | Some c -> Some c 
+        | Some c -> Some c
       in
       cmp_cctxt c (cid, ext, fs, ctfd, ms)
   ) c p
@@ -833,14 +876,14 @@ let rec cmp_fctxt (c:ctxt) (p:Range.t Ast.prog) : ctxt =
 let cmp_toplevel (p: Range.t Ast.prog) : Ll.prog =
   let p = object_decl :: p in
   let global_initializer c gs =
-    let code = List.concat 
+    let code = List.concat
       (List.map (fun (_, ginit) -> match ginit with
 		| GConst _ | GString _ | GStruct _ -> []
-		| GInit fn -> [I(Call(None, op_of_fn fn, []))]) gs) 
+		| GInit fn -> [I(Call(None, op_of_fn fn, []))]) gs)
     in
-    build_fdecl c {name=mk_gid_unsafe "oat_init"; rty=None; ty_args=[]} 
+    build_fdecl c {name=mk_gid_unsafe "oat_init"; rty=None; ty_args=[]}
       [] (code >:: (T (Ret None)))
-  in		      
+  in
   let c = cmp_fctxt toplevel_ctxt p in
   let c = cmp_prog c p in
   let c = global_initializer c (get_globals c) in
@@ -850,4 +893,3 @@ let cmp_toplevel (p: Range.t Ast.prog) : Ll.prog =
     Ll.globals    = get_globals c;
     Ll.functions  = get_fdecls c;
   }
-

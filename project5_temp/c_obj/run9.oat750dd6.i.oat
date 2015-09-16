@@ -1,0 +1,19 @@
+# 1 "tests/run9.oat"
+# 1 "<built-in>" 1
+# 1 "<built-in>" 3
+# 320 "<built-in>" 3
+# 1 "<command line>" 1
+# 1 "<built-in>" 2
+# 1 "tests/run9.oat" 2
+class A {
+  string? str;
+  new () () { }
+  string? f() { this.str = "hello"; return this.str; }
+};
+
+int program (int argc, string[] argv) {
+  A a = new A ();
+  if? (string x = a.f()) print_string (x);
+  return 0;
+}
+

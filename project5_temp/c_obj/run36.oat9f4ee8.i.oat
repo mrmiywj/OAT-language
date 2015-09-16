@@ -1,0 +1,35 @@
+# 1 "tests/run36.oat"
+# 1 "<built-in>" 1
+# 1 "<built-in>" 3
+# 320 "<built-in>" 3
+# 1 "<command line>" 1
+# 1 "<built-in>" 2
+# 1 "tests/run36.oat" 2
+class A {
+  int i;
+  new () () { this.i = 0; }
+};
+
+class B <: A {
+  new () () { this.i = 1; }
+};
+
+class C <: B {
+  new () () { this.i = 2; }
+};
+
+int program (int argc, string[] argv) {
+  A x = new B();
+  int i = -1;
+  cast (A a = x) { 
+    print_string ("yes");
+    i = a.i;
+  } else {
+    print_string ("no");
+    i = x.i;
+  }
+  return i;
+}
+
+
+

@@ -1,0 +1,25 @@
+# 1 "tests/run42.oat"
+# 1 "<built-in>" 1
+# 1 "<built-in>" 3
+# 320 "<built-in>" 3
+# 1 "<command line>" 1
+# 1 "<built-in>" 2
+# 1 "tests/run42.oat" 2
+class A {
+  new () () {}
+  unit f () {
+    return;
+  }
+  unit g () {
+    print_string ("g");
+    return;
+  }
+};
+
+int program (int argc, string[] argv) {
+  A b = new A ();
+  b.g();
+  return 0;
+}
+
+

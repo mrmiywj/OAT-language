@@ -1,0 +1,18 @@
+# 1 "tests/run27.oat"
+# 1 "<built-in>" 1
+# 1 "<built-in>" 3
+# 320 "<built-in>" 3
+# 1 "<command line>" 1
+# 1 "<built-in>" 2
+# 1 "tests/run27.oat" 2
+int program (int argc, string[] argv) {
+  string? str=null;
+  if? (string x = str) { 
+    print_string ("non-null"); 
+  } else {
+    print_string ("null"); 
+  }
+  return 0;
+}
+
+

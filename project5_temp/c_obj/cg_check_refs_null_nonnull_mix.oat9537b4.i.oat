@@ -1,0 +1,28 @@
+# 1 "tests/cg_check_refs_null_nonnull_mix.oat"
+# 1 "<built-in>" 1
+# 1 "<built-in>" 3
+# 320 "<built-in>" 3
+# 1 "<command line>" 1
+# 1 "<built-in>" 2
+# 1 "tests/cg_check_refs_null_nonnull_mix.oat" 2
+class A <: Object {
+  string nnstr;
+  Object? nnobj;
+  string nnstr2;
+  Object[]? nnobjarr;
+  string[] nnstrarr;
+  
+  new()()
+    this.nnstr = "hello!";
+    this.nnstrarr = new string [3](fun i -> "hello");
+  {}
+};
+
+A a = new A();
+
+int program (int argc, string[] argv) {
+  return 0;
+}
+
+
+

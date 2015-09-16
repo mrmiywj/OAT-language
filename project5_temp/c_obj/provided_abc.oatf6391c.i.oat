@@ -1,0 +1,35 @@
+# 1 "tests/provided_abc.oat"
+# 1 "<built-in>" 1
+# 1 "<built-in>" 3
+# 320 "<built-in>" 3
+# 1 "<command line>" 1
+# 1 "<built-in>" 2
+# 1 "tests/provided_abc.oat" 2
+
+
+class A {
+  new()() {}
+};
+
+class B <: A {
+  new()() {}
+};
+
+class C1 <: B {
+  new()() {}
+};
+
+class C2 <: B {
+  new()() {}
+};
+
+int program (int argc, string[] argv) {
+  A a = new A ();
+  B b = new B ();
+  C1 c1 = new C1 ();
+  C2 c2 = new C2 ();
+  return 0;
+}
+
+
+

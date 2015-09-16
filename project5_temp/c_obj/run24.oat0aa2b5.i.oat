@@ -1,0 +1,27 @@
+# 1 "tests/run24.oat"
+# 1 "<built-in>" 1
+# 1 "<built-in>" 3
+# 320 "<built-in>" 3
+# 1 "<command line>" 1
+# 1 "<built-in>" 2
+# 1 "tests/run24.oat" 2
+class A {
+  string str;
+  new () () this.str = "A"; {}
+  unit f () {
+    print_string (this.str);
+    return;
+  }
+};
+
+class B <: A {
+  new () () this.str = "B"; {}
+};
+
+int program (int argc, string[] argv) {
+  B b = new B ();
+  b.f();
+  return 0;
+}
+
+

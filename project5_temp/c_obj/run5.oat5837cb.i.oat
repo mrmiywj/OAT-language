@@ -1,0 +1,20 @@
+# 1 "tests/run5.oat"
+# 1 "<built-in>" 1
+# 1 "<built-in>" 3
+# 320 "<built-in>" 3
+# 1 "<command line>" 1
+# 1 "<built-in>" 2
+# 1 "tests/run5.oat" 2
+class A {
+  bool b;
+  new () () { this.b = true; }
+};
+
+int program (int argc, string[] argv) {
+  A a = new A ();
+  int i = 0;
+  if (a.b) i = 1; else i = 0;
+  return i;
+}
+
+

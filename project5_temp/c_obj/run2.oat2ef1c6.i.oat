@@ -1,0 +1,33 @@
+# 1 "tests/run2.oat"
+# 1 "<built-in>" 1
+# 1 "<built-in>" 3
+# 320 "<built-in>" 3
+# 1 "<command line>" 1
+# 1 "<built-in>" 2
+# 1 "tests/run2.oat" 2
+class A {
+  int i;
+  int j;
+  new () () {
+  }
+  int f() {
+    return 0;
+  }
+  unit p() {
+    return;
+  }
+};
+
+class B <: A {
+  new () () {
+  }
+  int g() {
+    return this.i;
+  }
+};
+
+int program (int argc, string[] argv) {
+  int i = 0;
+  return i;
+}
+

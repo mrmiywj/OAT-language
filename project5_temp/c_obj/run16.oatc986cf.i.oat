@@ -1,0 +1,23 @@
+# 1 "tests/run16.oat"
+# 1 "<built-in>" 1
+# 1 "<built-in>" 3
+# 320 "<built-in>" 3
+# 1 "<command line>" 1
+# 1 "<built-in>" 2
+# 1 "tests/run16.oat" 2
+class A {
+  int[] arr;
+  new () () this.arr = new int [10] (fun i -> 110); {}
+};
+
+class B<:A {
+  new () () {}
+};
+
+int program (int argc, string[] argv) {
+  B b = new B ();
+  print_string (string_of_array (b.arr));
+  return 0;
+}
+
+

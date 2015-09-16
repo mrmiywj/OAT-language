@@ -1,0 +1,29 @@
+# 1 "tests/cg_eval_imm_override_dispatch.oat"
+# 1 "<built-in>" 1
+# 1 "<built-in>" 3
+# 320 "<built-in>" 3
+# 1 "<command line>" 1
+# 1 "<built-in>" 2
+# 1 "tests/cg_eval_imm_override_dispatch.oat" 2
+class A <: Object {
+  new()() {}
+  int over(int x) {
+    return x + 1;
+  }
+};
+
+class B <: A {
+  new()() {}
+  int over(int x) {
+    return x + 2;
+  }
+};
+
+A a = new B();
+
+int program(int argc, string[] argv) {
+  return a.over(3);
+}
+
+
+

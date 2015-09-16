@@ -1,0 +1,28 @@
+# 1 "tests/simple.oat"
+# 1 "<built-in>" 1
+# 1 "<built-in>" 3
+# 320 "<built-in>" 3
+# 1 "<command line>" 1
+# 1 "<built-in>" 2
+# 1 "tests/simple.oat" 2
+class A <: Object {
+  int x;
+
+  new (int y)() 
+    this.x = y;	 {
+  }
+
+  unit print() {
+    print_string(string_cat("A: x=", string_of_int(this.x)));
+    return;
+  }
+
+};
+
+A a = new A(1 + 2);
+
+int program (int argc, string[] argv) {
+  a.print();
+  return 0;
+}
+

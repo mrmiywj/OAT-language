@@ -1,0 +1,33 @@
+# 1 "tests/cg_eval_cast_onestep_fail.oat"
+# 1 "<built-in>" 1
+# 1 "<built-in>" 3
+# 320 "<built-in>" 3
+# 1 "<command line>" 1
+# 1 "<built-in>" 2
+# 1 "tests/cg_eval_cast_onestep_fail.oat" 2
+class A <: Object { new()() {} };
+class Aa <: Object { new()() {} };
+class B <: A { new()() {} };
+class Cc <: B { new()() {} };
+class CC <: B { new()() {} };
+class Ccc <: Cc { new()() {} };
+class CcC <: Cc { new()() {} };
+class CCc <: CC { new()() {} };
+class CCC <: CC { new()() {} };
+
+int docast(Object o) {
+  int r=0;
+  cast (A a = o) {
+    r = 12;
+  } else {
+    r = 21;
+  }
+  return r;
+}
+
+int program(int argc, string[] argv) {
+  return docast(new Aa());
+}
+
+
+

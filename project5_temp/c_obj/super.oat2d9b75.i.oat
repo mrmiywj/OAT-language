@@ -1,0 +1,36 @@
+# 1 "tests/super.oat"
+# 1 "<built-in>" 1
+# 1 "<built-in>" 3
+# 320 "<built-in>" 3
+# 1 "<command line>" 1
+# 1 "<built-in>" 2
+# 1 "tests/super.oat" 2
+class A <: Object {
+  new()() {
+  }
+  int six() {
+    return 1;
+  }
+};
+
+class B <: A {
+  new()() {
+  }
+  int six() {
+    return super.six() + 2;
+  }
+};
+
+class C <: B {
+  new()() {}
+  int six() {
+    return super.six() + 3;
+  }
+};
+
+int program(int argc, string[] argv) {
+  C c = new C();
+  return c.six();
+}
+
+
